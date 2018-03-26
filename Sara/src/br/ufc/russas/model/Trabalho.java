@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Trabalho {
 	private String nome;
-	private Autor autorPrincipal;
-	private ArrayList<Autor> autorSecundario;
+	private Usuario autorPrincipal;
+	private ArrayList<Usuario> autorSecundario;
 	private ArrayList<String> observacoes;
 	private String resumo;
-	private statusTrabalho status;
+	private StatusTrabalho status;
 	
 	public String getNome() {
 		return nome;
@@ -16,16 +16,16 @@ public class Trabalho {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Autor getAutorPrincipal() {
+	public Usuario getAutorPrincipal() {
 		return autorPrincipal;
 	}
-	public void setAutorPrincipal(Autor autorPrincipal) {
+	public void setAutorPrincipal(Usuario autorPrincipal) {
 		this.autorPrincipal = autorPrincipal;
 	}
-	public ArrayList<Autor> getAutorSecundario() {
+	public ArrayList<Usuario> getAutorSecundario() {
 		return autorSecundario;
 	}
-	public void setAutorSecundario(ArrayList<Autor> autorSecundario) {
+	public void setAutorSecundario(ArrayList<Usuario> autorSecundario) {
 		this.autorSecundario = autorSecundario;
 	}
 	public ArrayList<String> getObservacoes() {
@@ -40,10 +40,10 @@ public class Trabalho {
 	public void setResumo(String resumo) {
 		this.resumo = resumo;
 	}
-	public statusTrabalho getStatus() {
+	public StatusTrabalho getStatus() {
 		return status;
 	}
-	public void setStatus(statusTrabalho status) {
+	public void setStatus(StatusTrabalho status) {
 		this.status = status;
 	}
 	

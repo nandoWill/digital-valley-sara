@@ -1,6 +1,6 @@
 package br.ufc.russas.model;
 
-public enum statusTrabalho {
+public enum StatusTrabalho {
 	ENVIADO,
 	REJEITADO,
 	ACEITO,
