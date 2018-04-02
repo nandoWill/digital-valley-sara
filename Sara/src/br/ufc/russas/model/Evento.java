@@ -12,6 +12,7 @@ public class Evento {
 	private File informacoes;
 	private Usuario coordenadorGeral;
 	
+	
 	public String getNome() {
 		return nome;
 	}
