@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 public class Trabalho {
 	private String nome;
-	private Usuario autorPrincipal;
-	private ArrayList<Usuario> autorSecundario;
+	private ArrayList<Usuario> autores;
 	private ArrayList<String> observacoes;
 	private String resumo;
 	private StatusTrabalho status;
@@ -16,17 +15,11 @@ public class Trabalho {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Usuario getAutorPrincipal() {
-		return autorPrincipal;
+	public ArrayList<Usuario> getAutores() {
+		return autores;
 	}
-	public void setAutorPrincipal(Usuario autorPrincipal) {
-		this.autorPrincipal = autorPrincipal;
-	}
-	public ArrayList<Usuario> getAutorSecundario() {
-		return autorSecundario;
-	}
-	public void setAutorSecundario(ArrayList<Usuario> autorSecundario) {
-		this.autorSecundario = autorSecundario;
+	public void setAutores(ArrayList<Usuario> autores) {
+		this.autores = autores;
 	}
 	public ArrayList<String> getObservacoes() {
 		return observacoes;
