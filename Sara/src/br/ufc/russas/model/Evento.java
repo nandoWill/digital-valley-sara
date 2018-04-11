@@ -1,33 +1,36 @@
 package br.ufc.russas.model;
 
-import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Evento {
-	private int ID;
-	private int totalHoras;
+	private int idEvento;
+	private String coordenadorEvento;
+	private int idEventoPai;
 	private String nome;
 	private String descricao;
-	private String local;
 	private String sigla;
-	private ArrayList<Evento> subAtividades;
-	private ArrayList<Trilha> trilhas;
-	private Evento pai;
+	private String localizacao;
 	private LocalDate dataEvento;
-	private Usuario coordenadorEvento;
+	private int totalHoras;
 	
-	public int getID() {
-		return ID;
+	public int getIdEvento() {
+		return idEvento;
 	}
-	public void setID(int iD) {
-		ID = iD;
+	public void setIdEvento(int idEvento) {
+		this.idEvento = idEvento;
 	}
-	public int getTotalHoras() {
-		return totalHoras;
+	public String getCoordenadorEvento() {
+		return coordenadorEvento;
 	}
-	public void setTotalHoras(int totalHoras) {
-		this.totalHoras = totalHoras;
+	public void setCoordenadorEvento(String coordenadorEvento) {
+		this.coordenadorEvento = coordenadorEvento;
+	}
+	public int getIdEventoPai() {
+		return idEventoPai;
+	}
+	public void setIdEventoPai(int idEventoPai) {
+		this.idEventoPai = idEventoPai;
 	}
 	public String getNome() {
 		return nome;
@@ -41,35 +44,17 @@ public class Evento {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String getLocal() {
-		return local;
-	}
-	public void setLocal(String local) {
-		this.local = local;
-	}
 	public String getSigla() {
 		return sigla;
 	}
 	public void setSigla(String sigla) {
 		this.sigla = sigla;
 	}
-	public ArrayList<Evento> getSubAtividades() {
-		return subAtividades;
+	public String getLocalizacao() {
+		return localizacao;
 	}
-	public void setSubAtividades(ArrayList<Evento> subAtividades) {
-		this.subAtividades = subAtividades;
-	}
-	public ArrayList<Trilha> getTrilhas() {
-		return trilhas;
-	}
-	public void setTrilhas(ArrayList<Trilha> trilhas) {
-		this.trilhas = trilhas;
-	}
-	public Evento getPai() {
-		return pai;
-	}
-	public void setPai(Evento pai) {
-		this.pai = pai;
+	public void setLocalizacao(String localizacao) {
+		this.localizacao = localizacao;
 	}
 	public LocalDate getDataEvento() {
 		return dataEvento;
@@ -77,10 +62,10 @@ public class Evento {
 	public void setDataEvento(LocalDate dataEvento) {
 		this.dataEvento = dataEvento;
 	}
-	public Usuario getCoordenadorEvento() {
-		return coordenadorEvento;
+	public int getTotalHoras() {
+		return totalHoras;
 	}
-	public void setCoordenadorEvento(Usuario coordenadorEvento) {
-		this.coordenadorEvento = coordenadorEvento;
+	public void setTotalHoras(int totalHoras) {
+		this.totalHoras = totalHoras;
 	}
 }

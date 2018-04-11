@@ -3,29 +3,37 @@ package br.ufc.russas.model;
 import java.util.ArrayList;
 
 public class Trabalho {
-	private String nome;
-	private ArrayList<Usuario> autores;
-	private ArrayList<String> observacoes;
+	private int idTrabalho;
+	private String titulo;
+	private String observacoes;
+	private String palavrasChaves;
 	private String resumo;
 	private StatusTrabalho status;
+	private int idTrilha;
 	
-	public String getNome() {
-		return nome;
+	public int getIdTrabalho() {
+		return idTrabalho;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setIdTrabalho(int idTrabalho) {
+		this.idTrabalho = idTrabalho;
 	}
-	public ArrayList<Usuario> getAutores() {
-		return autores;
+	public String getTitulo() {
+		return titulo;
 	}
-	public void setAutores(ArrayList<Usuario> autores) {
-		this.autores = autores;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
-	public ArrayList<String> getObservacoes() {
+	public String getObservacoes() {
 		return observacoes;
 	}
-	public void setObservacoes(ArrayList<String> observacoes) {
+	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
+	}
+	public String getPalavrasChaves() {
+		return palavrasChaves;
+	}
+	public void setPalavrasChaves(String palavrasChaves) {
+		this.palavrasChaves = palavrasChaves;
 	}
 	public String getResumo() {
 		return resumo;
@@ -39,6 +47,10 @@ public class Trabalho {
 	public void setStatus(StatusTrabalho status) {
 		this.status = status;
 	}
-	
-	
+	public int getIdTrilha() {
+		return idTrilha;
+	}
+	public void setIdTrilha(int idTrilha) {
+		this.idTrilha = idTrilha;
+	}
 }

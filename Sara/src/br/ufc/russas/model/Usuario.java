@@ -4,39 +4,32 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Usuario {
-	private String nome;
 	private String cpf;
-	private String telefone;
-	private String endereco;
+	private String nome;
+	private String sobrenome;
 	private String email;
 	private LocalDate dataNasc;
-	private ArrayList<String> interresses;
-	private NivelUsuario tipo; 
+	private String telefone;
+	private String endereco;
+	private NivelUsuario tipo;
 	
-	
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 	public String getCpf() {
 		return cpf;
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public String getTelefone() {
-		return telefone;
+	public String getNome() {
+		return nome;
 	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	public String getEndereco() {
-		return endereco;
+	public String getSobrenome() {
+		return sobrenome;
 	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
 	}
 	public String getEmail() {
 		return email;
@@ -50,18 +43,22 @@ public class Usuario {
 	public void setDataNasc(LocalDate dataNasc) {
 		this.dataNasc = dataNasc;
 	}
-	public ArrayList<String> getInterresses() {
-		return interresses;
+	public String getTelefone() {
+		return telefone;
 	}
-	public void setInterresses(ArrayList<String> interresses) {
-		this.interresses = interresses;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	public String getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 	public NivelUsuario getTipo() {
 		return tipo;
 	}
 	public void setTipo(NivelUsuario tipo) {
 		this.tipo = tipo;
-	}
-	
-	
+	} 
 }

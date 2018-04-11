@@ -3,49 +3,41 @@ package br.ufc.russas.model;
 import java.util.ArrayList;
 
 public class Trilha {
+	private int idTrilha;
 	private String nome;
-	private Usuario coordenadorTrilha;
-	private String infoTrilha;
-	private ArrayList<Usuario> avaliadores;
-	private ArrayList<Trabalho> submissoes;
-	private ArrayList<Periodo> periodos;
+	private String info;
+	private String coordenadorTrilha;
+	private int idEvento;
 	
+	public int getIdTrilha() {
+		return idTrilha;
+	}
+	public void setIdTrilha(int idTrilha) {
+		this.idTrilha = idTrilha;
+	}
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Usuario getCoordenadorTrilha() {
+	public String getInfo() {
+		return info;
+	}
+	public void setInfo(String info) {
+		this.info = info;
+	}
+	public String getCoordenadorTrilha() {
 		return coordenadorTrilha;
 	}
-	public void setCoordenadorTrilha(Usuario coordenadorTrilha) {
+	public void setCoordenadorTrilha(String coordenadorTrilha) {
 		this.coordenadorTrilha = coordenadorTrilha;
 	}
-	public String getInfoTrilha() {
-		return infoTrilha;
+	public int getIdEvento() {
+		return idEvento;
 	}
-	public void setInfoTrilha(String infoTrilha) {
-		this.infoTrilha = infoTrilha;
+	public void setIdEvento(int idEvento) {
+		this.idEvento = idEvento;
 	}
-	public ArrayList<Usuario> getAvaliadores() {
-		return avaliadores;
-	}
-	public void setAvaliadores(ArrayList<Usuario> avaliadores) {
-		this.avaliadores = avaliadores;
-	}
-	public ArrayList<Trabalho> getSubmissoes() {
-		return submissoes;
-	}
-	public void setSubmissoes(ArrayList<Trabalho> submissoes) {
-		this.submissoes = submissoes;
-	}
-	public ArrayList<Periodo> getPeriodos() {
-		return periodos;
-	}
-	public void setPeriodos(ArrayList<Periodo> periodos) {
-		this.periodos = periodos;
-	}
-	
 }
 
