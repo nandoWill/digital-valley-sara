@@ -1,14 +1,16 @@
-package br.ufc.russas.model;
+package model;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Trabalho {
 	private int idTrabalho;
 	private String titulo;
-	private String observacoes;
 	private String palavrasChaves;
 	private String resumo;
 	private StatusTrabalho status;
+	private File manuscrito;
+	private File versaoFinal;
 	private int idTrilha;
 	
 	public int getIdTrabalho() {
@@ -22,12 +24,6 @@ public class Trabalho {
 	}
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
-	}
-	public String getObservacoes() {
-		return observacoes;
-	}
-	public void setObservacoes(String observacoes) {
-		this.observacoes = observacoes;
 	}
 	public String getPalavrasChaves() {
 		return palavrasChaves;

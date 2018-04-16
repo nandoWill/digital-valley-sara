@@ -1,4 +1,4 @@
-package br.ufc.russas.model;
+package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -8,9 +8,6 @@ public class Usuario {
 	private String nome;
 	private String sobrenome;
 	private String email;
-	private LocalDate dataNasc;
-	private String telefone;
-	private String endereco;
 	private NivelUsuario tipo;
 	
 	public String getCpf() {
@@ -37,28 +34,10 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public LocalDate getDataNasc() {
-		return dataNasc;
-	}
-	public void setDataNasc(LocalDate dataNasc) {
-		this.dataNasc = dataNasc;
-	}
-	public String getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-	public String getEndereco() {
-		return endereco;
-	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
 	public NivelUsuario getTipo() {
 		return tipo;
 	}
 	public void setTipo(NivelUsuario tipo) {
 		this.tipo = tipo;
-	} 
+	}
 }

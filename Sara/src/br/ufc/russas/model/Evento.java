@@ -1,4 +1,4 @@
-package br.ufc.russas.model;
+package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -9,10 +9,10 @@ public class Evento {
 	private int idEventoPai;
 	private String nome;
 	private String descricao;
-	private String sigla;
+	private String site;
 	private String localizacao;
-	private LocalDate dataEvento;
-	private int totalHoras;
+	private LocalDate dataInicial;
+	private LocalDate dataFinal;
 	
 	public int getIdEvento() {
 		return idEvento;
@@ -44,11 +44,11 @@ public class Evento {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String getSigla() {
-		return sigla;
+	public String getSite() {
+		return site;
 	}
-	public void setSigla(String sigla) {
-		this.sigla = sigla;
+	public void setSite(String site) {
+		this.site = site;
 	}
 	public String getLocalizacao() {
 		return localizacao;
@@ -56,16 +56,16 @@ public class Evento {
 	public void setLocalizacao(String localizacao) {
 		this.localizacao = localizacao;
 	}
-	public LocalDate getDataEvento() {
-		return dataEvento;
+	public LocalDate getDataInicial() {
+		return dataInicial;
 	}
-	public void setDataEvento(LocalDate dataEvento) {
-		this.dataEvento = dataEvento;
+	public void setDataInicial(LocalDate dataInicial) {
+		this.dataInicial = dataInicial;
 	}
-	public int getTotalHoras() {
-		return totalHoras;
+	public LocalDate getDataFinal() {
+		return dataFinal;
 	}
-	public void setTotalHoras(int totalHoras) {
-		this.totalHoras = totalHoras;
+	public void setDataFinal(LocalDate dataFinal) {
+		this.dataFinal = dataFinal;
 	}
 }

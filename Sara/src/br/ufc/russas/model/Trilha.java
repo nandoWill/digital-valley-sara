@@ -1,14 +1,13 @@
-package br.ufc.russas.model;
+package model;
 
 import java.util.ArrayList;
 
 public class Trilha {
 	private int idTrilha;
 	private String nome;
-	private String info;
-	private String coordenadorTrilha;
+	private String descricao;
+	private String coordenador;
 	private int idEvento;
-	
 	public int getIdTrilha() {
 		return idTrilha;
 	}
@@ -21,17 +20,17 @@ public class Trilha {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getInfo() {
-		return info;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setInfo(String info) {
-		this.info = info;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
-	public String getCoordenadorTrilha() {
-		return coordenadorTrilha;
+	public String getCoordenador() {
+		return coordenador;
 	}
-	public void setCoordenadorTrilha(String coordenadorTrilha) {
-		this.coordenadorTrilha = coordenadorTrilha;
+	public void setCoordenador(String coordenador) {
+		this.coordenador = coordenador;
 	}
 	public int getIdEvento() {
 		return idEvento;

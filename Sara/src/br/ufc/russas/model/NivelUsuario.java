@@ -1,4 +1,4 @@
-package br.ufc.russas.model;
+package model;
 
 public enum NivelUsuario {
 	AUTOR,
