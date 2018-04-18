@@ -1,11 +1,11 @@
-package model;
+package br.com.n2s.sara.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Evento {
 	private int idEvento;
-	private String coordenadorEvento;
+	private String coordenador;
 	private int idEventoPai;
 	private String nome;
 	private String descricao;
@@ -14,6 +14,35 @@ public class Evento {
 	private LocalDate dataInicial;
 	private LocalDate dataFinal;
 	
+	
+	
+	/* Isso não vai existir*/        
+    private ArrayList<Trilha> trilhas;
+
+    public ArrayList<Trilha> getTrilhas() {
+        return trilhas;
+    }
+
+    public void setTrilhas(ArrayList<Trilha> trilhas) {
+        this.trilhas = trilhas;
+    }
+
+    public Evento(int idEvento, String nome, String descricao, String localizacao, ArrayList<Trilha> trilhas, String cpfCoord) {
+        this.idEvento = idEvento;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.localizacao = localizacao;
+        this.dataInicial = LocalDate.now().plusMonths(2);
+        this.trilhas = trilhas;
+        this.coordenador = cpfCoord;
+    }
+    
+    public Evento() {}
+
+/*Até aqui nada vai existir*/
+    
+    
+	
 	public int getIdEvento() {
 		return idEvento;
 	}
@@ -21,10 +50,10 @@ public class Evento {
 		this.idEvento = idEvento;
 	}
 	public String getCoordenadorEvento() {
-		return coordenadorEvento;
+		return coordenador;
 	}
 	public void setCoordenadorEvento(String coordenadorEvento) {
-		this.coordenadorEvento = coordenadorEvento;
+		this.coordenador = coordenadorEvento;
 	}
 	public int getIdEventoPai() {
 		return idEventoPai;

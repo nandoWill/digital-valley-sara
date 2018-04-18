@@ -1,6 +1,6 @@
-package model;
+package br.com.n2s.sara.model;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class Trilha {
 	private int idTrilha;
@@ -8,6 +8,31 @@ public class Trilha {
 	private String descricao;
 	private String coordenador;
 	private int idEvento;
+	
+	
+    //Isso não vai existir tambem
+    
+    LocalDate periodo;
+
+    public LocalDate getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(LocalDate periodo) {
+        this.periodo = periodo;
+    }
+
+    public Trilha(String nome, int idTrilha, String info, String cpfCoord) {
+        this.nome = nome;
+        this.idTrilha = idTrilha;
+        this.descricao = info;
+        this.periodo = LocalDate.now().plusMonths(2);
+        this.coordenador = cpfCoord;
+    }
+
+    /* ATE AQUI */
+	
+	
 	public int getIdTrilha() {
 		return idTrilha;
 	}
@@ -26,10 +51,10 @@ public class Trilha {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String getCoordenador() {
+	public String getCoordenadorTrilha() {
 		return coordenador;
 	}
-	public void setCoordenador(String coordenador) {
+	public void setCoordenadorTrilha(String coordenador) {
 		this.coordenador = coordenador;
 	}
 	public int getIdEvento() {
@@ -39,4 +64,3 @@ public class Trilha {
 		this.idEvento = idEvento;
 	}
 }
-

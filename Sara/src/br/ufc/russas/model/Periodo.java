@@ -1,4 +1,4 @@
-package model;
+package br.com.n2s.sara.model;
 
 import java.time.LocalDate;
 

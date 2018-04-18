@@ -1,7 +1,4 @@
-package model;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
+package br.com.n2s.sara.model;
 
 public class Usuario {
 	private String cpf;

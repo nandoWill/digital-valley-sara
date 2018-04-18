@@ -1,7 +1,6 @@
-package model;
+package br.com.n2s.sara.model;
 
 import java.io.File;
-import java.util.ArrayList;
 
 public class Trabalho {
 	private int idTrabalho;
@@ -12,6 +11,16 @@ public class Trabalho {
 	private File manuscrito;
 	private File versaoFinal;
 	private int idTrilha;
+	
+	
+    /*Isso não vai existir*/
+
+    public Trabalho(String titulo) {
+        this.titulo = titulo;
+    }
+    
+    /* ATE AQUI */
+	
 	
 	public int getIdTrabalho() {
 		return idTrabalho;
@@ -42,6 +51,18 @@ public class Trabalho {
 	}
 	public void setStatus(StatusTrabalho status) {
 		this.status = status;
+	}
+	public File getManuscrito() {
+		return manuscrito;
+	}
+	public void setManuscrito(File manuscrito) {
+		this.manuscrito = manuscrito;
+	}
+	public File getVersaoFinal() {
+		return versaoFinal;
+	}
+	public void setVersaoFinal(File versaoFinal) {
+		this.versaoFinal = versaoFinal;
 	}
 	public int getIdTrilha() {
 		return idTrilha;
