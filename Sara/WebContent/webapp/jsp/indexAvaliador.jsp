@@ -1,6 +1,4 @@
-<%@page import="br.ufc.russas.model.Trabalho"%>
-<%@page import="br.ufc.russas.model.Trilha"%>
-<%@page import="br.ufc.russas.model.Evento"%>
+<%@ page import="br.com.n2s.sara.model.*" %>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -20,10 +18,10 @@
     <%
         ArrayList<Trabalho> trabalhos = new ArrayList<>();
         
-        trabalhos.add(new Trabalho("Trabalho1"));
-        trabalhos.add(new Trabalho("Trabalho2"));
-        trabalhos.add(new Trabalho("Trabalho3"));
-        trabalhos.add(new Trabalho("Trabalho4"));
+        trabalhos.add(new Trabalho("Trabalho1", 1)); trabalhos.get(0).setResumo("RESUMORESUMO ESUMORESUMOR ESUMORESUMORESUM ORESUMORESUMORESUMO RESUMORESUMORES UMORESUMORESU MORESUMORESU MORESUMORESUMORES UMORESUMORESUMORE SUMORESUMORE SUMORESUMORESUMOR ESUMORESUMORES UMORESUMO");
+        trabalhos.add(new Trabalho("Trabalho2", 2));
+        trabalhos.add(new Trabalho("Trabalho3", 3));
+        trabalhos.add(new Trabalho("Trabalho4", 4));
     %>
     
         
@@ -41,13 +39,13 @@
             </tr>
 	<% 
             for(int i=0; i < trabalhos.size(); i++){
-                session.setAttribute("t"+Integer.toString(trabalhos.get(i).getIdTrabalho()), trabalhos.get(i));
+                session.setAttribute("trab"+Integer.toString(trabalhos.get(i).getIdTrabalho()), trabalhos.get(i));
                %>
                
                <tr>
                    <td><%= trabalhos.get(i).getTitulo()%> </td>
-                   <td><form action="paginaEvento" method="post"> 
-                           <input type="hidden" value="t<%= trabalhos.get(i).getIdTrabalho()%>" name="evento"> 
+                   <td><form action="avaliarTrabalho.jsp" method="post"> 
+                           <input type="hidden" value="trab<%= trabalhos.get(i).getIdTrabalho()%>" name="trabalho"> 
                            <button type="submit">pressione</button>
                        </form> 
                    </td>
@@ -74,7 +72,7 @@
 	
 </tr>
 </table>
-        <input type="button" onclick="location.href='indexAutor';" value="Voltar"/>
+        <input type="button" onclick="location.href='indexAutor.jsp';" value="Voltar"/>
 </center>        
 </body>
 </html>

@@ -1,6 +1,4 @@
-<%@page import="br.ufc.russas.model.Usuario"%>
-<%@page import="br.ufc.russas.model.Trilha"%>
-<%@page import="br.ufc.russas.model.Evento"%>
+<%@ page import="br.com.n2s.sara.model.*" %>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -20,7 +18,7 @@
         ArrayList<Trilha> trilhas4 = new ArrayList<>();
         ArrayList<Trilha> trilhas5 = new ArrayList<>();
         
-        trilhas1.add(new Trilha("Trilha 1", 1, "Esta é a trilha 1", "0")); 
+        trilhas1.add(new Trilha("Trilha 1", 1, "Esta é a trilha 1", "0"));
         trilhas1.add(new Trilha("Trilha 2", 2, "Esta é a trilha 2", "1")); 
         trilhas1.add(new Trilha("Trilha 3", 3, "Esta é a trilha 3", "0")); 
         trilhas1.add(new Trilha("Trilha 4", 4, "Esta é a trilha 4", "1"));
@@ -65,8 +63,8 @@
 	<% 
             for(int i=0; i < eventos.size(); i++){
                 Evento ev = eventos.get(i);
-                for(int j = 0; j < ev.trilhas.size(); j++){
-                   if(ev.trilhas.get(j).getCoordenadorTrilha().equals(user.getCpf()) || ev.getCoordenadorEvento().equals(user.getCpf())){
+                for(int j = 0; j < ev.getTrilhas().size(); j++){
+                   if(ev.getTrilhas().get(j).getCoordenadorTrilha().equals(user.getCpf()) || ev.getCoordenadorEvento().equals(user.getCpf())){
                 
                 session.setAttribute("ce"+Integer.toString(eventos.get(i).getIdEvento()), eventos.get(i));
                %>
@@ -74,8 +72,8 @@
                 <tr>
                    <td><%= eventos.get(i).getNome() %> </td>
                    <td><%= eventos.get(i).getLocalizacao()%> </td>
-                   <td><%= eventos.get(i).getDataEvento() %> </td>
-                   <td><form action="gerenciaEvento" method="post"> 
+                   <td><%= eventos.get(i).getDataInicial() %> </td>
+                   <td><form action="gerenciaEvento.jsp" method="post"> 
                            <input type="hidden" value="ce<%= eventos.get(i).getIdEvento()%>" name="geEvento"> 
                            <button type="submit">pressione</button>
                        </form> 

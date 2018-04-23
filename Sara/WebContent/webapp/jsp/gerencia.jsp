@@ -4,8 +4,7 @@
     Author     : Hugo
 --%>
 
-<%@page import="br.ufc.russas.model.Usuario"%>
-<%@page import="br.ufc.russas.model.Evento"%>
+<%@ page import="br.com.n2s.sara.model.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,7 +26,7 @@
             <th>Data</th>
         </tr>
         <% 
-            for(int i=0; i < evento.getTrilhas().size(); i++){
+            for(int i=0; i < evento.getTrilhas().size(); i++){ 
                 if(evento.getTrilhas().get(i).getCoordenadorTrilha().equals(user.getCpf()) ){
                 
                 session.setAttribute("gt"+Integer.toString(evento.getTrilhas().get(i).getIdTrilha()), evento.getTrilhas().get(i));
@@ -38,7 +37,7 @@
                    <td><%= evento.getTrilhas().get(i).getNome() %> </td> 
                    <td>Descrição</td> 
                    <td>Data</td>
-                   <td> <form action="manterTrilha" method="post"> 
+                   <td> <form action="manterTrilha.jsp" method="post"> 
                            <input type="hidden" value="gt<%= evento.getTrilhas().get(i).getIdTrilha()%>" name="trilha"> 
                            <button type="submit">pressione</button>
                        </form> 

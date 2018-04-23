@@ -12,11 +12,11 @@
         <title>Sara</title>
     </head>
     <body>
-        <form action="adicionarAvaliador" method="post">
+        <form action="adicionarAvaliador.jsp" method="post">
             <input type="submit" name="adcAv" value="Adicionar Avaliadores">
         </form>
         <p/>
-        <form action="removerAvaliador" method="post">
+        <form action="removerAvaliador.jsp" method="post">
             <input type="submit" name="rmAv" value="Remover Avaliador">
         </form>
         

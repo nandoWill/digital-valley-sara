@@ -1,8 +1,5 @@
-<%@page import="br.ufc.russas.model.Trilha"%>
+<%@page import="br.com.n2s.sara.model.*" %>
 <%@page import="java.util.ArrayList"%>
-<%@page import="br.ufc.russas.model.Evento"%>
-<%@page import="br.ufc.russas.model.NivelUsuario"%>
-<%@page import="br.ufc.russas.model.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,7 +18,7 @@
 <body>
     <% 	
         Usuario usuario = new Usuario();
-	usuario.setTipo(NivelUsuario.COORDENADOR_EVENTO);
+		usuario.setTipo(NivelUsuario.COORDENADOR_EVENTO);
         usuario.setCpf("0");
         usuario.setNome("Hugo");
         session.setAttribute("usuario", usuario);
@@ -69,8 +66,8 @@
                <tr>
                    <td><%= eventos.get(i).getNome() %> </td>
                    <td><%= eventos.get(i).getLocalizacao()%> </td>
-                   <td><%= eventos.get(i).getDataEvento() %> </td>
-                   <td><form action="paginaEvento" method="post"> 
+                   <td><%= eventos.get(i).getDataInicial() %> </td>
+                   <td><form action="paginaEvento.jsp" method="post"> 
                            <input type="hidden" value="e<%= eventos.get(i).getIdEvento()%>" name="evento"> 
                            <button type="submit">pressione</button>
                        </form> 
@@ -106,9 +103,9 @@
             case COORDENADOR_EVENTO: %>
 
 <%	    case COORDENADOR_TRILHA: %>
-                <input type="button" onclick="location.href='indexCoordTrilha';" value="Gerenciar"/>
+                <input type="button" onclick="location.href='indexCoordTrilha.jsp';" value="Gerenciar"/>
 <%          case AVALIADOR: %>
-                <input type="button" onclick="location.href='indexAvaliador';" value="Avaliar Trabalhos"/>
+                <input type="button" onclick="location.href='indexAvaliador.jsp';" value="Avaliar Trabalhos"/>
 <%	} %> 
 </p></center> 
 
