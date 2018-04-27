@@ -1,8 +1,9 @@
-package br.com.n2s.sara.model;
+package br.ufc.russas.model;
 
 import java.io.File;
 
 public class Trabalho {
+	
 	private int idTrabalho;
 	private String titulo;
 	private String palavrasChaves;
@@ -11,16 +12,6 @@ public class Trabalho {
 	private File manuscrito;
 	private File versaoFinal;
 	private int idTrilha;
-	
-	
-    /*Isso não vai existir*/
-
-    public Trabalho(String titulo) {
-        this.titulo = titulo;
-    }
-    
-    /* ATE AQUI */
-	
 	
 	public int getIdTrabalho() {
 		return idTrabalho;
@@ -70,4 +61,7 @@ public class Trabalho {
 	public void setIdTrilha(int idTrilha) {
 		this.idTrilha = idTrilha;
 	}
+	
+	
+    
 }

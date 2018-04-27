@@ -1,4 +1,4 @@
-package br.com.n2s.sara.model;
+package br.ufc.russas.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,46 +14,17 @@ public class Evento {
 	private LocalDate dataInicial;
 	private LocalDate dataFinal;
 	
-	
-	
-	/* Isso não vai existir*/        
-    private ArrayList<Trilha> trilhas;
-
-    public ArrayList<Trilha> getTrilhas() {
-        return trilhas;
-    }
-
-    public void setTrilhas(ArrayList<Trilha> trilhas) {
-        this.trilhas = trilhas;
-    }
-
-    public Evento(int idEvento, String nome, String descricao, String localizacao, ArrayList<Trilha> trilhas, String cpfCoord) {
-        this.idEvento = idEvento;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.localizacao = localizacao;
-        this.dataInicial = LocalDate.now().plusMonths(2);
-        this.trilhas = trilhas;
-        this.coordenador = cpfCoord;
-    }
-    
-    public Evento() {}
-
-/*Até aqui nada vai existir*/
-    
-    
-	
 	public int getIdEvento() {
 		return idEvento;
 	}
 	public void setIdEvento(int idEvento) {
 		this.idEvento = idEvento;
 	}
-	public String getCoordenadorEvento() {
+	public String getCoordenador() {
 		return coordenador;
 	}
-	public void setCoordenadorEvento(String coordenadorEvento) {
-		this.coordenador = coordenadorEvento;
+	public void setCoordenador(String coordenador) {
+		this.coordenador = coordenador;
 	}
 	public int getIdEventoPai() {
 		return idEventoPai;
@@ -97,4 +68,8 @@ public class Evento {
 	public void setDataFinal(LocalDate dataFinal) {
 		this.dataFinal = dataFinal;
 	}
+	
+	
+	
+	
 }

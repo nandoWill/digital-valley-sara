@@ -1,6 +1,7 @@
-package br.com.n2s.sara.model;
+package br.ufc.russas.model;
 
 public class TrilhaPeriodo {
+	
 	private int idTrilha;
 	private int idPeriodo;
 	

@@ -1,4 +1,4 @@
-package br.com.n2s.sara.model;
+package br.ufc.russas.model;
 
 public enum StatusTrabalho {
 	ENVIADO,
