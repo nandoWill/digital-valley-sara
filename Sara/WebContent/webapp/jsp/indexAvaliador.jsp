@@ -72,7 +72,7 @@
 	
 </tr>
 </table>
-        <input type="button" onclick="location.href='indexAutor.jsp';" value="Voltar"/>
+        <input type="button" onclick="history.go(-1)" value="Voltar"/>
 </center>        
 </body>
 </html>

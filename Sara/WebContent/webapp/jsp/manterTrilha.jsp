@@ -24,11 +24,19 @@
         <form action="gerenciaAvaliadores.jsp" method="post">
             <input type="submit" name="gerAv" value="Gerenciar Avaliadores">
         </form>
+        
         <p/>
         <form action="gerenciaPeriodos.jsp" method="post">
             <input type="submit" name="gerPer" value="Alterar Períodos">
         </form>
         <p/>
+        
+        <p/>
+        <form action="gerenciaCriterios.jsp" method="post">
+            <input type="submit" name="gerCri" value="Gerenciar Critérios de Avaliação">
+        </form>
+        <p/>
+        
         <% 
             if(user.getTipo().equals(NivelUsuario.COORDENADOR_EVENTO)){
         %>

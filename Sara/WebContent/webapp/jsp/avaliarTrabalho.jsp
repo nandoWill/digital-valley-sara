@@ -18,15 +18,21 @@
 	
 	<center>
 		<h1><%=trabalho.getTitulo()%></h1>
-	
+		
 		<div id="resumo">
 			<p><h2>Resumo</h2></p>
 			<%=trabalho.getResumo() %>
 		</div>
 		
+		<br />
+		<br />
+		
+		<!-- PEGAR PDF DO BANCO DE DADOS -->
+		<a href="teste.txt" download="teste.txt"><button>Baixar Trabalho</button></a>
+		
 		<div id="criterios">
 			<h2>Critérios de Avaliação</h2>
-					
+							
 		<%	
 			//PEGAR CRITERIOS ESTABELECIDOS PARA ESTA TRILHA
 			ArrayList<ArrayList<String>> criterios = new ArrayList<ArrayList<String>>();
@@ -60,6 +66,7 @@
 		</div>
 		
 			<button type="submit">Enviar Avaliação</button>
+			<input type="button" onclick="location.href='indexAvaliador.jsp';" value="Cancelar"/>
 			</form>
 		
 	</center>
