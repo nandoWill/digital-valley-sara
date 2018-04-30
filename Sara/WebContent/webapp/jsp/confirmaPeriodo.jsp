@@ -1,6 +1,6 @@
 <%-- 
-    Document   : removeAvaliador
-    Created on : 18/04/2018, 11:05:52
+    Document   : confirmaPeriodo
+    Created on : 25/04/2018, 11:22:05
     Author     : Hugo
 --%>
 
@@ -9,12 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sara</title>
+        <title>JSP Page</title>
     </head>
     <body>
-    <center>
-        Avaliador removido!
-        <p/><input type="button" value="Voltar" onClick="history.go(-1)">
-    </center>
+        <h1>Adicionou, eu espero...</h1>
+        <input type="button" value="Voltar" onClick="history.go(-1)">
     </body>
 </html>

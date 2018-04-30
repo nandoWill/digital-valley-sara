@@ -23,6 +23,7 @@
             <p>Número: <input type="tel" name="telefone"> </p>
             <p>Endereço: <input type="text" name="endereco"> </p>
             <button>Submit</button>
+            <input type="button" value="Voltar" onClick="history.go(-1)">
         </form>
     </center>
     </body>

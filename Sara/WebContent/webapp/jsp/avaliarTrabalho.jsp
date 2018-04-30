@@ -1,22 +1,27 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="br.com.n2s.sara.model.*" %>
+    <%@ page import="br.ufc.russas.model.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="../css/centralizar.css" rel="stylesheet" />
+
 <title>Avaliação de Trabalhos</title>
 </head>
 <body>
-
+    
+    <input id="algumacoisa" value="coisaalguma">
+    
+    
 	<% 
     	String trab = request.getParameter("trabalho");
         Trabalho trabalho = (Trabalho) session.getAttribute(trab);
     %>
 	
 	<center>
+            
+                
 		<h1><%=trabalho.getTitulo()%></h1>
 	
 		<div id="resumo">
@@ -42,7 +47,7 @@
 			
 			for(ArrayList<String> criterio : criterios){ %>
 				<h3>Criterio X</h3> 
-				<form action="enviarAvaliacao.jsp">
+				<form action="enviarAvaliacao">
 			<%	for(String item : criterio){ %>
 					<input type="radio" name="criterio" value=<%=item %> /> <%=item %>
 			<%	}
@@ -60,6 +65,7 @@
 		</div>
 		
 			<button type="submit">Enviar Avaliação</button>
+                        <input type="button" value="Voltar" onClick="history.go(-1)">
 			</form>
 		
 	</center>

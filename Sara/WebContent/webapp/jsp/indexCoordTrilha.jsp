@@ -1,4 +1,4 @@
-<%@ page import="br.com.n2s.sara.model.*" %>
+<%@ page import="br.ufc.russas.model.*" %>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -51,7 +51,7 @@
         trilhas5.add(new Trilha("Trilha 3", 3, "Esta é a trilha 3", "1")); 
         trilhas5.add(new Trilha("Trilha 4", 4, "Esta é a trilha 4", "1"));
         
-        eventos.add(new Evento(5, "Evento5", "alahuaahusdh5", "Santiago 2", trilhas5, "2"));
+        eventos.add(new Evento(5, "Evento5", "alahuaahusdh5", "Santiago 2", trilhas5, "0"));
     %>
     <center>
         <table border="1">
@@ -72,21 +72,22 @@
                 <tr>
                    <td><%= eventos.get(i).getNome() %> </td>
                    <td><%= eventos.get(i).getLocalizacao()%> </td>
-                   <td><%= eventos.get(i).getDataInicial() %> </td>
-                   <td><form action="gerenciaEvento.jsp" method="post"> 
+                   <td><%= eventos.get(i).getDataEvento()%> </td>
+                   <td><form action="gerenciaEvento" method="post"> 
                            <input type="hidden" value="ce<%= eventos.get(i).getIdEvento()%>" name="geEvento"> 
                            <button type="submit">pressione</button>
                        </form> 
                    </td>
                 </tr>
-            <%     }
-                    break;
+            <%     break; 
+                    }
+
                 }
             }
         %>
 	</table>
         
-        <input type="button" onclick="location.href='indexAutor';" value="Voltar"/>
+        <input type="button" value="Voltar" onClick="history.go(-1)">
     </center>
     
 </body>

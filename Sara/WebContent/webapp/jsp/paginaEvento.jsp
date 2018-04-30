@@ -4,7 +4,7 @@
     Author     : Hugo
 --%>
 
-<%@ page import="br.com.n2s.sara.model.*" %>
+<%@ page import="br.ufc.russas.model.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,7 +27,7 @@
         <h2><%= evento.getNome()%></h2>
         <p><%= evento.getDescricao()%></p>
         <p><%= evento.getLocalizacao()%></p>
-        <p><%= evento.getDataInicial()%></p>
+        <p><%= evento.getDataEvento()%></p>
         
         <table border="1" >
         <tr>
@@ -45,7 +45,7 @@
                    <td><%= evento.getTrilhas().get(i).getNome() %> </td> 
                    <td>Descrição</td> 
                    <td>Data</td>
-                   <td> <form action="paginaTrilha.jsp" method="post"> 
+                   <td> <form action="paginaTrilha" method="post"> 
                            <input type="hidden" value="t<%= evento.getTrilhas().get(i).getIdTrilha()%>" name="trilha"> 
                            <button type="submit">pressione</button>
                        </form> 
@@ -57,7 +57,7 @@
         %>    
     </table>
     <p/>
-    <input type="button" onclick="location.href='indexAutor';" value="Voltar"/>
+    <input type="button" value="Voltar" onClick="history.go(-1)">
     </center>
     </body>
 </html>
