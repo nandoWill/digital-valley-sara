@@ -1,51 +1,150 @@
 package br.ufc.russas.model;
 
-import java.util.ArrayList;
+import java.io.File;
 
+/**
+ *
+ * @author Hugo
+ */
 public class Trabalho {
-	private String nome;
-	private Usuario autorPrincipal;
-	private ArrayList<Usuario> autorSecundario;
-	private ArrayList<String> observacoes;
+	
+	private int idTrabalho;
+	private String titulo;
+	private String palavrasChaves;
 	private String resumo;
 	private StatusTrabalho status;
+	private File manuscrito;
+	private File versaoFinal;
+	private int idTrilha;
 	
-	public String getNome() {
-		return nome;
+    /**
+     *
+     * @return
+     */
+    public int getIdTrabalho() {
+		return idTrabalho;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+
+    /**
+     *
+     * @param idTrabalho
+     */
+    public void setIdTrabalho(int idTrabalho) {
+		this.idTrabalho = idTrabalho;
 	}
-	public Usuario getAutorPrincipal() {
-		return autorPrincipal;
+
+    /**
+     *
+     * @return
+     */
+    public String getTitulo() {
+		return titulo;
 	}
-	public void setAutorPrincipal(Usuario autorPrincipal) {
-		this.autorPrincipal = autorPrincipal;
+
+    /**
+     *
+     * @param titulo
+     */
+    public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
-	public ArrayList<Usuario> getAutorSecundario() {
-		return autorSecundario;
+
+    /**
+     *
+     * @return
+     */
+    public String getPalavrasChaves() {
+		return palavrasChaves;
 	}
-	public void setAutorSecundario(ArrayList<Usuario> autorSecundario) {
-		this.autorSecundario = autorSecundario;
+
+    /**
+     *
+     * @param palavrasChaves
+     */
+    public void setPalavrasChaves(String palavrasChaves) {
+		this.palavrasChaves = palavrasChaves;
 	}
-	public ArrayList<String> getObservacoes() {
-		return observacoes;
-	}
-	public void setObservacoes(ArrayList<String> observacoes) {
-		this.observacoes = observacoes;
-	}
-	public String getResumo() {
+
+    /**
+     *
+     * @return
+     */
+    public String getResumo() {
 		return resumo;
 	}
-	public void setResumo(String resumo) {
+
+    /**
+     *
+     * @param resumo
+     */
+    public void setResumo(String resumo) {
 		this.resumo = resumo;
 	}
-	public StatusTrabalho getStatus() {
+
+    /**
+     *
+     * @return
+     */
+    public StatusTrabalho getStatus() {
 		return status;
 	}
-	public void setStatus(StatusTrabalho status) {
+
+    /**
+     *
+     * @param status
+     */
+    public void setStatus(StatusTrabalho status) {
 		this.status = status;
+	}
+
+    /**
+     *
+     * @return
+     */
+    public File getManuscrito() {
+		return manuscrito;
+	}
+
+    /**
+     *
+     * @param manuscrito
+     */
+    public void setManuscrito(File manuscrito) {
+		this.manuscrito = manuscrito;
+	}
+
+    /**
+     *
+     * @return
+     */
+    public File getVersaoFinal() {
+		return versaoFinal;
+	}
+
+    /**
+     *
+     * @param versaoFinal
+     */
+    public void setVersaoFinal(File versaoFinal) {
+		this.versaoFinal = versaoFinal;
+	}
+
+    /**
+     *
+     * @return
+     */
+    public int getIdTrilha() {
+		return idTrilha;
+	}
+
+    /**
+     *
+     * @param idTrilha
+     */
+    public void setIdTrilha(int idTrilha) {
+		this.idTrilha = idTrilha;
 	}
 	
 	
+    
 }

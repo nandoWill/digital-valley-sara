@@ -1,4 +1,4 @@
-<%@ page import="br.com.n2s.sara.model.*" %>
+<%@ page import="br.ufc.russas.model.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,10 +15,10 @@
             String teste = "sedcftvgybhujnkml,.ç";
         %>
         <h2><%= trilha.getNome()%></h2>
-        <p><%= trilha.getDescricao()%></p>
+        <p><%= trilha.getInfo()%></p>
         <p><%= trilha.getPeriodo()%></p>
         
-        <form action="submterTrabalho.jsp" method="post">
+        <form action="submterTrabalho" method="post">
             <p>Título: </p>
             <p><input type="text" name="titulo" size="80"></p>
             <p>Resumo:</p> 
@@ -27,7 +27,7 @@
             <p>Palavras-chave: (Separe por vígula)</p>
             <p><input type="text" name="palavras_chave" size="80"></p>
             <button type="submit">Submeter</button>
-            <input type="button" onclick="location.href='indexAutor.jsp';" value="Voltar"/>
+            <input type="button" value="Voltar" onClick="history.go(-1)">
             
         </form>
         

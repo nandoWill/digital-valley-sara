@@ -4,7 +4,7 @@
     Author     : Hugo
 --%>
 
-<%@ page import="br.com.n2s.sara.model.*" %>
+<%@ page import="br.ufc.russas.model.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,32 +20,24 @@
         %>
     <center>
         <h1><%=trilha.getNome()%></h1>
-        <h2><%=trilha.getDescricao()%></h2>
-        <form action="gerenciaAvaliadores.jsp" method="post">
+        <h2><%=trilha.getInfo()%></h2>
+        <form action="gerenciaAvaliadores" method="post">
             <input type="submit" name="gerAv" value="Gerenciar Avaliadores">
         </form>
         
         <p/>
-        <form action="gerenciaPeriodos.jsp" method="post">
+        <form action="gerenciaPeriodos" method="post">
             <input type="submit" name="gerPer" value="Alterar Períodos">
         </form>
         <p/>
-        
+
         <p/>
         <form action="gerenciaCriterios.jsp" method="post">
             <input type="submit" name="gerCri" value="Gerenciar Critérios de Avaliação">
         </form>
         <p/>
         
-        <% 
-            if(user.getTipo().equals(NivelUsuario.COORDENADOR_EVENTO)){
-        %>
-        <form action="gerenciaCoordenadores.jsp" method="post">
-            <input type="submit" name="gerCord" value="Gerenciar Coordenadores dessa Trilha">
-        </form>
-        <% 
-            }
-        %>
+        <p/><input type="button" value="Voltar" onClick="history.go(-1)">
     </center>
     </body>
 </html>

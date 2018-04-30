@@ -12,6 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+    <center>
+        Coordenador Atual: Ainda não cadastrado <input type="submit" value="Adicionar">    
+        <p/> Coordenador Atual: Fulano Cicrano da Silva <input type="submit" value="Alterar">    
+        <p/><input type="button" value="Voltar" onClick="history.go(-1)">
+    </center>
     </body>
 </html>

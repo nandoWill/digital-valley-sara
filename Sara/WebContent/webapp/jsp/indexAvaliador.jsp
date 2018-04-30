@@ -1,4 +1,4 @@
-<%@ page import="br.com.n2s.sara.model.*" %>
+<%@ page import="br.ufc.russas.model.*" %>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -44,7 +44,7 @@
                
                <tr>
                    <td><%= trabalhos.get(i).getTitulo()%> </td>
-                   <td><form action="avaliarTrabalho.jsp" method="post"> 
+                   <td><form action="avaliarTrabalho" method="post"> 
                            <input type="hidden" value="trab<%= trabalhos.get(i).getIdTrabalho()%>" name="trabalho"> 
                            <button type="submit">pressione</button>
                        </form> 
@@ -72,7 +72,7 @@
 	
 </tr>
 </table>
-        <input type="button" onclick="history.go(-1)" value="Voltar"/>
+        <input type="button" onclick="history.go(-1)" value="Voltar"/>       
 </center>        
 </body>
 </html>

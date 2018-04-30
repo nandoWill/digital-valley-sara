@@ -1,10 +1,4 @@
-<%-- 
-    Document   : gerencia
-    Created on : 16/04/2018, 11:21:47
-    Author     : Hugo
---%>
-
-<%@ page import="br.com.n2s.sara.model.*" %>
+<%@ page import="br.ufc.russas.model.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,7 +21,7 @@
         </tr>
         <% 
             for(int i=0; i < evento.getTrilhas().size(); i++){ 
-                if(evento.getTrilhas().get(i).getCoordenadorTrilha().equals(user.getCpf()) ){
+                if(evento.getTrilhas().get(i).getCoordenadorTrilha().equals(user.getCpf()) || evento.getCoordenadorEvento().equals(user.getCpf())){
                 
                 session.setAttribute("gt"+Integer.toString(evento.getTrilhas().get(i).getIdTrilha()), evento.getTrilhas().get(i));
                %>
@@ -39,8 +33,21 @@
                    <td>Data</td>
                    <td> <form action="manterTrilha.jsp" method="post"> 
                            <input type="hidden" value="gt<%= evento.getTrilhas().get(i).getIdTrilha()%>" name="trilha"> 
-                           <button type="submit">pressione</button>
+                           <button type="submit">Gerenciar Trilha</button>
                        </form> 
+                   
+                   </td>
+                   <td>
+                       <form action="gerenciaCoordenadores.jsp" method="post">
+                        <% 
+                               if(user.getTipo().equals(NivelUsuario.COORDENADOR_EVENTO) && user.getCpf().equals(evento.getCoordenadorEvento())){
+                        %>
+        
+                                <input type="submit" name="gerCord" value="Coordenador dessa Trilha">
+                        <% 
+                                }
+                        %>
+                        </form>
                    </td>
                    
                </tr>
@@ -48,8 +55,12 @@
             <%  }
             }
         %>    
+        
     </table>
-    <input type="button" onclick="location.href='indexCoordTrilha';" value="Voltar"/>
+        <p/>
+        
+        <input type="button" value="Voltar" onClick="history.go(-1)">
     </center>
     </body>
 </html>
+

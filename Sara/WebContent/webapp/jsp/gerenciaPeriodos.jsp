@@ -13,17 +13,35 @@
     </head>
     <body>
         <center>
+            <table border="1">
+            <tr>
+                <th>Periodo</th>
+                <th>Data Inicio</th>
+                <th>Data Fim</th>
+            </tr>
+            <tr>
+                <td>Periodo1</td>
+                <td>13-10-2069</td>
+                <td>15-12-2069</td>
+                <td>
+                    <form action="alteraPeriodo" method="post">
+                        <input type="submit" value="Alterar">
+                    </form>
+                </td>
+                
+                <td>
+                    <form action="removePeriodo" method="post">
+                        <input type="submit" value="Remover">
+                    </form>
+                </td>
+            </tr>
+            </table>    
+            <p/>
         <form action="adicionaPeriodo" method="post">
             <input type="submit" name="adcPr" value="Adicionar Período">
+            <input type="button" value="Voltar" onClick="history.go(-1)">
         </form>
-        <p/>
-        <form action="alteraPeriodo" method="post">
-            <input type="submit" name="altPr" value="Alterar um Período">
-        </form>
-        <p/>
-        <form action="removePeriodo" method="post">
-            <input type="submit" name="rmPr" value="Remover Período">
-        </form>
+        
     </center>  
     </body>
 </html>
