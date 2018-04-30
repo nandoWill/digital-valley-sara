@@ -30,13 +30,10 @@
             <input type="button" value="+" onclick="maisCampos();">
             <input type="button" value="-" onclick="removerCampos(this);">
             
-			<br /> 		          
+			<br /> <br />     
             <p><button type="submit">Adicionar Critério</button></p>
         </form>
-        
-         <!-- <form action="adicionarMaisItens.jsp" method="post">
-	            <button type="submit">Adicionar Mais Itens</button>
-	     </form> -->
+
         
     </center>
     
@@ -51,22 +48,22 @@
 	    	var camposClonados = clone.getElementsByTagName('input');
 	    	for(i=0; i<camposClonados.length;i++){
 	    		camposClonados[i].value = '';
-	    		camposClonados[i].name = camposClonados[i].name + cont;
+	    		camposClonados[i].name = "peso" + cont;
 	    	}
 	    	
 	    	camposClonados = clone.getElementsByTagName('textarea');
 	    	for(i=0; i<camposClonados.length;i++){
 	    		camposClonados[i].value = '';
-	    		camposClonados[i].name = camposClonados[i].name + cont;
+	    		camposClonados[i].name = "descricao" + cont;
 	    	}
 	    	
 	    	cont = cont + 1;
 	    }
 	    
  	    function removerCampos(id){
+ 	    	cont = cont - 1;
 	   	    var node1 = document.getElementById('destino');
 	    	node1.removeChild(node1.childNodes[cont]);
-	    	cont = cont - 1;
 	    } 
     </script>
 </body>

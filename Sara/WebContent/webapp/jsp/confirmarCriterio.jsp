@@ -13,18 +13,18 @@
 		int pesoCrit = Integer.parseInt(request.getParameter("pesoCrit"));
 		ArrayList<String> itensDescricao = new ArrayList<String>();
 		ArrayList<Integer> itensPeso = new ArrayList<Integer>();
-
+		
 		String desc = "";
 		String peso = "";
 		
-		for(int i = 0; i < 10; i++){
-			desc = request.getParameter("descricao" + (i + 1));
-			peso = request.getParameter("peso" + (i + 1));
+		for(int i = 0; i < 20; i++){
+			desc = request.getParameter("descricao" + i);
+			peso = request.getParameter("peso" + i);
 			
-			if (desc != "" && peso != "") {
+			if (desc != "" && peso != "" && desc != null && peso != null) {
 				itensDescricao.add(desc);
 				itensPeso.add(Integer.parseInt(peso));
-			}
+			} 
 		}
 		
   		System.out.println("TAMANHO: " + itensDescricao.size());
