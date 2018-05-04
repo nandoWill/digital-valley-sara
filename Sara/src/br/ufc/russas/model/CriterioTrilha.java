@@ -1,12 +1,14 @@
 package br.ufc.russas.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class CriterioTrilha {
-	
+
 	private int idCriterioTrilha;
 	private LocalDate dataCriacao;
 	private String nome;
+	private ArrayList<Criterio> criterios;
 	
 	public int getIdCriterioTrilha() {
 		return idCriterioTrilha;
@@ -26,7 +28,11 @@ public class CriterioTrilha {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
-	
+	public ArrayList<Criterio> getCriterios() {
+		return criterios;
+	}
+	public void setCriterios(ArrayList<Criterio> criterios) {
+		this.criterios = criterios;
+	}
+
 }

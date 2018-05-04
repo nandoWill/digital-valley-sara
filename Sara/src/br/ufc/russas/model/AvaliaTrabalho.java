@@ -1,19 +1,21 @@
 package br.ufc.russas.model;
 
 public class AvaliaTrabalho {
-	private String idAvaliador;
-	private int idTrabalho;
+	
+	private Usuario avaliador;
+	private Trabalho trabalho;
+	
+	public Usuario getAvaliador() {
+		return avaliador;
+	}
+	public void setAvaliador(Usuario avaliador) {
+		this.avaliador = avaliador;
+	}
+	public Trabalho getTrabalho() {
+		return trabalho;
+	}
+	public void setTrabalho(Trabalho trabalho) {
+		this.trabalho = trabalho;
+	}
 
-	public String getIdAvaliador() {
-		return idAvaliador;
-	}
-	public void setIdAvaliador(String idAvaliador) {
-		this.idAvaliador = idAvaliador;
-	}
-	public int getIdTrabalho() {
-		return idTrabalho;
-	}
-	public void setIdTrabalho(int idTrabalho) {
-		this.idTrabalho = idTrabalho;
-	}
 }

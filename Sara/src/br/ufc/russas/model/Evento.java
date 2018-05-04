@@ -4,15 +4,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Evento {
+	
 	private int idEvento;
-	private String coordenador;
-	private int idEventoPai;
+	private Usuario coordenador;
+	private Evento eventoPai;
 	private String nome;
 	private String descricao;
 	private String site;
 	private String localizacao;
 	private LocalDate dataInicial;
 	private LocalDate dataFinal;
+	private ArrayList<Trilha> trilhas;
 	
 	public int getIdEvento() {
 		return idEvento;
@@ -20,17 +22,17 @@ public class Evento {
 	public void setIdEvento(int idEvento) {
 		this.idEvento = idEvento;
 	}
-	public String getCoordenador() {
+	public Usuario getCoordenador() {
 		return coordenador;
 	}
-	public void setCoordenador(String coordenador) {
+	public void setCoordenador(Usuario coordenador) {
 		this.coordenador = coordenador;
 	}
-	public int getIdEventoPai() {
-		return idEventoPai;
+	public Evento getEventoPai() {
+		return eventoPai;
 	}
-	public void setIdEventoPai(int idEventoPai) {
-		this.idEventoPai = idEventoPai;
+	public void setEventoPai(Evento eventoPai) {
+		this.eventoPai = eventoPai;
 	}
 	public String getNome() {
 		return nome;
@@ -68,8 +70,11 @@ public class Evento {
 	public void setDataFinal(LocalDate dataFinal) {
 		this.dataFinal = dataFinal;
 	}
-	
-	
-	
+	public ArrayList<Trilha> getTrilhas() {
+		return trilhas;
+	}
+	public void setTrilhas(ArrayList<Trilha> trilhas) {
+		this.trilhas = trilhas;
+	}
 	
 }

@@ -1,23 +1,17 @@
 package br.ufc.russas.model;
 
-public class Nivel {
+public class Item {
 	
-	private int idNivel;
+	private int idItem;
 	private String descricao;
 	private int peso;
-	private int idCriterio;
+	private Criterio criterio;
 	
-	public int getIdNivel() {
-		return idNivel;
+	public int getIdItem() {
+		return idItem;
 	}
-	public void setIdNivel(int idNivel) {
-		this.idNivel = idNivel;
-	}
-	public int getIdCriterio() {
-		return idCriterio;
-	}
-	public void setIdCriterio(int idCriterio) {
-		this.idCriterio = idCriterio;
+	public void setIdItem(int idItem) {
+		this.idItem = idItem;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -30,6 +24,12 @@ public class Nivel {
 	}
 	public void setPeso(int peso) {
 		this.peso = peso;
+	}
+	public Criterio getCriterio() {
+		return criterio;
+	}
+	public void setCriterio(Criterio criterio) {
+		this.criterio = criterio;
 	}
 	
 }

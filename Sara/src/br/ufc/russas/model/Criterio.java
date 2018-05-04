@@ -1,11 +1,14 @@
 package br.ufc.russas.model;
 
+import java.util.ArrayList;
+
 public class Criterio {
 	
 	private int idCriterio;
 	private String descricao;
 	private int peso;
-	private int idCriterioTrilha;
+	private CriterioTrilha criterioTrilha;
+	private ArrayList<Item> itens;
 	
 	public int getIdCriterio() {
 		return idCriterio;
@@ -25,11 +28,17 @@ public class Criterio {
 	public void setPeso(int peso) {
 		this.peso = peso;
 	}
-	public int getIdCriterioTrilha() {
-		return idCriterioTrilha;
+	public CriterioTrilha getCriterioTrilha() {
+		return criterioTrilha;
 	}
-	public void setIdCriterioTrilha(int idCriterioTrilha) {
-		this.idCriterioTrilha = idCriterioTrilha;
+	public void setCriterioTrilha(CriterioTrilha criterioTrilha) {
+		this.criterioTrilha = criterioTrilha;
+	}
+	public ArrayList<Item> getItens() {
+		return itens;
+	}
+	public void setItens(ArrayList<Item> itens) {
+		this.itens = itens;
 	}
 	
 }

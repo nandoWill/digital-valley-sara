@@ -1,19 +1,21 @@
 package br.ufc.russas.model;
 
 public class AvaliaTrilha {
-	private String idAvaliador;
-	private int idTrilha;
 	
-	public String getIdAvaliador() {
-		return idAvaliador;
+	private Usuario avaliador;
+	private Trilha trilha;
+	
+	public Usuario getAvaliador() {
+		return avaliador;
 	}
-	public void setIdAvaliador(String idAvaliador) {
-		this.idAvaliador = idAvaliador;
+	public void setAvaliador(Usuario avaliador) {
+		this.avaliador = avaliador;
 	}
-	public int getIdTrilha() {
-		return idTrilha;
+	public Trilha getTrilha() {
+		return trilha;
 	}
-	public void setIdTrilha(int idTrilha) {
-		this.idTrilha = idTrilha;
+	public void setTrilha(Trilha trilha) {
+		this.trilha = trilha;
 	}
+	
 }

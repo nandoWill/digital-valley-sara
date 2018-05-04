@@ -11,7 +11,7 @@ public class Trabalho {
 	private StatusTrabalho status;
 	private File manuscrito;
 	private File versaoFinal;
-	private int idTrilha;
+	private Trilha trilha; // Trilha a qual o trabalho está associado
 	
 	public int getIdTrabalho() {
 		return idTrabalho;
@@ -55,13 +55,10 @@ public class Trabalho {
 	public void setVersaoFinal(File versaoFinal) {
 		this.versaoFinal = versaoFinal;
 	}
-	public int getIdTrilha() {
-		return idTrilha;
+	public Trilha getTrilha() {
+		return trilha;
 	}
-	public void setIdTrilha(int idTrilha) {
-		this.idTrilha = idTrilha;
+	public void setTrilha(Trilha trilha) {
+		this.trilha = trilha;
 	}
-	
-	
-    
 }

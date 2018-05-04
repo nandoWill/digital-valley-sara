@@ -2,19 +2,21 @@ package br.ufc.russas.model;
 
 public class Submissao {
 	
-	private String idAutor;
-	private int idTrabalho;
+	private Usuario autor;
+	private Trabalho trabalho;
 	
-	public String getIdAutor() {
-		return idAutor;
+	public Usuario getAutor() {
+		return autor;
 	}
-	public void setIdAutor(String idAutor) {
-		this.idAutor = idAutor;
+	public void setAutor(Usuario autor) {
+		this.autor = autor;
 	}
-	public int getIdTrabalho() {
-		return idTrabalho;
+	public Trabalho getTrabalho() {
+		return trabalho;
 	}
-	public void setIdTrabalho(int idTrabalho) {
-		this.idTrabalho = idTrabalho;
+	public void setTrabalho(Trabalho trabalho) {
+		this.trabalho = trabalho;
 	}
+	
+	
 }

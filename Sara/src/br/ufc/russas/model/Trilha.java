@@ -1,15 +1,17 @@
 package br.ufc.russas.model;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Trilha {
 	
 	private int idTrilha;
 	private String nome;
 	private String descricao;
-	private String coordenador;
-	private int idEvento;
-	private int idCriterioTrilha;
+	private Usuario coordenador;
+	private Evento evento;
+	private CriterioTrilha criterioTrilha;
+	private ArrayList<Periodo> periodos;
+	private ArrayList<Usuario> avaliadores;
 	
 	public int getIdTrilha() {
 		return idTrilha;
@@ -29,23 +31,36 @@ public class Trilha {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String getCoordenador() {
+	public Usuario getCoordenador() {
 		return coordenador;
 	}
-	public void setCoordenador(String coordenador) {
+	public void setCoordenador(Usuario coordenador) {
 		this.coordenador = coordenador;
 	}
-	public int getIdEvento() {
-		return idEvento;
+	public Evento getEvento() {
+		return evento;
 	}
-	public void setIdEvento(int idEvento) {
-		this.idEvento = idEvento;
+	public void setEvento(Evento evento) {
+		this.evento = evento;
 	}
-	public int getIdCriterioTrilha() {
-		return idCriterioTrilha;
+	public CriterioTrilha getCriterioTrilha() {
+		return criterioTrilha;
 	}
-	public void setIdCriterioTrilha(int idCriterioTrilha) {
-		this.idCriterioTrilha = idCriterioTrilha;
+	public void setCriterioTrilha(CriterioTrilha criterioTrilha) {
+		this.criterioTrilha = criterioTrilha;
 	}
+	public ArrayList<Periodo> getPeriodos() {
+		return periodos;
+	}
+	public void setPeriodos(ArrayList<Periodo> periodos) {
+		this.periodos = periodos;
+	}
+	public ArrayList<Usuario> getAvaliadores() {
+		return avaliadores;
+	}
+	public void setAvaliadores(ArrayList<Usuario> avaliadores) {
+		this.avaliadores = avaliadores;
+	}
+	
 	
 }

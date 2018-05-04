@@ -3,6 +3,7 @@ package br.ufc.russas.model;
 import java.time.LocalDate;
 
 public class Periodo {
+	
 	private int idPeriodo;
 	private LocalDate dataInicial;
 	private LocalDate dataFinal;
