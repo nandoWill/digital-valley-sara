@@ -17,6 +17,4 @@ public class Submissao {
 	public void setTrabalho(Trabalho trabalho) {
 		this.trabalho = trabalho;
 	}
-	
-	
 }
