@@ -1,37 +1,41 @@
 package br.ufc.russas.dao;
 
-import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
-//import br.ufc.russas.model.NivelUsuario;
-import br.ufc.russas.model.Usuario;
+import br.ufc.russas.controller.EventoController;
+import br.ufc.russas.controller.UsuarioController;
+import br.ufc.russas.model.Evento;
+
 
 public class Teste {
 
 	public static void main(String[] args) throws SQLException {
 
-		Connection connection = new ConnectionFactory().getConnection();
-		System.out.println("Conexão aberta!");
-
-		//		Usuario usuario = new Usuario();
-		//		usuario.setCpf("01002037492");
-		//		usuario.setNome("joão");
-		//		usuario.setSobrenome("maria");
-		//		usuario.setEmail("joaomario@blabla");
-		//		usuario.setTipo(NivelUsuario.AUTOR);
-		//		
-		DAOUsuario daoUsuario = new DAOUsuario();
-
 		try {
-			Usuario usu = daoUsuario.getUsuario("01002037492");
-			usu.setNome("mateus");
-			daoUsuario.delete(usu);
+
+			EventoController eventoController = new EventoController();
+			UsuarioController usuarioController = new UsuarioController();
+
+//			LocalDate dataExemplo = LocalDate.of(2018, 12, 13);
+//
+//			Evento evento = new Evento();
+//			evento.setIdEvento(44);
+//			evento.setCoordenador(usuarioController.buscar("777"));
+//			evento.setIdEventoPai(20);
+//			evento.setNome("Workshop de IA");
+//			evento.setDescricao("........");
+//			evento.setSite("www.wia.com.br");
+//			evento.setLocalizacao("Campus UFC - Quixadá");
+//			evento.setDataInicial(dataExemplo);
+//			evento.setDataFinal(dataExemplo.plusDays(10));		
+			
+
+			DAOTrilha d = new DAOTrilha();
+			d.read();
 
 		} catch (RuntimeException e) {
-			System.out.println(e.getMessage());
+			System.out.println("Erro! " + e.getMessage());
 		}
-
-		connection.close();
-
 	}
 }	
