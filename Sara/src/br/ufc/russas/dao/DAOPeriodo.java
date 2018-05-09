@@ -1,4 +1,4 @@
-package br.ufc.russas.dao;
+package br.com.n2s.sara.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,32 +8,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufc.russas.model.Periodo;
+import br.com.n2s.sara.model.Periodo;
 
 public class DAOPeriodo {
 
 	private Connection connection;
 
-	public DAOPeriodo() {
-		this.connection = new ConnectionFactory().getConnection(); 
-
-	}	
+	public DAOPeriodo() {}	
 
 	public void create(Periodo periodo){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
+		
 		String sql = "insert into sara.Periodo"  
-				+ "(dataFinal, dataInicial, descricao,idPeriodo)"
+				+ "(dataInicial, dataFinal, descricao)"
 				+ "values (?,?,?,?)";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setDate(1, Date.valueOf(periodo.getDataFinal())); // transforma Date para valor 
-			stmt.setDate(2, Date.valueOf(periodo.getDataInicial()));
+			stmt.setDate(1, Date.valueOf(periodo.getDataInicial()));
+			stmt.setDate(2, Date.valueOf(periodo.getDataFinal())); // transforma Date para valor 
 			stmt.setString(3, periodo.getDescricao());
-			stmt.setInt(4, periodo.getIdPeriodo());
-
+			
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -41,7 +40,8 @@ public class DAOPeriodo {
 	}
 
 	public List<Periodo> read(){ //read()
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "select * from sara.Periodo";
 
 		try{
@@ -52,16 +52,18 @@ public class DAOPeriodo {
 			while(rs.next()){// anda o array
 
 				Periodo periodo = new Periodo();
-				periodo.setDataFinal((rs.getDate("datainicial").toLocalDate())); //toLocalDate()
-				periodo.setDataInicial((rs.getDate("datafinal").toLocalDate()));
-				periodo.setDescricao(rs.getString("descricao"));
 				periodo.setIdPeriodo(rs.getInt("idPeriodo"));
+				periodo.setDataFinal((rs.getDate("dataInicial").toLocalDate())); //toLocalDate()
+				periodo.setDataInicial((rs.getDate("dataFinal").toLocalDate()));
+				periodo.setDescricao(rs.getString("descricao"));
+				
 
 				periodos.add(periodo);
 			}
 
 			rs.close();
 			stmt.close();
+			this.connection.close();
 			return periodos;
 
 		}catch(SQLException e){
@@ -70,8 +72,9 @@ public class DAOPeriodo {
 	}
 
 	public Periodo getPeriodo(int idPeriodo){
-
-		String sql = "select * from sara.Periodo where idperiodo = ?";
+		
+		this.connection = new ConnectionFactory().getConnection();
+		String sql = "select * from sara.Periodo where idPeriodo = ?";
 
 		try{
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
@@ -81,13 +84,14 @@ public class DAOPeriodo {
 			if(rs.next()){
 
 				Periodo periodo = new Periodo();
-				periodo.setDataFinal((rs.getDate("datainicial").toLocalDate())); //toLocalDate()
-				periodo.setDataInicial((rs.getDate("datafinal").toLocalDate()));
-				periodo.setDescricao(rs.getString("descricao"));
 				periodo.setIdPeriodo(rs.getInt("idPeriodo"));
-
+				periodo.setDataFinal((rs.getDate("dataInicial").toLocalDate())); //toLocalDate()
+				periodo.setDataInicial((rs.getDate("dataFinal").toLocalDate()));
+				periodo.setDescricao(rs.getString("descricao"));
+				
 				rs.close();
 				stmt.close();
+				this.connection.close();
 				return periodo;
 				
 			}else{
@@ -99,20 +103,22 @@ public class DAOPeriodo {
 	}
 
 	public void update(Periodo periodo){
-
-		String sql = "update sara.Periodo set dataFinal = ?, set dataInicial=?, set descricao=? ,set idPeriodo=?" 
-				+ " where idperiodo = ?";
+		
+		this.connection = new ConnectionFactory().getConnection();
+		String sql = "update sara.Periodo dataInicial = ?, dataFinal = ?, descricao = ?" 
+				+ " where idPeriodo = ?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-
-			stmt.setDate(1, Date.valueOf(periodo.getDataFinal()));
-			stmt.setDate(2, Date.valueOf(periodo.getDataInicial()));
+			
+			stmt.setDate(1, Date.valueOf(periodo.getDataInicial()));
+			stmt.setDate(2, Date.valueOf(periodo.getDataFinal()));
 			stmt.setString(3, periodo.getDescricao());
 			stmt.setInt(4, periodo.getIdPeriodo());
 
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -121,14 +127,16 @@ public class DAOPeriodo {
 
 
 	public void delete(int idPeriodo){
-
-		String sql = "delete from sara.Periodo where idperiodo = ?";
+		
+		this.connection = new ConnectionFactory().getConnection();
+		String sql = "delete from sara.Periodo where idPeriodo = ?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, idPeriodo);
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

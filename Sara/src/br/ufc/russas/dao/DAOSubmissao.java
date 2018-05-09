@@ -1,4 +1,4 @@
-package br.ufc.russas.dao;
+package br.com.n2s.sara.dao;
 
 
 import java.sql.Connection;
@@ -9,24 +9,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufc.russas.controller.UsuarioController;
-import br.ufc.russas.model.NivelUsuario;
-import br.ufc.russas.model.Periodo;
-import br.ufc.russas.model.Submissao;
-import br.ufc.russas.model.Trabalho;
-import br.ufc.russas.model.Usuario;
+import br.com.n2s.sara.controller.UsuarioController;
+import br.com.n2s.sara.model.NivelUsuario;
+import br.com.n2s.sara.model.Periodo;
+import br.com.n2s.sara.model.Submissao;
+import br.com.n2s.sara.model.Trabalho;
+import br.com.n2s.sara.model.Usuario;
 
 public class DAOSubmissao {
 
 	private Connection connection;
 
-	public DAOSubmissao(){
-
-		this.connection = new ConnectionFactory().getConnection(); 
-	}
+	public DAOSubmissao(){}
 
 	public void create(Submissao submissao){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "insert into sara.Submissao"  
 				+ "(cpfautor, idtrabalho)"
 				+ "values (?,?)";
@@ -38,6 +36,7 @@ public class DAOSubmissao {
 
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -45,7 +44,8 @@ public class DAOSubmissao {
 	}
 
 	public List<Submissao> read(){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "select * from sara.Submissao";
 
 		try{
@@ -64,6 +64,7 @@ public class DAOSubmissao {
 
 			rs.close();
 			stmt.close();
+			this.connection.close();
 			return submissoes;
 
 		}catch(SQLException e){
@@ -72,7 +73,8 @@ public class DAOSubmissao {
 	}
 
 	public Submissao getSubmissao(int idtrabalho){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "select * from sara.Submissao where idtrabalho = ?";
 
 		try{
@@ -87,6 +89,7 @@ public class DAOSubmissao {
 
 				rs.close();
 				stmt.close();
+				this.connection.close();
 				return submissao;
 			}else{
 				return null;
@@ -97,7 +100,8 @@ public class DAOSubmissao {
 	}
 
 	public void update(Submissao submissao){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "update sara.Submissao set cpfautor = ?, idtrabalho = ? " 
 				+ " where idtrabalho = ?";
 
@@ -108,6 +112,7 @@ public class DAOSubmissao {
 
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -116,7 +121,8 @@ public class DAOSubmissao {
 
 
 	public void delete(Submissao submissao){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "delete from sara.Usuario where idtrabalho = ?";
 
 		try {
@@ -124,6 +130,7 @@ public class DAOSubmissao {
 			stmt.setInt(1, submissao.getIdTrabalho());
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

@@ -1,4 +1,4 @@
-package br.ufc.russas.dao;
+package br.com.n2s.sara.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,33 +7,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufc.russas.controller.CriterioTrilhaController;
-import br.ufc.russas.model.Criterio;
+import br.com.n2s.sara.controller.CriterioTrilhaController;
+import br.com.n2s.sara.model.Criterio;
 
 public class DAOCriterio {
 	
 	private Connection connection;
 
-	public DAOCriterio(){
-
-		this.connection = new ConnectionFactory().getConnection(); 
-	}
+	public DAOCriterio(){}
 
 	public void create(Criterio criterio){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "insert into sara.Criterio"  
-				+ "(idCriterio, descricao, peso, idCriterioTrilha)"
+				+ "(descricao, peso, idCriterioTrilha)"
 				+ "values (?,?,?,?)";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, criterio.getIdCriterio());
-			stmt.setString(2, criterio.getDescricao());
-			stmt.setInt(3, criterio.getPeso());
-			stmt.setInt(4, criterio.getCriterioTrilha().getIdCriterioTrilha());
+			stmt.setString(1, criterio.getDescricao());
+			stmt.setInt(2, criterio.getPeso());
+			stmt.setInt(3, criterio.getCriterioTrilha().getIdCriterioTrilha());
 			
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -41,7 +39,8 @@ public class DAOCriterio {
 	}
 
 	public List<Criterio> read(){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "select * from sara.Criterio";
 
 		try{
@@ -65,6 +64,7 @@ public class DAOCriterio {
 
 			rs.close();
 			stmt.close();
+			this.connection.close();
 			return criterios;
 
 		}catch(SQLException e){
@@ -73,7 +73,8 @@ public class DAOCriterio {
 	}
 
 	public Criterio getCriterio(int idCriterio){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "select * from sara.Criterio where idCriterio = ?";
 
 		try{
@@ -93,6 +94,7 @@ public class DAOCriterio {
 			
 				rs.close();
 				stmt.close();
+				this.connection.close();
 				return criterio;
 			}else{
 				return null;
@@ -103,20 +105,21 @@ public class DAOCriterio {
 	}
 
 	public void update(Criterio criterio){
-
-		String sql = "update sara.Criterio set idCriterio = ?, descricao = ? peso = ?, idCriterioTrilha = ?"
+		
+		this.connection = new ConnectionFactory().getConnection();
+		String sql = "update sara.Criterio set descricao = ? peso = ?, idCriterioTrilha = ?"
 				+ " where idCriterio = ?";
 				
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, criterio.getIdCriterio());
-			stmt.setString(2, criterio.getDescricao());
-			stmt.setInt(3, criterio.getPeso());
-			stmt.setInt(4, criterio.getCriterioTrilha().getIdCriterioTrilha());
-			stmt.setInt(5, criterio.getIdCriterio());
+			stmt.setString(1, criterio.getDescricao());
+			stmt.setInt(2, criterio.getPeso());
+			stmt.setInt(3, criterio.getCriterioTrilha().getIdCriterioTrilha());
+			stmt.setInt(4, criterio.getIdCriterio());
 			
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -125,7 +128,8 @@ public class DAOCriterio {
 
 
 	public void delete(int idCriterio){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "delete from sara.Criterio where idCriterio = ?";
 
 		try {
@@ -133,6 +137,7 @@ public class DAOCriterio {
 			stmt.setInt(1, idCriterio);
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

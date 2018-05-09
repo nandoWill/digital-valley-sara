@@ -1,4 +1,4 @@
-package br.ufc.russas.dao;
+package br.com.n2s.sara.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,4 @@
-package br.ufc.russas.dao;
+package br.com.n2s.sara.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,20 +7,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufc.russas.model.NivelUsuario;
-import br.ufc.russas.model.Usuario;
+import br.com.n2s.sara.model.NivelUsuario;
+import br.com.n2s.sara.model.Usuario;
 
 public class DAOUsuario {
 
 	private Connection connection;
 
-	public DAOUsuario(){
-
-		this.connection = new ConnectionFactory().getConnection(); 
-	}
+	public DAOUsuario(){}
 
 	public void create(Usuario usuario){
-
+		
+		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "insert into sara.Usuario"  
 				+ "(cpf, nome, sobrenome, email, tipo)"
 				+ "values (?,?,?,?,?)";
@@ -35,6 +33,7 @@ public class DAOUsuario {
 
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -42,7 +41,8 @@ public class DAOUsuario {
 	}
 
 	public List<Usuario> read(){
-
+		
+		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "select * from sara.Usuario";
 
 		try{
@@ -63,6 +63,7 @@ public class DAOUsuario {
 
 			rs.close();
 			stmt.close();
+			this.connection.close();
 			return usuarios;
 
 		}catch(SQLException e){
@@ -71,7 +72,8 @@ public class DAOUsuario {
 	}
 
 	public Usuario getUsuario(String cpf){
-
+		
+		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "select * from sara.Usuario where cpf = ?";
 
 		try{
@@ -89,6 +91,7 @@ public class DAOUsuario {
 
 				rs.close();
 				stmt.close();
+				this.connection.close();
 				return usuario;
 			}else{
 				return null;
@@ -99,7 +102,8 @@ public class DAOUsuario {
 	}
 
 	public void update(Usuario usuario){
-
+		
+		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "update sara.Usuario set cpf = ?, nome = ?, sobrenome = ?, email = ?, tipo = ? " 
 				+ " where cpf = ?";
 
@@ -114,6 +118,7 @@ public class DAOUsuario {
 			
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -122,7 +127,8 @@ public class DAOUsuario {
 
 	
 	public void delete(String cpf){
-
+		
+		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "delete from sara.Usuario where cpf = ?";
 
 		try {
@@ -130,6 +136,7 @@ public class DAOUsuario {
 			stmt.setString(1, cpf);
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

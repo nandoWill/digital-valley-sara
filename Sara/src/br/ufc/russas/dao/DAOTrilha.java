@@ -1,4 +1,4 @@
-package br.ufc.russas.dao;
+package br.com.n2s.sara.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,37 +6,36 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import br.ufc.russas.controller.CriterioTrilhaController;
-import br.ufc.russas.controller.EventoController;
-import br.ufc.russas.controller.UsuarioController;
-import br.ufc.russas.model.Trilha;
+
+import br.com.n2s.sara.controller.CriterioTrilhaController;
+import br.com.n2s.sara.controller.EventoController;
+import br.com.n2s.sara.controller.UsuarioController;
+import br.com.n2s.sara.model.Trilha;
 
 public class DAOTrilha {
 
 	private Connection connection;
 
-	public DAOTrilha(){
-
-		this.connection = new ConnectionFactory().getConnection(); 
-	}
+	public DAOTrilha(){}
 
 	public void create(Trilha trilha){
-
+		
+		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "insert into sara.Trilha"  
-				+ "(idTrilha, nome, descricao, coordenador, idEvento, idCriterioTrilha)"
-				+ "values (?,?,?,?,?,?)";
+				+ "(nome, descricao, coordenador, idEvento, idCriterioTrilha)"
+				+ "values (?,?,?,?,?)";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, trilha.getIdTrilha());
-			stmt.setString(2, trilha.getNome());
-			stmt.setString(3, trilha.getDescricao());
-			stmt.setString(4, trilha.getCoordenador().getCpf());
-			stmt.setInt(5, trilha.getEvento().getIdEvento());
-			stmt.setInt(6, trilha.getCriterioTrilha().getIdCriterioTrilha());
+			stmt.setString(1, trilha.getNome());
+			stmt.setString(2, trilha.getDescricao());
+			stmt.setString(3, trilha.getCoordenador().getCpf());
+			stmt.setInt(4, trilha.getEvento().getIdEvento());
+			stmt.setInt(5, trilha.getCriterioTrilha().getIdCriterioTrilha());
 
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -44,7 +43,8 @@ public class DAOTrilha {
 	}
 
 	public List<Trilha> read(){
-
+		
+		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "select * from sara.Trilha";
 
 		try{
@@ -72,6 +72,7 @@ public class DAOTrilha {
 
 			rs.close();
 			stmt.close();
+			this.connection.close();
 			return trilhas;
 
 		}catch(SQLException e){
@@ -80,7 +81,8 @@ public class DAOTrilha {
 	}
 
 	public Trilha getTrilha(int idTrilha){
-
+		
+		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "select * from sara.Trilha where idTrilha = ?";
 
 		try{
@@ -104,6 +106,7 @@ public class DAOTrilha {
 
 				rs.close();
 				stmt.close();
+				this.connection.close();
 
 				return trilha;
 			}else{
@@ -115,23 +118,24 @@ public class DAOTrilha {
 	}
 
 	public void update(Trilha trilha){
-
-		String sql = "update sara.Trilha set idTrilha = ?, nome = ?, descricao = ?, coordenador = ?, idEvento = ?, "
+		
+		this.connection = new ConnectionFactory().getConnection(); 
+		String sql = "update sara.Trilha set nome = ?, descricao = ?, coordenador = ?, idEvento = ?, "
 				+ "idCriterioTrilha = ? where idTrilha = ?";
 
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, trilha.getIdTrilha());
-			stmt.setString(2, trilha.getNome());
-			stmt.setString(3, trilha.getDescricao());
-			stmt.setString(4, trilha.getCoordenador().getCpf());
-			stmt.setInt(5, trilha.getEvento().getIdEvento());
-			stmt.setInt(6, trilha.getCriterioTrilha().getIdCriterioTrilha());
-			stmt.setInt(7, trilha.getIdTrilha());
+			stmt.setString(1, trilha.getNome());
+			stmt.setString(2, trilha.getDescricao());
+			stmt.setString(3, trilha.getCoordenador().getCpf());
+			stmt.setInt(4, trilha.getEvento().getIdEvento());
+			stmt.setInt(5, trilha.getCriterioTrilha().getIdCriterioTrilha());
+			stmt.setInt(6, trilha.getIdTrilha());
 
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -140,7 +144,8 @@ public class DAOTrilha {
 
 
 	public void delete(int idTrilha){
-
+		
+		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "delete from sara.Trilha where idTrilha = ?";
 
 		try {
@@ -148,6 +153,7 @@ public class DAOTrilha {
 			stmt.setInt(1, idTrilha);
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

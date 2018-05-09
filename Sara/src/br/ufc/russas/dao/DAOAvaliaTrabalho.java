@@ -1,4 +1,4 @@
-package br.ufc.russas.dao;
+package br.com.n2s.sara.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,19 +6,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufc.russas.model.AvaliaTrabalho;
+import br.com.n2s.sara.model.AvaliaTrabalho;
 
 public class DAOAvaliaTrabalho {
 	
 	private Connection connection;
 
-	public DAOAvaliaTrabalho(){
-
-		this.connection = new ConnectionFactory().getConnection(); 
-	}
+	public DAOAvaliaTrabalho(){}
 
 	public void create(AvaliaTrabalho avalia){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "insert into sara.avaliatrabalho"  
 				+ "(idavaliador, idtrabalho)"
 				+ "values (?,?)";
@@ -30,6 +28,7 @@ public class DAOAvaliaTrabalho {
 			
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -37,7 +36,8 @@ public class DAOAvaliaTrabalho {
 	}
 
 	public List<AvaliaTrabalho> read(){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "select * from sara.Avaliatrabalho";
 
 		try{
@@ -56,6 +56,7 @@ public class DAOAvaliaTrabalho {
 
 			rs.close();
 			stmt.close();
+			this.connection.close();
 			return avaliacoes;
 
 		}catch(SQLException e){
@@ -64,7 +65,8 @@ public class DAOAvaliaTrabalho {
 	}
 
 	public AvaliaTrabalho getAvaliaTrabalho(String idavaliador){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "select * from sara.Avaliatrabalho where idavaliador = ?";
 
 		try{
@@ -79,6 +81,7 @@ public class DAOAvaliaTrabalho {
 				
 				rs.close();
 				stmt.close();
+				this.connection.close();
 				return avalia;
 			}else{
 				return null;
@@ -89,7 +92,8 @@ public class DAOAvaliaTrabalho {
 	}
 
 	public void update(AvaliaTrabalho avalia){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "update sara.AvaliaTrabalho set idavaliador = ?, idtrabalho = ?" 
 				+ " where idavaliador = ?";
 
@@ -100,6 +104,7 @@ public class DAOAvaliaTrabalho {
 						
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -108,7 +113,8 @@ public class DAOAvaliaTrabalho {
 
 	
 	public void delete(AvaliaTrabalho avalia){
-
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "delete from sara.Usuario where idtrabalho = ?";
 
 		try {
@@ -116,6 +122,7 @@ public class DAOAvaliaTrabalho {
 			stmt.setInt(1, avalia.getIdTrabalho());
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
