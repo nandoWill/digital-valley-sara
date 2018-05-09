@@ -1,4 +1,4 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,7 +7,6 @@ public class Evento {
 	
 	private int idEvento;
 	private Usuario coordenador;
-	private Evento eventoPai;
 	private String nome;
 	private String descricao;
 	private String site;
@@ -28,12 +27,7 @@ public class Evento {
 	public void setCoordenador(Usuario coordenador) {
 		this.coordenador = coordenador;
 	}
-	public Evento getEventoPai() {
-		return eventoPai;
-	}
-	public void setEventoPai(Evento eventoPai) {
-		this.eventoPai = eventoPai;
-	}
+	
 	public String getNome() {
 		return nome;
 	}
