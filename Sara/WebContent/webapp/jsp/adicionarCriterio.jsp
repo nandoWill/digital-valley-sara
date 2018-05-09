@@ -8,8 +8,6 @@
 </head>
 <body>
 	<center>
-	
-		<% int n = 0; %>
 		
 		<h1> Critério </h1>
 			

@@ -1,3 +1,8 @@
+<%@page import="br.com.n2s.sara.controller.CriterioController"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="br.com.n2s.sara.model.Item"%>
+<%@page import="br.com.n2s.sara.model.Criterio"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.ArrayList"%>
@@ -17,22 +22,40 @@
 		String desc = "";
 		String peso = "";
 		
+		Criterio crit = new Criterio();
+		crit.setDescricao(descricaoCrit);
+		crit.setPeso(pesoCrit);
+		
+		Item item = new Item();
+		List<Item> itens = new ArrayList<Item>();
+		
 		for(int i = 0; i < 20; i++){
 			desc = request.getParameter("descricao" + i);
 			peso = request.getParameter("peso" + i);
 			
 			if (desc != "" && peso != "" && desc != null && peso != null) {
-				itensDescricao.add(desc);
-				itensPeso.add(Integer.parseInt(peso));
+				//itensDescricao.add(desc);
+				//itensPeso.add(Integer.parseInt(peso));
+				item.setDescricao(desc);
+				item.setPeso(Integer.parseInt(peso));
+				item.setCriterio(crit);
+				
+				itens.add(item);
 			} 
 		}
 		
-  		System.out.println("TAMANHO: " + itensDescricao.size());
+		ArrayList<Item> listItem = (ArrayList<Item>) itens; 
+		crit.setItens(listItem);
+		
+		CriterioController critCon = new CriterioController();
+		critCon.criar(crit);
+		
+  		/* System.out.println("TAMANHO: " + itensDescricao.size());
 		 
 		for(int i = 0; i < itensPeso.size(); i++){
 			System.out.println(itensDescricao.get(i));
 			System.out.println(itensPeso.get(i));
-		}  
+		}   */
 	%>
 </body>
 </html>
