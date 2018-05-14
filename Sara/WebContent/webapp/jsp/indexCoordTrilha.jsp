@@ -1,4 +1,7 @@
-<%@ page import="br.ufc.russas.model.*" %>
+<%@page import="br.com.n2s.sara.controller.TrilhaController"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.n2s.sara.controller.EventoController"%>
+<%@ page import="br.com.n2s.sara.model.*" %>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -11,47 +14,10 @@
 <body>
     <% 
         Usuario user = (Usuario) session.getAttribute("usuario");
-        ArrayList<Evento> eventos = new ArrayList<>();
-        ArrayList<Trilha> trilhas1 = new ArrayList<>();
-        ArrayList<Trilha> trilhas2 = new ArrayList<>();
-        ArrayList<Trilha> trilhas3 = new ArrayList<>();
-        ArrayList<Trilha> trilhas4 = new ArrayList<>();
-        ArrayList<Trilha> trilhas5 = new ArrayList<>();
-        
-        trilhas1.add(new Trilha("Trilha 1", 1, "Esta é a trilha 1", "0"));
-        trilhas1.add(new Trilha("Trilha 2", 2, "Esta é a trilha 2", "1")); 
-        trilhas1.add(new Trilha("Trilha 3", 3, "Esta é a trilha 3", "0")); 
-        trilhas1.add(new Trilha("Trilha 4", 4, "Esta é a trilha 4", "1"));
-        
-        eventos.add(new Evento(1, "Evento1", "Este é o evento 1", "UFC - Russas", trilhas1, "2")); 
-        
-        trilhas2.add(new Trilha("Trilha 1", 1, "Esta é a trilha 1", "0")); 
-        trilhas2.add(new Trilha("Trilha 2", 2, "Esta é a trilha 2", "0")); 
-        trilhas2.add(new Trilha("Trilha 3", 3, "Esta é a trilha 3", "0")); 
-        trilhas2.add(new Trilha("Trilha 4", 4, "Esta é a trilha 4", "0"));
-        
-        eventos.add(new Evento(2, "Evento2", "alahuaahusdh2", "Castelo", trilhas2, "1")); 
-        
-        trilhas3.add(new Trilha("Trilha 1", 1, "Esta é a trilha 1", "1")); 
-        trilhas3.add(new Trilha("Trilha 2", 2, "Esta é a trilha 2", "0")); 
-        trilhas3.add(new Trilha("Trilha 3", 3, "Esta é a trilha 3", "1")); 
-        trilhas3.add(new Trilha("Trilha 4", 4, "Esta é a trilha 4", "0"));
-        
-        eventos.add(new Evento(3, "Evento3", "alahuaahusdh3", "UFC - Quixadá", trilhas3, "2")); 
-        
-        trilhas4.add(new Trilha("Trilha 1", 1, "Esta é a trilha 1", "1")); 
-        trilhas4.add(new Trilha("Trilha 2", 2, "Esta é a trilha 2", "1")); 
-        trilhas4.add(new Trilha("Trilha 3", 3, "Esta é a trilha 3", "1")); 
-        trilhas4.add(new Trilha("Trilha 4", 4, "Esta é a trilha 4", "1"));
-        
-        eventos.add(new Evento(4, "Evento4", "alahuaahusdh4", "Casa da marelia", trilhas4, "1")); 
-        
-        trilhas5.add(new Trilha("Trilha 1", 1, "Esta é a trilha 1", "0")); 
-        trilhas5.add(new Trilha("Trilha 2", 2, "Esta é a trilha 2", "1")); 
-        trilhas5.add(new Trilha("Trilha 3", 3, "Esta é a trilha 3", "1")); 
-        trilhas5.add(new Trilha("Trilha 4", 4, "Esta é a trilha 4", "1"));
-        
-        eventos.add(new Evento(5, "Evento5", "alahuaahusdh5", "Santiago 2", trilhas5, "0"));
+        List<Evento> eventos = new EventoController().listar();
+        for(int i =0; i < eventos.size(); i++){
+        	eventos.get(i).setTrilhas(new TrilhaController().listar(eventos.get(i).getIdEvento()));
+        }
     %>
     <center>
         <table border="1">
@@ -63,25 +29,25 @@
 	<% 
             for(int i=0; i < eventos.size(); i++){
                 Evento ev = eventos.get(i);
+                System.out.println(ev.getCoordenador().getCpf());
                 for(int j = 0; j < ev.getTrilhas().size(); j++){
-                   if(ev.getTrilhas().get(j).getCoordenadorTrilha().equals(user.getCpf()) || ev.getCoordenadorEvento().equals(user.getCpf())){
+                   if(ev.getTrilhas().get(j).getCoordenador().getCpf().equals(user.getCpf()) || ev.getCoordenador().getCpf().equals(user.getCpf())){
                 
-                session.setAttribute("ce"+Integer.toString(eventos.get(i).getIdEvento()), eventos.get(i));
+                	session.setAttribute("ce"+Integer.toString(ev.getIdEvento()), ev);
                %>
                
                 <tr>
-                   <td><%= eventos.get(i).getNome() %> </td>
-                   <td><%= eventos.get(i).getLocalizacao()%> </td>
-                   <td><%= eventos.get(i).getDataEvento()%> </td>
-                   <td><form action="gerenciaEvento" method="post"> 
+                   <td><%= ev.getNome() %> </td>
+                   <td><%= ev.getLocalizacao()%> </td>
+                   <td><%= ev.getDataInicial() %> </td>
+                   <td><form action="gerenciaEvento.jsp" method="post"> 
                            <input type="hidden" value="ce<%= eventos.get(i).getIdEvento()%>" name="geEvento"> 
-                           <button type="submit">pressione</button>
+                           <button type="submit">Alterar Dados do Evento</button>
                        </form> 
                    </td>
                 </tr>
-            <%     break; 
-                    }
-
+            <%     }
+                    break;
                 }
             }
         %>

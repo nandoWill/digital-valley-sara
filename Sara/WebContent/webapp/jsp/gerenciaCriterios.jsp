@@ -39,7 +39,7 @@
                %>
                
                <tr>
-                   <td><%=criterios.get(i)%></td>
+                   <td><%=criterios.get(i).getDescricao()%></td>
                    <td><form action="alterarCriterio.jsp" method="post"> 
                            <input type="hidden" value="crit<%= criterios.get(i).getIdCriterio()%>" name="criterio"> 
                            <button type="submit">Alterar</button>

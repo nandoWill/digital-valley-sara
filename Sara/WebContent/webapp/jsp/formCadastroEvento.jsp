@@ -10,9 +10,9 @@
 <body>
 
 	<center>
-	<form action = "cadastrarEvento" method = "post">
+	<form action = "cadastrarEvento.jsp" method = "post">
 		<p>Nome:</p>
-		<p><input type="text" name="nome" required></p>
+		<p><input type="text" name="nome" required/></p>
 		<p>Coordenador:</p>
 		<p><input type="text" name="cpfCoord" id="cpf" required pattern="^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$"/></p>
 		<p>Site:</p>

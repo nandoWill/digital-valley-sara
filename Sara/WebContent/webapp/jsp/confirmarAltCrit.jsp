@@ -1,3 +1,4 @@
+<%@page import="br.com.n2s.sara.controller.ItemController"%>
 <%@page import="br.com.n2s.sara.controller.CriterioController"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.n2s.sara.model.Item"%>
@@ -15,18 +16,19 @@
 		<%
 			String descricaoCrit = request.getParameter("descricaoCrit");
 			int pesoCrit = Integer.parseInt(request.getParameter("pesoCrit"));
+			Criterio crit = (Criterio) session.getAttribute("criterio");
 			ArrayList<String> itensDescricao = new ArrayList<String>();
 			ArrayList<Integer> itensPeso = new ArrayList<Integer>();
 			
 			String desc = "";
 			String peso = "";
-			
-			Criterio crit = new Criterio();
+
 			crit.setDescricao(descricaoCrit);
 			crit.setPeso(pesoCrit);
 			
 			Item item = new Item();
 			List<Item> itens = new ArrayList<Item>();
+			ItemController iCon = new ItemController();
 			
 			for(int i = 0; i < 20; i++){
 				desc = request.getParameter("descricao" + i);
@@ -39,6 +41,8 @@
 					item.setDescricao(desc);
 					item.setPeso(Integer.parseInt(peso));
 					item.setCriterio(crit);
+					
+					
 					
 					itens.add(item);
 				}  

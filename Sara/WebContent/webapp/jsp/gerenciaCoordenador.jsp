@@ -4,6 +4,7 @@
     Author     : Hugo
 --%>
 
+<%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,8 +14,16 @@
     </head>
     <body>
     <center>
-        Coordenador Atual: Ainda não cadastrado <input type="submit" value="Adicionar">    
-        <p/> Coordenador Atual: Fulano Cicrano da Silva <input type="submit" value="Alterar">    
+		<% String key = request.getParameter("trilha");
+			System.out.println(key);
+			Trilha trilha = (Trilha) session.getAttribute(key);
+			System.out.println(trilha.getNome());
+		   if(trilha.getCoordenador() != null){ %> 
+		   Coordenador Atual: <%=trilha.getCoordenador().getNome()+ " "+ trilha.getCoordenador().getSobrenome() %>
+		   
+		<%	   
+		   }
+		%>   
         <p/><input type="button" value="Voltar" onClick="history.go(-1)">
     </center>
     </body>

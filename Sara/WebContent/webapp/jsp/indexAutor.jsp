@@ -1,7 +1,9 @@
-<%@page import="br.ufc.russas.controller.UsuarioController"%>
-<%@page import="br.ufc.russas.dao.ConnectionFactory"%>
-<%@page import="br.ufc.russas.dao.DAOUsuario"%>
-<%@page import="br.ufc.russas.model.*" %>
+<%-- <%@page import="br.com.n2s.sara.controller.EventoController"%> --%>
+<%@page import="java.util.List"%>
+<%-- <%@page import="br.com.n2s.sara.controller.TrilhaController"%> --%>
+<%@page import="br.com.n2s.sara.dao.*"%>
+<%@page import="br.com.n2s.sara.controller.*"%>
+<%@page import="br.com.n2s.sara.model.*" %>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -19,16 +21,18 @@
 <title>Sara</title>
 </head>
 <body>
-    <% 	UsuarioController conUsuario = new UsuarioController();
-        
-        Usuario usuario = conUsuario.buscar("777");
-        usuario.setTipo(NivelUsuario.AUTOR);
+    <% 	UsuarioController userCon = new UsuarioController();
+    	Usuario usuario = userCon.buscar("123");
+    	session.setAttribute("usuario", usuario);
 	%>
+    
 
 <center> Bem Vindo!!  
     <% 
-        ArrayList<Evento> eventos = new ArrayList<>();
-        ArrayList<Trilha> trilhas = new ArrayList<>();
+    	EventoController evCon = new EventoController();
+		TrilhaController trCon = new TrilhaController();
+        List<Evento> eventos = evCon.listar();
+        List<Trilha> trilhas = trCon.listar();
        
     %>
     
@@ -55,8 +59,8 @@
                <tr>
                    <td><%= eventos.get(i).getNome() %> </td>
                    <td><%= eventos.get(i).getLocalizacao()%> </td>
-                   <td><%= eventos.get(i).getSite()%> </td>
-                   <td><form action="paginaEvento" method="post"> 
+                   <td><%= eventos.get(i).getDataInicial() %> </td>
+                   <td><form action="paginaEvento.jsp" method="post"> 
                            <input type="hidden" value="e<%= eventos.get(i).getIdEvento()%>" name="evento"> 
                            <button type="submit">pressione</button>
                        </form> 
@@ -92,10 +96,12 @@
             case COORDENADOR_EVENTO: %>
 
 <%	    case COORDENADOR_TRILHA: %>
-                <input type="button" onclick="location.href='indexCoordTrilha';" value="Gerenciar"  />
+                <input type="button" onclick="location.href='indexCoordTrilha.jsp';" value="Gerenciar"/>
 <%          case AVALIADOR: %>
-                <input type="button" onclick="location.href='indexAvaliador';" value="Avaliar Trabalhos"/>
-<%	} %> 
+                <input type="button" onclick="location.href='indexAvaliador.jsp';" value="Avaliar Trabalhos"/>
+<%	} 
+		
+%> 
 </p></center> 
 
 </body>

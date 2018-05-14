@@ -1,4 +1,5 @@
-<%@ page import="br.ufc.russas.model.*" %>
+<%@page import="java.util.List"%>
+<%@ page import="br.com.n2s.sara.model.*" %>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -16,12 +17,7 @@
 <body>
 <center> Bem Vindo!!  
     <%
-        ArrayList<Trabalho> trabalhos = new ArrayList<>();
-        
-        trabalhos.add(new Trabalho("Trabalho1", 1)); trabalhos.get(0).setResumo("RESUMORESUMO ESUMORESUMOR ESUMORESUMORESUM ORESUMORESUMORESUMO RESUMORESUMORES UMORESUMORESU MORESUMORESU MORESUMORESUMORES UMORESUMORESUMORE SUMORESUMORE SUMORESUMORESUMOR ESUMORESUMORES UMORESUMO");
-        trabalhos.add(new Trabalho("Trabalho2", 2));
-        trabalhos.add(new Trabalho("Trabalho3", 3));
-        trabalhos.add(new Trabalho("Trabalho4", 4));
+       
     %>
     
         
@@ -44,7 +40,7 @@
                
                <tr>
                    <td><%= trabalhos.get(i).getTitulo()%> </td>
-                   <td><form action="avaliarTrabalho" method="post"> 
+                   <td><form action="avaliarTrabalho.jsp" method="post"> 
                            <input type="hidden" value="trab<%= trabalhos.get(i).getIdTrabalho()%>" name="trabalho"> 
                            <button type="submit">pressione</button>
                        </form> 
@@ -72,7 +68,7 @@
 	
 </tr>
 </table>
-        <input type="button" onclick="history.go(-1)" value="Voltar"/>       
+        <input type="button" onclick="history.go(-1)" value="Voltar"/>
 </center>        
 </body>
 </html>

@@ -13,6 +13,5 @@
     </head>
     <body>
         <h1>Cadastrou!!! Eu acho....</h1>
-        <input type="button" value="Voltar" onClick="history.go(-1)">
     </body>
 </html>

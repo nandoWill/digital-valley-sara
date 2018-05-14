@@ -1,18 +1,29 @@
-<%-- 
-    Document   : confirmaPeriodo
-    Created on : 25/04/2018, 11:22:05
-    Author     : Hugo
---%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="br.com.n2s.sara.model.Periodo"%>
+<%@page import="br.com.n2s.sara.controller.PeriodoController"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Adicionou, eu espero...</h1>
-        <input type="button" value="Voltar" onClick="history.go(-1)">
-    </body>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<center>
+	<%
+		PeriodoController perCon = new PeriodoController();
+		Periodo periodo = new Periodo();
+		periodo.setDescricao((String)request.getParameter("descricao"));
+		periodo.setDataInicial(LocalDate.parse((String)request.getParameter("dataInicial"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+		periodo.setDataFinal(LocalDate.parse((String)request.getParameter("dataFinal"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+		System.out.println(periodo.getDescricao());
+		System.out.println(periodo.getDataInicial());
+		System.out.println(periodo.getDataFinal());
+		perCon.criar(periodo);
+	%>
+	<h1>Deu certo!</h1>
+</center>
+</body>
 </html>

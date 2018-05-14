@@ -4,6 +4,8 @@
     Author     : Hugo
 --%>
 
+<%@page import="br.com.n2s.sara.model.Usuario"%>
+<%@page import="br.com.n2s.sara.controller.UsuarioController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,18 +15,18 @@
     </head>
     <body>
     <center>
-        <form action="confirmaCadastro" method="POST">
+        <form action="buscaAvaliador.jsp" method="POST">
             <p>Busca por CPF:</p>
             <p>CPF: <input type="text" name="cpf" required></p>
-            <!-- Verificar o cpf no banco do Guardião, caso exista preencher todos os dados, caso contrário           -->
-            <p>Nome: <input type="text" name="nome"> </p>
-            <p>Email: <input type="email" name="email"> </p>
-            <p>Data: <input type="date" name="testeData"></p>
-            <p>Número: <input type="tel" name="telefone"> </p>
-            <p>Endereço: <input type="text" name="endereco"> </p>
-            <button>Submit</button>
-            <input type="button" value="Voltar" onClick="history.go(-1)">
+            
+<!--             <p>Nome: <input type="text" name="nome"> </p> -->
+<!--             <p>Email: <input type="email" name="email"> </p> -->
+<!--             <p>Data: <input type="date" name="testeData"></p> -->
+<!--             <p>Número: <input type="tel" name="telefone"> </p> -->
+<!--             <p>Endereço: <input type="text" name="endereco"> </p> -->
+            <input type="submit" value="Buscar">
         </form>
+        <p/><input type="button" value="Voltar" onClick="history.go(-1)">
     </center>
     </body>
 </html>

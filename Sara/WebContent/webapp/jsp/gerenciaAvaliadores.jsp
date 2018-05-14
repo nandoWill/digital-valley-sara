@@ -4,6 +4,7 @@
     Author     : Hugo
 --%>
 
+<%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,29 +15,17 @@
     <body>
 
     <center>
-        <table border="1">
-            <tr>
-                <th>Avaliador</th>
-                <th>CPF</th>
-                <th>Email</th>
-            </tr>
-            <tr>
-                <td>Avaliador1</td>
-                <td>123.456.789-00</td>
-                <td>fulano@teste.com</td>
-                <td>
-                    <form action="removeAvaliador" method="post">
-                        <input type="submit" value="Remover">
-                    </form>
-                </td>
-            </tr>
-            </table> 
-        <p/>
-        <form action="adicionaAvaliador" method="post">
-            <input type="submit" name="adcAv" value="Adicionar Avaliadores">
-            <input type="button" value="Voltar" onClick="history.go(-1)">
-        </form>
 
+        <form action="adicionaAvaliador.jsp" method="post">
+            <input type="submit" name="adcAv" value="Adicionar Avaliadores">
+        </form>
+        <p/>
+
+        <form action="removeAvaliador.jsp" method="post">
+            <input type="submit" name="rmAv" value="Remover Avaliador">
+        </form>
+        
+        <p/><input type="button" value="Voltar" onClick="history.go(-1)">
     </center>    
     </body>
 </html>

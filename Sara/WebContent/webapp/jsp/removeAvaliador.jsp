@@ -13,8 +13,11 @@
     </head>
     <body>
     <center>
-        Avaliador removido!
-        <p/><input type="button" value="Voltar" onClick="history.go(-1)">
+        <form action="confirmaRemocao" method="post">
+            Remover por CPF: <input type="text" name="cpf">
+            <input type="submit" value="Buscar">
+            <input type="button" value="Voltar" onClick="history.go(-1)">
+        </form>
     </center>
     </body>
 </html>
