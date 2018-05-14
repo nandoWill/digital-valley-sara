@@ -1,9 +1,9 @@
-package br.ufc.russas.controller;
+package br.com.n2s.sara.controller;
 
 import java.util.List;
 
-import br.ufc.russas.dao.DAOItem;
-import br.ufc.russas.model.Item;
+import br.com.n2s.sara.dao.DAOItem;
+import br.com.n2s.sara.model.Item;
 
 public class ItemController {
 
@@ -23,6 +23,10 @@ public class ItemController {
 
 	public Item buscar(int idItem){
 		return daoItem.getItem(idItem);
+	}
+	
+	public List<Item> listarPorCrit(int idCrit){
+		return daoItem.readById(idCrit);
 	}
 
 	public void atualizar(Item item){
