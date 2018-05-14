@@ -1,4 +1,4 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ public class Trilha {
 	private int idTrilha;
 	private String nome;
 	private String descricao;
-	private Usuario coordenador;
+	private ArrayList<Usuario> coordenadores;
 	private Evento evento;
 	private CriterioTrilha criterioTrilha;
 	private ArrayList<Periodo> periodos;
@@ -31,11 +31,11 @@ public class Trilha {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Usuario getCoordenador() {
-		return coordenador;
+	public ArrayList<Usuario> getCoordenadores() {
+		return coordenadores;
 	}
-	public void setCoordenador(Usuario coordenador) {
-		this.coordenador = coordenador;
+	public void setCoordenadores(ArrayList<Usuario> coordenadores) {
+		this.coordenadores = coordenadores;
 	}
 	public Evento getEvento() {
 		return evento;

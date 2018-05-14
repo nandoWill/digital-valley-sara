@@ -1,4 +1,4 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
 public class Submissao {
 	

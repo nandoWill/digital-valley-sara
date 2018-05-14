@@ -1,4 +1,4 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
 import java.io.File;
 
@@ -12,7 +12,14 @@ public class Trabalho {
 	private File manuscrito;
 	private File versaoFinal;
 	private Trilha trilha; // Trilha a qual o trabalho está associado
+	private Usuario autor;
 	
+	public Usuario getAutor() {
+		return autor;
+	}
+	public void setAutor(Usuario autor) {
+		this.autor = autor;
+	}
 	public int getIdTrabalho() {
 		return idTrabalho;
 	}

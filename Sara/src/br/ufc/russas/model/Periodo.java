@@ -8,7 +8,14 @@ public class Periodo {
 	private LocalDate dataInicial;
 	private LocalDate dataFinal;
 	private DescricaoPeriodo descricao;
+	private Trilha trilha;
 	
+	public Trilha getTrilha() {
+		return trilha;
+	}
+	public void setTrilha(Trilha trilha) {
+		this.trilha = trilha;
+	}
 	public int getIdPeriodo() {
 		return idPeriodo;
 	}

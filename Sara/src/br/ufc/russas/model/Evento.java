@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Evento {
 	
 	private int idEvento;
-	private Usuario coordenador;
+	private ArrayList<Usuario> coordenadores;
 	private String nome;
 	private String descricao;
 	private String site;
@@ -21,13 +21,13 @@ public class Evento {
 	public void setIdEvento(int idEvento) {
 		this.idEvento = idEvento;
 	}
-	public Usuario getCoordenador() {
-		return coordenador;
-	}
-	public void setCoordenador(Usuario coordenador) {
-		this.coordenador = coordenador;
-	}
 	
+	public ArrayList<Usuario> getCoordenadores() {
+		return coordenadores;
+	}
+	public void setCoordenadores(ArrayList<Usuario> coordenadores) {
+		this.coordenadores = coordenadores;
+	}
 	public String getNome() {
 		return nome;
 	}

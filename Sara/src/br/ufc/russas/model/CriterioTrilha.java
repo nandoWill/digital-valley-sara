@@ -1,4 +1,4 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,5 +34,4 @@ public class CriterioTrilha {
 	public void setCriterios(ArrayList<Criterio> criterios) {
 		this.criterios = criterios;
 	}
-
 }
