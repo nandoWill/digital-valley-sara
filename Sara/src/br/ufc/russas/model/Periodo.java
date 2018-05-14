@@ -1,4 +1,4 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
 import java.time.LocalDate;
 
@@ -7,7 +7,7 @@ public class Periodo {
 	private int idPeriodo;
 	private LocalDate dataInicial;
 	private LocalDate dataFinal;
-	private String descricao;
+	private DescricaoPeriodo descricao;
 	
 	public int getIdPeriodo() {
 		return idPeriodo;
@@ -27,10 +27,10 @@ public class Periodo {
 	public void setDataFinal(LocalDate dataFinal) {
 		this.dataFinal = dataFinal;
 	}
-	public String getDescricao() {
+	public DescricaoPeriodo getDescricao() {
 		return descricao;
 	}
-	public void setDescricao(String descricao) {
+	public void setDescricao(DescricaoPeriodo descricao) {
 		this.descricao = descricao;
 	}
 }
