@@ -21,18 +21,17 @@ public class DAOEvento {
 		
 		this.connection = new ConnectionFactory().getConnection();
 		String sql = "insert into sara.Evento"  
-				+ "(coordenador, nome, descricao, site, localizacao, dataInicial, dataFinal)"
-				+ "values (?,?,?,?,?,?,?,?)";
+				+ "(nome, descricao, site, localizacao, dataInicial, dataFinal)"
+				+ "values (?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, evento.getCoordenador().getCpf());
-			stmt.setString(2, evento.getNome());
-			stmt.setString(3, evento.getDescricao());
-			stmt.setString(4, evento.getSite());
-			stmt.setString(5, evento.getLocalizacao());
-			stmt.setDate(6, Date.valueOf(evento.getDataInicial()));
-			stmt.setDate(7, Date.valueOf(evento.getDataFinal()));
+			stmt.setString(1, evento.getNome());
+			stmt.setString(2, evento.getDescricao());
+			stmt.setString(3, evento.getSite());
+			stmt.setString(4, evento.getLocalizacao());
+			stmt.setDate(5, Date.valueOf(evento.getDataInicial()));
+			stmt.setDate(6, Date.valueOf(evento.getDataFinal()));
 
 			stmt.execute();
 			stmt.close();
@@ -52,14 +51,12 @@ public class DAOEvento {
 			List<Evento> eventos = new ArrayList<Evento>();
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			UsuarioController usuarioController = new UsuarioController();
 			
 			while(rs.next()){
 
 				Evento evento = new Evento();
 
 				evento.setIdEvento(rs.getInt("idEvento"));
-				evento.setCoordenador(usuarioController.buscar(rs.getString("coordenador")));
 				evento.setNome(rs.getString("nome"));
 				evento.setDescricao(rs.getString("descricao"));
 				evento.setSite(rs.getString("site"));
@@ -89,12 +86,10 @@ public class DAOEvento {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, idEvento);
 			ResultSet rs = stmt.executeQuery();
-			UsuarioController usuarioController = new UsuarioController();
 			
 			if(rs.next()){
 				Evento evento = new Evento();
 				evento.setIdEvento(rs.getInt("idEvento"));
-				evento.setCoordenador(usuarioController.buscar(rs.getString("coordenador")));
 				evento.setNome(rs.getString("nome"));
 				evento.setDescricao(rs.getString("descricao"));
 				evento.setSite(rs.getString("site"));
@@ -117,13 +112,12 @@ public class DAOEvento {
 	public void update(Evento evento){
 		
 		this.connection = new ConnectionFactory().getConnection();
-		String sql = "update sara.Evento set coordenador = ?, nome = ?, descricao = ?, " 
+		String sql = "update sara.Evento set nome = ?, descricao = ?, " 
 				+ "site = ?, localizacao = ?, dataInicial = ?, dataFinal = ? where idEvento = ?";
 
 		try {
 			
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, evento.getCoordenador().getCpf());
 			stmt.setString(2, evento.getNome());
 			stmt.setString(3, evento.getDescricao());
 			stmt.setString(4, evento.getSite());

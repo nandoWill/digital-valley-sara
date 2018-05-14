@@ -22,17 +22,15 @@ public class DAOTrilha {
 		
 		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "insert into sara.Trilha"  
-				+ "(nome, descricao, coordenador, idEvento, idCriterioTrilha)"
-				+ "values (?,?,?,?,?)";
+				+ "(nome, descricao, idEvento)"
+				+ "values (?,?,?)";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, trilha.getNome());
 			stmt.setString(2, trilha.getDescricao());
-			stmt.setString(3, trilha.getCoordenador().getCpf());
-			stmt.setInt(4, trilha.getEvento().getIdEvento());
-			stmt.setInt(5, trilha.getCriterioTrilha().getIdCriterioTrilha());
-
+			stmt.setInt(3, trilha.getEvento().getIdEvento());
+			
 			stmt.execute();
 			stmt.close();
 			this.connection.close();
@@ -52,7 +50,6 @@ public class DAOTrilha {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			EventoController eventoController = new EventoController();
-			UsuarioController usuarioController = new UsuarioController();
 			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
 
 			while(rs.next()){
@@ -62,7 +59,6 @@ public class DAOTrilha {
 				trilha.setIdTrilha(rs.getInt("idTrilha"));
 				trilha.setNome(rs.getString("nome"));
 				trilha.setDescricao(rs.getString("descricao"));
-				trilha.setCoordenador(usuarioController.buscar(rs.getString("coordenador")));
 				trilha.setEvento(eventoController.buscar(rs.getInt("idEvento")));
 				trilha.setCriterioTrilha(criterioTrilhaController.buscar(rs.getInt("idCriterioTrilha")));
 
@@ -90,7 +86,6 @@ public class DAOTrilha {
 			stmt.setInt(1, idTrilha);
 			ResultSet rs = stmt.executeQuery();
 			EventoController eventoController = new EventoController();
-			UsuarioController usuarioController = new UsuarioController();
 			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
 
 			if(rs.next()){
@@ -100,7 +95,6 @@ public class DAOTrilha {
 				trilha.setIdTrilha(rs.getInt("idTrilha"));
 				trilha.setNome(rs.getString("nome"));
 				trilha.setDescricao(rs.getString("descricao"));
-				trilha.setCoordenador(usuarioController.buscar(rs.getString("coordenador")));
 				trilha.setEvento(eventoController.buscar(rs.getInt("idEvento")));
 				trilha.setCriterioTrilha(criterioTrilhaController.buscar(rs.getInt("idCriterioTrilha")));
 
@@ -120,7 +114,7 @@ public class DAOTrilha {
 	public void update(Trilha trilha){
 		
 		this.connection = new ConnectionFactory().getConnection(); 
-		String sql = "update sara.Trilha set nome = ?, descricao = ?, coordenador = ?, idEvento = ?, "
+		String sql = "update sara.Trilha set nome = ?, descricao = ?, idEvento = ?, "
 				+ "idCriterioTrilha = ? where idTrilha = ?";
 
 
@@ -128,10 +122,9 @@ public class DAOTrilha {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, trilha.getNome());
 			stmt.setString(2, trilha.getDescricao());
-			stmt.setString(3, trilha.getCoordenador().getCpf());
-			stmt.setInt(4, trilha.getEvento().getIdEvento());
-			stmt.setInt(5, trilha.getCriterioTrilha().getIdCriterioTrilha());
-			stmt.setInt(6, trilha.getIdTrilha());
+			stmt.setInt(3, trilha.getEvento().getIdEvento());
+			stmt.setInt(4, trilha.getCriterioTrilha().getIdCriterioTrilha());
+			stmt.setInt(5, trilha.getIdTrilha());
 
 			stmt.execute();
 			stmt.close();
