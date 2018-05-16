@@ -22,7 +22,7 @@ public class DAOCriterioTrilha {
 		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "insert into sara.CriterioTrilha"  
 				+ "(dataCriacao, nome)"
-				+ "values (?,?,?)";
+				+ "values (?,?)";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);

@@ -21,7 +21,7 @@ public class DAOCriterio {
 		this.connection = new ConnectionFactory().getConnection();
 		String sql = "insert into sara.Criterio"  
 				+ "(descricao, peso, idCriterioTrilha)"
-				+ "values (?,?,?,?)";
+				+ "values (?,?,?)";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
