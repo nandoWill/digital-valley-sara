@@ -1,78 +1,43 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author Hugo
- */
 public class Periodo {
+	
 	private int idPeriodo;
 	private LocalDate dataInicial;
 	private LocalDate dataFinal;
-	private String descricao;
+	private DescricaoPeriodo descricao;
+	private Trilha trilha;
 	
-    /**
-     *
-     * @return
-     */
-    public int getIdPeriodo() {
+	public Trilha getTrilha() {
+		return trilha;
+	}
+	public void setTrilha(Trilha trilha) {
+		this.trilha = trilha;
+	}
+	public int getIdPeriodo() {
 		return idPeriodo;
 	}
-
-    /**
-     *
-     * @param idPeriodo
-     */
-    public void setIdPeriodo(int idPeriodo) {
+	public void setIdPeriodo(int idPeriodo) {
 		this.idPeriodo = idPeriodo;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public LocalDate getDataInicial() {
+	public LocalDate getDataInicial() {
 		return dataInicial;
 	}
-
-    /**
-     *
-     * @param dataInicial
-     */
-    public void setDataInicial(LocalDate dataInicial) {
+	public void setDataInicial(LocalDate dataInicial) {
 		this.dataInicial = dataInicial;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public LocalDate getDataFinal() {
+	public LocalDate getDataFinal() {
 		return dataFinal;
 	}
-
-    /**
-     *
-     * @param dataFinal
-     */
-    public void setDataFinal(LocalDate dataFinal) {
+	public void setDataFinal(LocalDate dataFinal) {
 		this.dataFinal = dataFinal;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public String getDescricao() {
+	public DescricaoPeriodo getDescricao() {
 		return descricao;
 	}
-
-    /**
-     *
-     * @param descricao
-     */
-    public void setDescricao(String descricao) {
+	public void setDescricao(DescricaoPeriodo descricao) {
 		this.descricao = descricao;
 	}
 }

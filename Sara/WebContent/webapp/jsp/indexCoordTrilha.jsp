@@ -1,3 +1,5 @@
+<%@page import="br.com.n2s.sara.controller.CoordenacaoTrilhaController"%>
+<%@page import="br.com.n2s.sara.controller.CoordenacaoEventoController"%>
 <%@page import="br.com.n2s.sara.controller.TrilhaController"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.n2s.sara.controller.EventoController"%>
@@ -14,10 +16,22 @@
 <body>
     <% 
         Usuario user = (Usuario) session.getAttribute("usuario");
-        List<Evento> eventos = new EventoController().listar();
-        for(int i =0; i < eventos.size(); i++){
-        	eventos.get(i).setTrilhas(new TrilhaController().listar(eventos.get(i).getIdEvento()));
+        List<CoordenacaoEvento> idEventos = new CoordenacaoEventoController().listar(user.getCpf());
+        List<CoordenacaoTrilha> idTrilhas = new CoordenacaoTrilhaController().listar(user.getCpf());
+        List<Evento> eventos = new ArrayList<Evento>();
+        EventoController evCon = new EventoController();
+        for(int i =0; i < idEventos.size(); i++){
+        	Evento ev = idEventos.get(i).getEvento();
+        	ev.setTrilhas(new TrilhaController().listar(ev.getIdEvento()));
+        	eventos.add(ev);
         }
+        for(int i =0; i < idTrilhas.size(); i++){
+        	Evento ev = idTrilhas.get(i).getTrilha().getEvento();
+        	ev.getTrilhas().add(idTrilhas.get(i).getTrilha());
+        	eventos.add(ev);
+        }
+        
+       	
     %>
     <center>
         <table border="1">
@@ -29,11 +43,7 @@
 	<% 
             for(int i=0; i < eventos.size(); i++){
                 Evento ev = eventos.get(i);
-                System.out.println(ev.getCoordenador().getCpf());
-                for(int j = 0; j < ev.getTrilhas().size(); j++){
-                   if(ev.getTrilhas().get(j).getCoordenador().getCpf().equals(user.getCpf()) || ev.getCoordenador().getCpf().equals(user.getCpf())){
-                
-                	session.setAttribute("ce"+Integer.toString(ev.getIdEvento()), ev);
+                session.setAttribute("ce"+eventos.get(i).getIdEvento(), ev);
                %>
                
                 <tr>
@@ -46,9 +56,7 @@
                        </form> 
                    </td>
                 </tr>
-            <%     }
-                    break;
-                }
+            <%  	
             }
         %>
 	</table>

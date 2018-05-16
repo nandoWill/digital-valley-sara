@@ -1,27 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package br.ufc.russas.controller;
+package br.com.n2s.sara.controller;
 
-import br.ufc.russas.dao.ConnectionFactory;
-import br.ufc.russas.dao.DAOUsuario;
-import br.ufc.russas.model.NivelUsuario;
-import br.ufc.russas.model.Usuario;
+import br.com.n2s.sara.dao.ConnectionFactory;
+import br.com.n2s.sara.model.NivelUsuario;
+import br.com.n2s.sara.model.Trilha;
+import br.com.n2s.sara.model.Usuario;
 
-/**
- *
- * @author Hugo
- */
-public class Teste {
-    
-    
-    public static void main(String[] args) {
-        UsuarioController daoUser = new UsuarioController();
-        
-        Usuario u = daoUser.buscar("777");
-        System.out.println(u.getNome());
-    }
-    
+public class teste {
+	
+	public static void main(String[] args) {
+		System.out.println(NivelUsuario.valueOf("AUTOR"));
+	}
+
 }

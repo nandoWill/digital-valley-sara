@@ -23,7 +23,8 @@
 		System.out.println(periodo.getDataFinal());
 		perCon.criar(periodo);
 	%>
-	<h1>Deu certo!</h1>
+	<h1>Período Inserido com sucesso</h1>
+	<input type="button" value="Voltar" onClick="history.go(-2)">
 </center>
 </body>
 </html>

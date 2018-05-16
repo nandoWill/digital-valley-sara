@@ -1,43 +1,20 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
-/**
- *
- * @author Hugo
- */
 public class Submissao {
 	
-	private String idAutor;
-	private int idTrabalho;
+	private Usuario autor;
+	private Trabalho trabalho;
 	
-    /**
-     *
-     * @return
-     */
-    public String getIdAutor() {
-		return idAutor;
+	public Usuario getAutor() {
+		return autor;
 	}
-
-    /**
-     *
-     * @param idAutor
-     */
-    public void setIdAutor(String idAutor) {
-		this.idAutor = idAutor;
+	public void setAutor(Usuario autor) {
+		this.autor = autor;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public int getIdTrabalho() {
-		return idTrabalho;
+	public Trabalho getTrabalho() {
+		return trabalho;
 	}
-
-    /**
-     *
-     * @param idTrabalho
-     */
-    public void setIdTrabalho(int idTrabalho) {
-		this.idTrabalho = idTrabalho;
+	public void setTrabalho(Trabalho trabalho) {
+		this.trabalho = trabalho;
 	}
 }

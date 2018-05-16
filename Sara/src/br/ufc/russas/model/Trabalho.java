@@ -1,11 +1,7 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
 import java.io.File;
 
-/**
- *
- * @author Hugo
- */
 public class Trabalho {
 	
 	private int idTrabalho;
@@ -15,136 +11,54 @@ public class Trabalho {
 	private StatusTrabalho status;
 	private File manuscrito;
 	private File versaoFinal;
-	private int idTrilha;
+	private Trilha trilha; // Trilha a qual o trabalho está associado
 	
-    /**
-     *
-     * @return
-     */
-    public int getIdTrabalho() {
+	public int getIdTrabalho() {
 		return idTrabalho;
 	}
-
-    /**
-     *
-     * @param idTrabalho
-     */
-    public void setIdTrabalho(int idTrabalho) {
+	public void setIdTrabalho(int idTrabalho) {
 		this.idTrabalho = idTrabalho;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public String getTitulo() {
+	public String getTitulo() {
 		return titulo;
 	}
-
-    /**
-     *
-     * @param titulo
-     */
-    public void setTitulo(String titulo) {
+	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public String getPalavrasChaves() {
+	public String getPalavrasChaves() {
 		return palavrasChaves;
 	}
-
-    /**
-     *
-     * @param palavrasChaves
-     */
-    public void setPalavrasChaves(String palavrasChaves) {
+	public void setPalavrasChaves(String palavrasChaves) {
 		this.palavrasChaves = palavrasChaves;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public String getResumo() {
+	public String getResumo() {
 		return resumo;
 	}
-
-    /**
-     *
-     * @param resumo
-     */
-    public void setResumo(String resumo) {
+	public void setResumo(String resumo) {
 		this.resumo = resumo;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public StatusTrabalho getStatus() {
+	public StatusTrabalho getStatus() {
 		return status;
 	}
-
-    /**
-     *
-     * @param status
-     */
-    public void setStatus(StatusTrabalho status) {
+	public void setStatus(StatusTrabalho status) {
 		this.status = status;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public File getManuscrito() {
+	public File getManuscrito() {
 		return manuscrito;
 	}
-
-    /**
-     *
-     * @param manuscrito
-     */
-    public void setManuscrito(File manuscrito) {
+	public void setManuscrito(File manuscrito) {
 		this.manuscrito = manuscrito;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public File getVersaoFinal() {
+	public File getVersaoFinal() {
 		return versaoFinal;
 	}
-
-    /**
-     *
-     * @param versaoFinal
-     */
-    public void setVersaoFinal(File versaoFinal) {
+	public void setVersaoFinal(File versaoFinal) {
 		this.versaoFinal = versaoFinal;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public int getIdTrilha() {
-		return idTrilha;
+	public Trilha getTrilha() {
+		return trilha;
 	}
-
-    /**
-     *
-     * @param idTrilha
-     */
-    public void setIdTrilha(int idTrilha) {
-		this.idTrilha = idTrilha;
+	public void setTrilha(Trilha trilha) {
+		this.trilha = trilha;
 	}
-	
-	
-    
 }

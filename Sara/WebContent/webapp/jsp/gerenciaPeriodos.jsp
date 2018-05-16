@@ -4,6 +4,9 @@
     Author     : Hugo
 --%>
 
+<%@page import="br.com.n2s.sara.model.Periodo"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.n2s.sara.controller.PeriodoController"%>
 <%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,8 +17,11 @@
     </head>
     <body>
     <%
+    PeriodoController perCon = new PeriodoController();
     Trilha trilha = (Trilha) session.getAttribute("trilha");
+    List<Periodo> periodos = perCon.listar();
     session.setAttribute("trilha", trilha);
+    
     %>
         <center>
         <table border="1">
@@ -24,12 +30,16 @@
                 <th>Data Inicio</th>
                 <th>Data Fim</th>
             </tr>
+            <%for(int i = 0; i < periodos.size(); i++){
+            	session.setAttribute("p"+Integer.toString(periodos.get(i).getIdPeriodo()), periodos.get(i));
+           	%>
             <tr>
-                <td>Periodo1</td>
-                <td>13-10-2069</td>
-                <td>15-12-2069</td>
+                <td><%=periodos.get(i).getDescricao() %></td>
+                <td><%=periodos.get(i).getDataInicial() %></td>
+                <td><%=periodos.get(i).getDataFinal() %></td>
                 <td>
                     <form action="alteraPeriodo.jsp" method="post">
+                    	<input type="hidden" value="p<%=Integer.toString(periodos.get(i).getIdPeriodo())%>" name="periodo">
                         <input type="submit" value="Alterar">
                     </form>
                 </td>
@@ -40,6 +50,8 @@
                     </form>
                 </td>
             </tr>
+            <%
+            }%>
             </table>    
             <p/>
         <form action="adicionaPeriodo.jsp" method="post">

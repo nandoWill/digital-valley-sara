@@ -1,3 +1,6 @@
+<%@page import="br.com.n2s.sara.controller.EventoController"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="br.com.n2s.sara.model.*" %>
@@ -14,13 +17,20 @@
 	String cpfCoord = request.getParameter("cpfCoord");
 	String site = request.getParameter("site");
 	String descricao = request.getParameter("descricao");
+	String localizacao = request.getParameter("localizacao");
+	LocalDate dataInicial = LocalDate.parse(request.getParameter("dataInicial"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	LocalDate dataFinal = LocalDate.parse(request.getParameter("dataFinal"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	
 	Evento e = new Evento();
 	e.setNome(nome);
-	e.setCoordenador(cpfCoord);
 	e.setDescricao(descricao);
+	e.setLocalizacao(localizacao);
+	e.setSite(site);
+	e.setDataInicial(dataInicial);
+	e.setDataFinal(dataFinal);
 	
-	//COLOCAR EVENTO NO BANCO
+	EventoController evCon = new EventoController();
+	evCon.criar(e);
 	
 %>
 

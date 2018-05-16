@@ -1,43 +1,22 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
-/**
- *
- * @author Hugo
- */
 public class TrilhaPeriodo {
 	
-	private int idTrilha;
-	private int idPeriodo;
+	private Trilha trilha;
+	private Periodo periodo;
 	
-    /**
-     *
-     * @return
-     */
-    public int getIdTrilha() {
-		return idTrilha;
+	public Trilha getTrilha() {
+		return trilha;
 	}
-
-    /**
-     *
-     * @param idTrilha
-     */
-    public void setIdTrilha(int idTrilha) {
-		this.idTrilha = idTrilha;
+	public void setTrilha(Trilha trilha) {
+		this.trilha = trilha;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public int getIdPeriodo() {
-		return idPeriodo;
+	public Periodo getPeriodo() {
+		return periodo;
 	}
-
-    /**
-     *
-     * @param idPeriodo
-     */
-    public void setIdPeriodo(int idPeriodo) {
-		this.idPeriodo = idPeriodo;
+	public void setPeriodo(Periodo periodo) {
+		this.periodo = periodo;
 	}
+	
+	
 }

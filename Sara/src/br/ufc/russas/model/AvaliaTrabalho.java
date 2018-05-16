@@ -1,42 +1,21 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
-/**
- *
- * @author Hugo
- */
 public class AvaliaTrabalho {
-	private String idAvaliador;
-	private int idTrabalho;
-
-    /**
-     *
-     * @return
-     */
-    public String getIdAvaliador() {
-		return idAvaliador;
+	
+	private Usuario avaliador;
+	private Trabalho trabalho;
+	
+	public Usuario getAvaliador() {
+		return avaliador;
+	}
+	public void setAvaliador(Usuario avaliador) {
+		this.avaliador = avaliador;
+	}
+	public Trabalho getTrabalho() {
+		return trabalho;
+	}
+	public void setTrabalho(Trabalho trabalho) {
+		this.trabalho = trabalho;
 	}
 
-    /**
-     *
-     * @param idAvaliador
-     */
-    public void setIdAvaliador(String idAvaliador) {
-		this.idAvaliador = idAvaliador;
-	}
-
-    /**
-     *
-     * @return
-     */
-    public int getIdTrabalho() {
-		return idTrabalho;
-	}
-
-    /**
-     *
-     * @param idTrabalho
-     */
-    public void setIdTrabalho(int idTrabalho) {
-		this.idTrabalho = idTrabalho;
-	}
 }
