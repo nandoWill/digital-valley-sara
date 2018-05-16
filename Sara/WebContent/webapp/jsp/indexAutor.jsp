@@ -22,7 +22,7 @@
 </head>
 <body>
     <% 	UsuarioController userCon = new UsuarioController();
-    	Usuario usuario = userCon.buscar("123");
+    	Usuario usuario = userCon.buscar("100");
     	session.setAttribute("usuario", usuario);
 	%>
     

@@ -1,3 +1,4 @@
+<%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page import="br.com.n2s.sara.controller.CriterioController"%>
 <%@page import="br.com.n2s.sara.model.Criterio"%>
 <%@page import="java.util.ArrayList"%>
@@ -14,7 +15,10 @@
 	
 	<center>
         <%
-			//PEGAR TODOS OS CRITERIOS CADASTRADOS        
+			//PEGAR TODOS OS CRITERIOS CADASTRADOS DA TRILHA
+			
+			Trilha trilha = (Trilha) session.getAttribute("trilha");
+        	session.setAttribute("trilha", trilha);
 			
 			CriterioController critCon = new CriterioController();
 			
@@ -48,6 +52,11 @@
                    <td><form action="removerCriterio.jsp" method="post"> 
                            <input type="hidden" value="crit<%= criterios.get(i).getIdCriterio()%>" name="criterio"> 
                            <button type="submit">Remover</button>
+                       </form> 
+                   </td>
+                   <td><form action="adicionarItensCriterio.jsp" method="post"> 
+                           <input type="hidden" value="crit<%= criterios.get(i).getIdCriterio()%>" name="criterio"> 
+                           <button type="submit">Adicionar Itens</button>
                        </form> 
                    </td>
             <%}

@@ -17,7 +17,7 @@
 	
 	Evento e = new Evento();
 	e.setNome(nome);
-	e.setCoordenadorEvento(cpfCoord);
+	e.setCoordenador(cpfCoord);
 	e.setDescricao(descricao);
 	
 	//COLOCAR EVENTO NO BANCO

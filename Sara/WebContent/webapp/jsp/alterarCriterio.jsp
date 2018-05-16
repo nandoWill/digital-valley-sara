@@ -25,8 +25,9 @@
 			/* ArrayList<String> itens = new ArrayList<String>();
 			itens.add("Item 1"); itens.add("Item 2"); itens.add("Item 3"); itens.add("Item 4"); itens.add("Item 5"); */
 			
-			//Criterio criterio = critCon.buscar(idCrit);			
-			List<Item> itens = new ItemController().listar(criterio.getIdCriterio());
+			//Criterio criterio = critCon.buscar(idCrit);	
+			System.out.println(criterio.getIdCriterio());
+			List<Item> itens = new ItemController().listarPorCrit(criterio.getIdCriterio());
 			
 			%>
 			

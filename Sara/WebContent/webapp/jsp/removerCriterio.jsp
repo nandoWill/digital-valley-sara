@@ -19,5 +19,7 @@
 			CriterioController critCont = new CriterioController();
 			critCont.deletar(crit.getIdCriterio());
 		%>
+		
+		<jsp:forward page="gerenciaCriterios.jsp"></jsp:forward>
 </body>
 </html>

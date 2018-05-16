@@ -1,3 +1,4 @@
+<%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,13 +10,18 @@
 <body>
 	<center>
 		
+		<%
+			Trilha trilha = (Trilha) session.getAttribute("trilha");
+    		session.setAttribute("trilha", trilha);
+		%>
+		
 		<h1> Critério </h1>
 			
         <form action="confirmarCriterio.jsp" method="post">
             <p>Descrição: <textarea name="descricaoCrit" rows="1" cols="30" required></textarea></p>
             <p>Peso: <input type="number" name="pesoCrit" value="0" required> </p>
             
-            <h2> Itens do Critério </h2>
+            <!-- <h2> Itens do Critério </h2>
             
             <div id="origem" align="center">
             	<p>Descrição: <textarea id="descricao0" name="descricao0" rows="1" cols="30"></textarea></p>
@@ -26,7 +32,7 @@
 			</div>
             
             <input type="button" value="+" onclick="maisCampos();">
-            <input type="button" value="-" onclick="removerCampos(this);">
+            <input type="button" value="-" onclick="removerCampos(this);"> -->
             
 			<br /> <br />     
             <p><button type="submit">Adicionar Critério</button></p>

@@ -1,3 +1,6 @@
+<%@page import="br.com.n2s.sara.controller.ItemController"%>
+<%@page import="br.com.n2s.sara.controller.CriterioTrilhaController"%>
+<%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page import="br.com.n2s.sara.controller.CriterioController"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -14,6 +17,8 @@
 </head>
 <body>
 	<%
+		Trilha trilha = (Trilha) session.getAttribute("trilha");
+	
 		String descricaoCrit = request.getParameter("descricaoCrit");
 		int pesoCrit = Integer.parseInt(request.getParameter("pesoCrit"));
 		ArrayList<String> itensDescricao = new ArrayList<String>();
@@ -25,9 +30,12 @@
 		Criterio crit = new Criterio();
 		crit.setDescricao(descricaoCrit);
 		crit.setPeso(pesoCrit);
+		crit.setCriterioTrilha(trilha.getCriterioTrilha());
+		CriterioController critCon = new CriterioController();
+		critCon.criar(crit);
 		
-		Item item = new Item();
-		List<Item> itens = new ArrayList<Item>();
+		/* Item item = new Item();
+		ItemController itemCont = new ItemController();
 		
 		for(int i = 0; i < 20; i++){
 			desc = request.getParameter("descricao" + i);
@@ -40,15 +48,10 @@
 				item.setPeso(Integer.parseInt(peso));
 				item.setCriterio(crit);
 				
-				itens.add(item);
+				itemCont.criar(item);
 			} 
 		}
-		
-		ArrayList<Item> listItem = (ArrayList<Item>) itens; 
-		crit.setItens(listItem);
-		
-		CriterioController critCon = new CriterioController();
-		critCon.criar(crit);
+		 */
 		
   		/* System.out.println("TAMANHO: " + itensDescricao.size());
 		 
