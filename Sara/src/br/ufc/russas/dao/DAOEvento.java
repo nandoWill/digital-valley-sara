@@ -1,4 +1,4 @@
-package br.ufc.russas.dao;
+package br.com.n2s.sara.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,80 +8,54 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufc.russas.model.Evento;
-import br.ufc.russas.model.NivelUsuario;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import br.com.n2s.sara.model.Evento;
 
-/**
- *
- * @author Hugo
- */
-@Repository
 public class DAOEvento {
 
 	private Connection connection;
 
-    /**
-     *
-     */
-    public DAOEvento(){
+	public DAOEvento(){}
 
-		this.connection = new ConnectionFactory().getConnection(); 
-	}
-
-    /**
-     *
-     * @param evento
-     */
-    @Autowired
-    public void create(Evento evento){
-
+	public void create(Evento evento){
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "insert into sara.Evento"  
-				+ "(idEvento, coordenador, idEventoPai, nome, descricao, site, localizacao, dataInicial, dataFinal)"
-				+ "values (?,?,?,?,?,?,?,?,?)";
+				+ "(nome, descricao, site, localizacao, dataInicial, dataFinal)"
+				+ "values (?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, evento.getIdEvento());
-			stmt.setString(2, evento.getCoordenador());
-			stmt.setInt(3, evento.getIdEventoPai());
-			stmt.setString(4, evento.getNome());
-			stmt.setString(5, evento.getDescricao());
-			stmt.setString(6, evento.getSite());
-			stmt.setString(7, evento.getLocalizacao());
-			stmt.setDate(8, Date.valueOf(evento.getDataInicial()));
-			stmt.setDate(9, Date.valueOf(evento.getDataFinal()));
+			stmt.setString(1, evento.getNome());
+			stmt.setString(2, evento.getDescricao());
+			stmt.setString(3, evento.getSite());
+			stmt.setString(4, evento.getLocalizacao());
+			stmt.setDate(5, Date.valueOf(evento.getDataInicial()));
+			stmt.setDate(6, Date.valueOf(evento.getDataFinal()));
 
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-    /**
-     *
-     * @return
-     */
-    @Autowired
-    public List<Evento> read(){
-
+	public List<Evento> read(){
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "select * from sara.Evento";
 
 		try{
 			List<Evento> eventos = new ArrayList<Evento>();
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-
+			
 			while(rs.next()){
 
 				Evento evento = new Evento();
 
 				evento.setIdEvento(rs.getInt("idEvento"));
-				evento.setCoordenador(rs.getString("coordenador"));
-				evento.setIdEventoPai(rs.getInt("idEventoPai"));
 				evento.setNome(rs.getString("nome"));
 				evento.setDescricao(rs.getString("descricao"));
 				evento.setSite(rs.getString("site"));
@@ -94,6 +68,7 @@ public class DAOEvento {
 
 			rs.close();
 			stmt.close();
+			this.connection.close();
 			return eventos;
 
 		}catch(SQLException e){
@@ -101,26 +76,19 @@ public class DAOEvento {
 		}
 	}
 
-    /**
-     *
-     * @param idEvento
-     * @return
-     */
-    @Autowired
-    public Evento getEvento(int idEvento){
-
+	public Evento getEvento(int idEvento){
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "select * from sara.Evento where idEvento = ?";
 
 		try{
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, idEvento);
 			ResultSet rs = stmt.executeQuery();
-
+			
 			if(rs.next()){
 				Evento evento = new Evento();
 				evento.setIdEvento(rs.getInt("idEvento"));
-				evento.setCoordenador(rs.getString("coordenador"));
-				evento.setIdEventoPai(rs.getInt("idEventoPai"));
 				evento.setNome(rs.getString("nome"));
 				evento.setDescricao(rs.getString("descricao"));
 				evento.setSite(rs.getString("site"));
@@ -130,7 +98,7 @@ public class DAOEvento {
 
 				rs.close();
 				stmt.close();
-
+				this.connection.close();
 				return evento;
 			}else{
 				return null;
@@ -140,55 +108,47 @@ public class DAOEvento {
 		}
 	}
 
-    /**
-     *
-     * @param evento
-     */
-    @Autowired
-    public void update(Evento evento){
-
-		String sql = "update sara.Evento set idEvento = ?, coordenador = ?, idEventoPai = ?, nome = ?, descricao = ?, " 
+	public void update(Evento evento){
+		
+		this.connection = new ConnectionFactory().getConnection();
+		String sql = "update sara.Evento set nome = ?, descricao = ?, " 
 				+ "site = ?, localizacao = ?, dataInicial = ?, dataFinal = ? where idEvento = ?";
 
 		try {
+			
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, evento.getIdEvento());
-			stmt.setString(2, evento.getCoordenador());
-			stmt.setInt(3, evento.getIdEventoPai());
-			stmt.setString(4, evento.getNome());
-			stmt.setString(5, evento.getDescricao());
-			stmt.setString(6, evento.getSite());
-			stmt.setString(7, evento.getLocalizacao());
-			stmt.setDate(8, Date.valueOf(evento.getDataInicial()));
-			stmt.setDate(9, Date.valueOf(evento.getDataFinal()));
-			stmt.setInt(10, evento.getIdEvento());
+			stmt.setString(2, evento.getNome());
+			stmt.setString(3, evento.getDescricao());
+			stmt.setString(4, evento.getSite());
+			stmt.setString(5, evento.getLocalizacao());
+			stmt.setDate(6, Date.valueOf(evento.getDataInicial()));
+			stmt.setDate(7, Date.valueOf(evento.getDataFinal()));
+			stmt.setInt(8, evento.getIdEvento());
 
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-    /**
-     *
-     * @param evento
-     */
-    @Autowired
-    public void delete(Evento evento){
 
+	public void delete(int idEvento){
+		
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "delete from sara.Evento where idEvento = ?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, evento.getIdEvento());
+			stmt.setInt(1, idEvento);
 			stmt.execute();
 			stmt.close();
+			this.connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-
 	}
 }

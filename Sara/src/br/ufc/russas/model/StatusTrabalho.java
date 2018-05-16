@@ -1,28 +1,8 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
-/**
- *
- * @author Hugo
- */
 public enum StatusTrabalho {
-
-    /**
-     *
-     */
-    ENVIADO,
-
-    /**
-     *
-     */
-    REJEITADO,
-
-    /**
-     *
-     */
-    ACEITO,
-
-    /**
-     *
-     */
-    ACEITO_COM_RESTRICAO
+	ENVIADO,
+	REJEITADO,
+	ACEITO,
+	ACEITO_COM_RESTRICAO
 }

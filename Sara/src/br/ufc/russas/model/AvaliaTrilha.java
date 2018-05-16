@@ -1,42 +1,21 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
-/**
- *
- * @author Hugo
- */
 public class AvaliaTrilha {
-	private String idAvaliador;
-	private int idTrilha;
 	
-    /**
-     *
-     * @return
-     */
-    public String getIdAvaliador() {
-		return idAvaliador;
+	private Usuario avaliador;
+	private Trilha trilha;
+	
+	public Usuario getAvaliador() {
+		return avaliador;
 	}
-
-    /**
-     *
-     * @param idAvaliador
-     */
-    public void setIdAvaliador(String idAvaliador) {
-		this.idAvaliador = idAvaliador;
+	public void setAvaliador(Usuario avaliador) {
+		this.avaliador = avaliador;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public int getIdTrilha() {
-		return idTrilha;
+	public Trilha getTrilha() {
+		return trilha;
 	}
-
-    /**
-     *
-     * @param idTrilha
-     */
-    public void setIdTrilha(int idTrilha) {
-		this.idTrilha = idTrilha;
+	public void setTrilha(Trilha trilha) {
+		this.trilha = trilha;
 	}
+	
 }

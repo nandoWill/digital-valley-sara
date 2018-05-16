@@ -1,22 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package br.ufc.russas.controller;
+package br.com.n2s.sara.controller;
 
-import br.ufc.russas.dao.ConnectionFactory;
-import br.ufc.russas.dao.DAOEvento;
-import br.ufc.russas.model.Evento;
+import br.com.n2s.sara.dao.DAOEvento;
+import br.com.n2s.sara.model.Evento;
 import java.util.List;
 
-/**
- *
- * @author Hugo
- */
 public class EventoController {
-    ConnectionFactory con = new ConnectionFactory();
-    DAOEvento daoEvento = new DAOEvento();
+    
+    private DAOEvento daoEvento;
+    
+    public EventoController() {
+    	daoEvento  = new DAOEvento();
+    }
     
     public void criar(Evento evento){
         daoEvento.create(evento);
@@ -34,8 +28,16 @@ public class EventoController {
         daoEvento.update(evento);
     }
     
-    public void deletar(Evento evento){
-        daoEvento.delete(evento);
+    public void deletar(int idEvento){
+        daoEvento.delete(idEvento);
     }
+    
+    public void setDaoEvento(DAOEvento daoEvento) {
+		this.daoEvento = daoEvento;
+	}
+    
+    public DAOEvento getDaoEvento() {
+		return daoEvento;
+	}
     
 }

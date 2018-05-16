@@ -26,8 +26,7 @@
             <th>Data</th>
         </tr>
         <% 
-            for(int i=0; i < evento.getTrilhas().size(); i++){ 
-                if(evento.getTrilhas().get(i).getCoordenador().getCpf().equals(user.getCpf()) || evento.getCoordenador().getCpf().equals(user.getCpf())){
+            for(int i=0; i < evento.getTrilhas().size(); i++){
                 
                 session.setAttribute("gt"+Integer.toString(evento.getTrilhas().get(i).getIdTrilha()), evento.getTrilhas().get(i));
                %>
@@ -57,10 +56,13 @@
                    
                </tr>
                
-            <%  }
+            <%  
             }
         %>    
     </table>
+    <form action="adicionaTrilha.jsp" method="post">
+        <input type="submit" value="Adicionar um Trilha">
+    </form>
     <input type="button" value="Voltar" onClick="history.go(-1)">
     </center>
     </body>

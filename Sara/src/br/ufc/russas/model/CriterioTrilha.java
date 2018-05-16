@@ -1,65 +1,38 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
-/**
- *
- * @author Hugo
- */
 public class CriterioTrilha {
-	
+
 	private int idCriterioTrilha;
 	private LocalDate dataCriacao;
 	private String nome;
+	private ArrayList<Criterio> criterios;
 	
-    /**
-     *
-     * @return
-     */
-    public int getIdCriterioTrilha() {
+	public int getIdCriterioTrilha() {
 		return idCriterioTrilha;
 	}
-
-    /**
-     *
-     * @param idCriterioTrilha
-     */
-    public void setIdCriterioTrilha(int idCriterioTrilha) {
+	public void setIdCriterioTrilha(int idCriterioTrilha) {
 		this.idCriterioTrilha = idCriterioTrilha;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public LocalDate getDataCriacao() {
+	public LocalDate getDataCriacao() {
 		return dataCriacao;
 	}
-
-    /**
-     *
-     * @param dataCriacao
-     */
-    public void setDataCriacao(LocalDate dataCriacao) {
+	public void setDataCriacao(LocalDate dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public String getNome() {
+	public String getNome() {
 		return nome;
 	}
-
-    /**
-     *
-     * @param nome
-     */
-    public void setNome(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
-	
+	public ArrayList<Criterio> getCriterios() {
+		return criterios;
+	}
+	public void setCriterios(ArrayList<Criterio> criterios) {
+		this.criterios = criterios;
+	}
+
 }

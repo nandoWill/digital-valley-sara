@@ -1,78 +1,44 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
-/**
- *
- * @author Hugo
- */
+import java.util.ArrayList;
+
 public class Criterio {
 	
 	private int idCriterio;
 	private String descricao;
 	private int peso;
-	private int idCriterioTrilha;
+	private CriterioTrilha criterioTrilha;
+	private ArrayList<Item> itens;
 	
-    /**
-     *
-     * @return
-     */
-    public int getIdCriterio() {
+	public int getIdCriterio() {
 		return idCriterio;
 	}
-
-    /**
-     *
-     * @param idCriterio
-     */
-    public void setIdCriterio(int idCriterio) {
+	public void setIdCriterio(int idCriterio) {
 		this.idCriterio = idCriterio;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public String getDescricao() {
+	public String getDescricao() {
 		return descricao;
 	}
-
-    /**
-     *
-     * @param descricao
-     */
-    public void setDescricao(String descricao) {
+	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public int getPeso() {
+	public int getPeso() {
 		return peso;
 	}
-
-    /**
-     *
-     * @param peso
-     */
-    public void setPeso(int peso) {
+	public void setPeso(int peso) {
 		this.peso = peso;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public int getIdCriterioTrilha() {
-		return idCriterioTrilha;
+	public CriterioTrilha getCriterioTrilha() {
+		return criterioTrilha;
 	}
-
-    /**
-     *
-     * @param idCriterioTrilha
-     */
-    public void setIdCriterioTrilha(int idCriterioTrilha) {
-		this.idCriterioTrilha = idCriterioTrilha;
+	public void setCriterioTrilha(CriterioTrilha criterioTrilha) {
+		this.criterioTrilha = criterioTrilha;
+	}
+	public ArrayList<Item> getItens() {
+		return itens;
+	}
+	public void setItens(ArrayList<Item> itens) {
+		this.itens = itens;
 	}
 	
 }

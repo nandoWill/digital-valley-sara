@@ -1,4 +1,4 @@
-package br.ufc.russas.dao;
+package br.com.n2s.sara.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,35 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufc.russas.model.NivelUsuario;
-import br.ufc.russas.model.Usuario;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import br.com.n2s.sara.model.NivelUsuario;
+import br.com.n2s.sara.model.Usuario;
 
-/**
- *
- * @author Hugo
- */
-@Repository
 public class DAOUsuario {
 
 	private Connection connection;
 
-    /**
-     *
-     */
-    public DAOUsuario(){
 
-		this.connection = new ConnectionFactory().getConnection(); 
-	}
-
-    /**
-     *
-     * @param usuario
-     */
-    @Autowired
-    public void create(Usuario usuario){
-
+	public void create(Usuario usuario){
+		this.connection = new ConnectionFactory().getConnection();
+		
 		String sql = "insert into sara.Usuario"  
 				+ "(cpf, nome, sobrenome, email, tipo)"
 				+ "values (?,?,?,?,?)";
@@ -56,12 +38,7 @@ public class DAOUsuario {
 		}
 	}
 
-    /**
-     *
-     * @return
-     */
-    @Autowired
-    public List<Usuario> read(){
+	public List<Usuario> read(){
 
 		String sql = "select * from sara.Usuario";
 
@@ -83,6 +60,7 @@ public class DAOUsuario {
 
 			rs.close();
 			stmt.close();
+			connection.close();
 			return usuarios;
 
 		}catch(SQLException e){
@@ -90,14 +68,9 @@ public class DAOUsuario {
 		}
 	}
 
-    /**
-     *
-     * @param cpf
-     * @return
-     */
-    @Autowired
-    public Usuario getUsuario(String cpf){
+	public Usuario getUsuario(String cpf){
 
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "select * from sara.Usuario where cpf = ?";
 
 		try{
@@ -115,6 +88,7 @@ public class DAOUsuario {
 
 				rs.close();
 				stmt.close();
+				connection.close();
 				return usuario;
 			}else{
 				return null;
@@ -124,13 +98,9 @@ public class DAOUsuario {
 		}
 	}
 
-    /**
-     *
-     * @param usuario
-     */
-    @Autowired
-    public void update(Usuario usuario){
-
+	public void update(Usuario usuario){
+		this.connection = new ConnectionFactory().getConnection();
+		
 		String sql = "update sara.Usuario set cpf = ?, nome = ?, sobrenome = ?, email = ?, tipo = ? " 
 				+ " where cpf = ?";
 
@@ -145,31 +115,37 @@ public class DAOUsuario {
 			
 			stmt.execute();
 			stmt.close();
-
+			connection.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-    /**
-     *
-     * @param usuario
-     */
-    @Autowired
-    public void delete(Usuario usuario){
-
+	
+	public void delete(String cpf){
+		this.connection = new ConnectionFactory().getConnection();
 		String sql = "delete from sara.Usuario where cpf = ?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, usuario.getCpf());
+			stmt.setString(1, cpf);
 			stmt.execute();
 			stmt.close();
+			connection.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 
+	}
+	
+	public void closeCon() {
+		try {
+			this.connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

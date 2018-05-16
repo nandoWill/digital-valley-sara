@@ -22,7 +22,7 @@
 </head>
 <body>
     <% 	UsuarioController userCon = new UsuarioController();
-    	Usuario usuario = userCon.buscar("123");
+    	Usuario usuario = userCon.buscar("100");
     	session.setAttribute("usuario", usuario);
 	%>
     
@@ -30,9 +30,7 @@
 <center> Bem Vindo!!  
     <% 
     	EventoController evCon = new EventoController();
-		TrilhaController trCon = new TrilhaController();
         List<Evento> eventos = evCon.listar();
-        List<Trilha> trilhas = trCon.listar();
        
     %>
     
@@ -60,9 +58,10 @@
                    <td><%= eventos.get(i).getNome() %> </td>
                    <td><%= eventos.get(i).getLocalizacao()%> </td>
                    <td><%= eventos.get(i).getDataInicial() %> </td>
+                   
                    <td><form action="paginaEvento.jsp" method="post"> 
                            <input type="hidden" value="e<%= eventos.get(i).getIdEvento()%>" name="evento"> 
-                           <button type="submit">pressione</button>
+                           <button type="submit">Visualizar</button>
                        </form> 
                    </td>
             <%}
@@ -93,7 +92,10 @@
     <p>
 <%      switch(usuario.getTipo()){
 
-            case COORDENADOR_EVENTO: %>
+            case ADMINISTRADOR: %>
+				<input type="button" onclick="location.href='formCadastroEvento.jsp';" value="Criar Evento">
+<%             
+            case COORDENADOR_EVENTO: %> 
 
 <%	    case COORDENADOR_TRILHA: %>
                 <input type="button" onclick="location.href='indexCoordTrilha.jsp';" value="Gerenciar"/>

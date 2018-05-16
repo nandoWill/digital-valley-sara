@@ -1,28 +1,9 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
-/**
- *
- * @author Hugo
- */
 public enum NivelUsuario {
-
-    /**
-     *
-     */
-    AUTOR,
-
-    /**
-     *
-     */
-    AVALIADOR,
-
-    /**
-     *
-     */
-    COORDENADOR_TRILHA,
-
-    /**
-     *
-     */
-    COORDENADOR_EVENTO
+	AUTOR,
+	AVALIADOR,
+	ADMINISTRADOR,
+	COORDENADOR_TRILHA,
+	COORDENADOR_EVENTO
 }

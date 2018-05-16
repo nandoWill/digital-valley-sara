@@ -1,114 +1,74 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 
-/**
- *
- * @author Hugo
- */
 public class Trilha {
 	
 	private int idTrilha;
 	private String nome;
 	private String descricao;
-	private String coordenador;
-	private int idEvento;
-	private int idCriterioTrilha;
+	private Usuario coordenador;
+	private Evento evento;
+	private CriterioTrilha criterioTrilha;
+	private ArrayList<Periodo> periodos;
+	private ArrayList<Usuario> avaliadores;
 	
-    /**
-     *
-     * @return
-     */
-    public int getIdTrilha() {
+	public Trilha() {
+		
+	}
+	
+	public Trilha(String nome, int id, String descricao, String cpf) {
+		
+	}
+	
+	public int getIdTrilha() {
 		return idTrilha;
 	}
-
-    /**
-     *
-     * @param idTrilha
-     */
-    public void setIdTrilha(int idTrilha) {
+	public void setIdTrilha(int idTrilha) {
 		this.idTrilha = idTrilha;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public String getNome() {
+	public String getNome() {
 		return nome;
 	}
-
-    /**
-     *
-     * @param nome
-     */
-    public void setNome(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public String getDescricao() {
+	public String getDescricao() {
 		return descricao;
 	}
-
-    /**
-     *
-     * @param descricao
-     */
-    public void setDescricao(String descricao) {
+	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public String getCoordenador() {
+	public Usuario getCoordenador() {
 		return coordenador;
 	}
-
-    /**
-     *
-     * @param coordenador
-     */
-    public void setCoordenador(String coordenador) {
+	public void setCoordenador(Usuario coordenador) {
 		this.coordenador = coordenador;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public int getIdEvento() {
-		return idEvento;
+	public Evento getEvento() {
+		return evento;
 	}
-
-    /**
-     *
-     * @param idEvento
-     */
-    public void setIdEvento(int idEvento) {
-		this.idEvento = idEvento;
+	public void setEvento(Evento evento) {
+		this.evento = evento;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public int getIdCriterioTrilha() {
-		return idCriterioTrilha;
+	public CriterioTrilha getCriterioTrilha() {
+		return criterioTrilha;
 	}
-
-    /**
-     *
-     * @param idCriterioTrilha
-     */
-    public void setIdCriterioTrilha(int idCriterioTrilha) {
-		this.idCriterioTrilha = idCriterioTrilha;
+	public void setCriterioTrilha(CriterioTrilha criterioTrilha) {
+		this.criterioTrilha = criterioTrilha;
 	}
+	public ArrayList<Periodo> getPeriodos() {
+		return periodos;
+	}
+	public void setPeriodos(ArrayList<Periodo> periodos) {
+		this.periodos = periodos;
+	}
+	public ArrayList<Usuario> getAvaliadores() {
+		return avaliadores;
+	}
+	public void setAvaliadores(ArrayList<Usuario> avaliadores) {
+		this.avaliadores = avaliadores;
+	}
+	
 	
 }

@@ -1,23 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package br.ufc.russas.controller;
+package br.com.n2s.sara.controller;
 
-import br.ufc.russas.dao.ConnectionFactory;
-import br.ufc.russas.dao.DAOTrilha;
-import br.ufc.russas.model.Trilha;
+import br.com.n2s.sara.dao.DAOTrilha;
+import br.com.n2s.sara.model.Trilha;
 import java.util.List;
 
-/**
- *
- * @author Hugo
- */
 public class TrilhaController {
     
-    ConnectionFactory con = new ConnectionFactory();
-    DAOTrilha daoTrilha = new DAOTrilha();
+    
+    private DAOTrilha daoTrilha; 
+    
+    public TrilhaController() {
+    	daoTrilha = new DAOTrilha();
+    }
     
     public void criar(Trilha trilha){
         daoTrilha.create(trilha);
@@ -27,6 +21,10 @@ public class TrilhaController {
        return daoTrilha.read();
     }
     
+    public List<Trilha> listar(int id){
+        return daoTrilha.readById(id);
+    }
+     
     public Trilha buscar(int idTrilha){
         return daoTrilha.getTrilha(idTrilha);
     }
@@ -35,8 +33,12 @@ public class TrilhaController {
         daoTrilha.update(trilha);
     }
     
-    public void deletar(Trilha trilha){
-        daoTrilha.delete(trilha);
+    public void deletar(int idTrilha){
+        daoTrilha.delete(idTrilha);
     }
+    
+    public DAOTrilha getDaoTrilha() {
+		return daoTrilha;
+	}
     
 }

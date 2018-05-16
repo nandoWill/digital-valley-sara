@@ -1,94 +1,52 @@
-package br.ufc.russas.model;
+package br.com.n2s.sara.model;
 
-/**
- *
- * @author Hugo
- */
 public class Usuario {
-	
 	private String cpf;
 	private String nome;
 	private String sobrenome;
 	private String email;
 	private NivelUsuario tipo;
 	
-    /**
-     *
-     * @return
-     */
-    public String getCpf() {
+	public Usuario(String cpf, String nome, String sobrenome, String email, NivelUsuario tipo) {
+		super();
+		this.cpf = cpf;
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.email = email;
+		this.tipo = tipo;
+	}
+	public Usuario() {
+		
+	}
+	
+	public String getCpf() {
 		return cpf;
 	}
-
-    /**
-     *
-     * @param cpf
-     */
-    public void setCpf(String cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public String getNome() {
+	public String getNome() {
 		return nome;
 	}
-
-    /**
-     *
-     * @param nome
-     */
-    public void setNome(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public String getSobrenome() {
+	public String getSobrenome() {
 		return sobrenome;
 	}
-
-    /**
-     *
-     * @param sobrenome
-     */
-    public void setSobrenome(String sobrenome) {
+	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public String getEmail() {
+	public String getEmail() {
 		return email;
 	}
-
-    /**
-     *
-     * @param email
-     */
-    public void setEmail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public NivelUsuario getTipo() {
+	public NivelUsuario getTipo() {
 		return tipo;
 	}
-
-    /**
-     *
-     * @param tipo
-     */
-    public void setTipo(NivelUsuario tipo) {
+	public void setTipo(NivelUsuario tipo) {
 		this.tipo = tipo;
 	}
 }
