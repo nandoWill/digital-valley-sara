@@ -60,5 +60,8 @@
 			System.out.println(itensPeso.get(i));
 		}   */
 	%>
+	
+	<jsp:forward page="gerenciaCriterios.jsp"></jsp:forward>
+	
 </body>
 </html>
