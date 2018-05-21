@@ -1,7 +1,7 @@
-package br.ufc.russas.controller;
+package br.com.n2s.sara.controller;
 
-import br.ufc.russas.dao.DAOTrilha;
-import br.ufc.russas.model.Trilha;
+import br.com.n2s.sara.dao.DAOTrilha;
+import br.com.n2s.sara.model.Trilha;
 import java.util.List;
 
 public class TrilhaController {
@@ -21,6 +21,10 @@ public class TrilhaController {
        return daoTrilha.read();
     }
     
+    public List<Trilha> listar(int id){
+        return daoTrilha.readById(id);
+    }
+     
     public Trilha buscar(int idTrilha){
         return daoTrilha.getTrilha(idTrilha);
     }

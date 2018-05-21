@@ -1,14 +1,16 @@
-package br.ufc.russas.controller;
+package br.com.n2s.sara.controller;
 
 import java.util.List;
-
-import br.ufc.russas.dao.DAOPeriodo;
-import br.ufc.russas.model.Periodo;
+import br.com.n2s.sara.dao.DAOPeriodo;
+import br.com.n2s.sara.model.Periodo;
 
 public class PeriodoController {
 
 	private DAOPeriodo daoPeriodo;
-
+	
+	public PeriodoController() {
+		this.daoPeriodo = new DAOPeriodo();
+	}
 
 	public void criar(Periodo periodo){
 		daoPeriodo.create(periodo);

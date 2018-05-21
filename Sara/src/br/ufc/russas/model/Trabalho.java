@@ -13,7 +13,7 @@ public class Trabalho {
 	private File versaoFinal;
 	private Trilha trilha; // Trilha a qual o trabalho está associado
 	private Usuario autor;
-	
+
 	public Usuario getAutor() {
 		return autor;
 	}

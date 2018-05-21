@@ -1,13 +1,13 @@
 package br.com.n2s.sara.model;
 
 public class Usuario {
-	
+
 	private String cpf;
 	private String nome;
 	private String sobrenome;
 	private String email;
-	private NivelUsuario tipo;
-	
+	private NivelUsuario tipo;	
+		
 	public String getCpf() {
 		return cpf;
 	}

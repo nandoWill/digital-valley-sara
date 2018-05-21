@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package br.ufc.russas.controller;
+package br.com.n2s.sara.controller;
 
 import br.ufc.russas.dao.DAOEvento;
 import br.ufc.russas.model.Evento;

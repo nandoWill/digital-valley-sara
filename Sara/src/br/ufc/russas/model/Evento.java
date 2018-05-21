@@ -2,6 +2,7 @@ package br.com.n2s.sara.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Evento {
 	
@@ -14,14 +15,13 @@ public class Evento {
 	private LocalDate dataInicial;
 	private LocalDate dataFinal;
 	private ArrayList<Trilha> trilhas;
-	
+
 	public int getIdEvento() {
 		return idEvento;
 	}
 	public void setIdEvento(int idEvento) {
 		this.idEvento = idEvento;
 	}
-	
 	public ArrayList<Usuario> getCoordenadores() {
 		return coordenadores;
 	}
@@ -31,11 +31,20 @@ public class Evento {
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 	public String getDescricao() {
 		return descricao;
+	}
+	public ArrayList<Trilha> getTrilhas() {
+		return trilhas;
+	}
+	public void setTrilhas(ArrayList<Trilha> trilhas) {
+		this.trilhas = trilhas;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
@@ -64,11 +73,4 @@ public class Evento {
 	public void setDataFinal(LocalDate dataFinal) {
 		this.dataFinal = dataFinal;
 	}
-	public ArrayList<Trilha> getTrilhas() {
-		return trilhas;
-	}
-	public void setTrilhas(ArrayList<Trilha> trilhas) {
-		this.trilhas = trilhas;
-	}
-	
 }

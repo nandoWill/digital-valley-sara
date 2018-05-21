@@ -62,5 +62,4 @@ public class Trilha {
 		this.avaliadores = avaliadores;
 	}
 	
-	
 }

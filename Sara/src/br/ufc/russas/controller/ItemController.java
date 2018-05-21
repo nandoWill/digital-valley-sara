@@ -21,12 +21,12 @@ public class ItemController {
 		return daoItem.read();
 	}
 
+	public List<Item> listar(int id){
+		return daoItem.readById(id);
+	}
+
 	public Item buscar(int idItem){
 		return daoItem.getItem(idItem);
-	}
-	
-	public List<Item> listarPorCrit(int idCrit){
-		return daoItem.readById(idCrit);
 	}
 
 	public void atualizar(Item item){

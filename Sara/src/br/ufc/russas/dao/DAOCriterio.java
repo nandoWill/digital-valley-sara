@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package br.com.n2s.sara.dao;
 
 import java.sql.Connection;

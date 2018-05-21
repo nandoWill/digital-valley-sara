@@ -1,8 +1,8 @@
-package br.ufc.russas.controller;
+package br.com.n2s.sara.controller;
 
 import java.util.List;
-import br.ufc.russas.dao.DAOCriterio;
-import br.ufc.russas.model.Criterio;
+import br.com.n2s.sara.dao.DAOCriterio;
+import br.com.n2s.sara.model.Criterio;
 
 public class CriterioController {
 	
@@ -18,7 +18,7 @@ public class CriterioController {
 	
 	public List<Criterio> listar(){
 		return daoCriterio.read();
-	}
+	}	
 	
 	public Criterio buscar(int idCriterio) {
 		return daoCriterio.getCriterio(idCriterio);
@@ -32,3 +32,4 @@ public class CriterioController {
 		daoCriterio.delete(idCriterio);
 	}
 }
+>>>>>>> jsp

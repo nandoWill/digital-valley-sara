@@ -1,6 +1,5 @@
 package br.com.n2s.sara.dao;
 
-
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -138,4 +137,3 @@ public class DAOSubmissao {
 
 	}
 }
-

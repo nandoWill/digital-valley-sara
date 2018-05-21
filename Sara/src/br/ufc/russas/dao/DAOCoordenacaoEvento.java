@@ -67,6 +67,38 @@ public class DAOCoordenacaoEvento {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public List<CoordenacaoEvento> readById(String id){
+		
+		this.connection = new ConnectionFactory().getConnection(); 
+		String sql = "select * from sara.CoordenacaoEvento where coordenador = ?";
+
+		try{
+			
+			List<CoordenacaoEvento> coordenacoes = new ArrayList<CoordenacaoEvento>();
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+			stmt.setString(1, id);
+			ResultSet rs = stmt.executeQuery();
+			UsuarioController usuarioController = new UsuarioController();
+			EventoController eventoController = new EventoController();
+
+			while(rs.next()){
+
+				CoordenacaoEvento coordenacaoEvento = new CoordenacaoEvento();
+				coordenacaoEvento.setCoordenador(usuarioController.buscar(rs.getString("coordenador")));
+				coordenacaoEvento.setEvento(eventoController.buscar(rs.getInt("idEvento")));
+				coordenacoes.add(coordenacaoEvento);
+			}
+
+			rs.close();
+			stmt.close();
+			this.connection.close();
+			return coordenacoes;
+
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+	}
 
 	public CoordenacaoEvento getCoordenacaoEvento(String cpfCoordenador){
 		

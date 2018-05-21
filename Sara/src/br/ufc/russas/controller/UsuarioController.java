@@ -1,4 +1,4 @@
-package br.ufc.russas.controller;
+package br.com.n2s.sara.controller;
 
 import br.ufc.russas.dao.DAOUsuario;
 import br.ufc.russas.model.Usuario;

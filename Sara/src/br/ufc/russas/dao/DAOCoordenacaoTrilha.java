@@ -68,6 +68,39 @@ public class DAOCoordenacaoTrilha {
 		}
 	}
 
+		public List<CoordenacaoTrilha> readById(String id){
+
+		this.connection = new ConnectionFactory().getConnection(); 
+		String sql = "select * from sara.CoordenacaoTrilha where coordenador=?";
+
+		try{
+
+			List<CoordenacaoTrilha> coordenacoes = new ArrayList<CoordenacaoTrilha>();
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+			stmt.setString(1, id);
+			ResultSet rs = stmt.executeQuery();
+			UsuarioController usuarioController = new UsuarioController();
+			TrilhaController trilhaController = new TrilhaController();
+
+			while(rs.next()){
+
+				CoordenacaoTrilha coordenacaoTrilha = new CoordenacaoTrilha();
+				coordenacaoTrilha.setCoordenador(usuarioController.buscar(rs.getString("coordenador")));
+				coordenacaoTrilha.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
+				coordenacoes.add(coordenacaoTrilha);
+			}
+
+			rs.close();
+			stmt.close();
+			this.connection.close();
+			return coordenacoes;
+
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+	}
+
+
 	public CoordenacaoTrilha getCoordenacaoTrilha(String cpfCoordenador){
 
 		this.connection = new ConnectionFactory().getConnection(); 

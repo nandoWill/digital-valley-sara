@@ -1,4 +1,4 @@
-package br.ufc.russas.controller;
+package br.com.n2s.sara.controller;
 
 import java.util.List;
 import br.ufc.russas.dao.DAOCriterioTrilha;

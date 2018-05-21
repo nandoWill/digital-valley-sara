@@ -75,6 +75,43 @@ public class DAOTrilha {
 			throw new RuntimeException(e);
 		}
 	}
+	
+public List<Trilha> readById(int id){
+		
+		this.connection = new ConnectionFactory().getConnection(); 
+		String sql = "select * from sara.Trilha where idEvento = ?";
+		
+		try{
+			List<Trilha> trilhas = new ArrayList<Trilha>();
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			EventoController eventoController = new EventoController();
+			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
+
+			while(rs.next()){
+
+				Trilha trilha = new Trilha();
+
+				trilha.setIdTrilha(rs.getInt("idTrilha"));
+				trilha.setNome(rs.getString("nome"));
+				trilha.setDescricao(rs.getString("descricao"));
+				trilha.setEvento(eventoController.buscar(rs.getInt("idEvento")));
+				trilha.setCriterioTrilha(criterioTrilhaController.buscar(rs.getInt("idCriterioTrilha")));
+
+				trilhas.add(trilha);
+
+			}
+
+			rs.close();
+			stmt.close();
+			this.connection.close();
+			return trilhas;
+
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+	}
 
 	public Trilha getTrilha(int idTrilha){
 		

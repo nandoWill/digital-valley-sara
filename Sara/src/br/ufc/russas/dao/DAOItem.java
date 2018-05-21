@@ -72,6 +72,41 @@ public class DAOItem {
 		}
 	}
 
+	public List<Item> readById(int id){
+
+		this.connection = new ConnectionFactory().getConnection();
+		String sql = "select * from sara.Item where idCriterio = ?";
+
+		try{
+			List<Item> itens = new ArrayList<Item>();
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			CriterioController criterioController = new CriterioController();
+			
+			while(rs.next()){
+
+				Item item = new Item();
+
+				item.setIdItem(rs.getInt("idItem"));
+				item.setDescricao(rs.getString("descricao"));
+				item.setPeso(rs.getInt("peso"));
+				item.setCriterio(criterioController.buscar(rs.getInt("idCriterio")));
+				
+				itens.add(item);
+
+			}
+
+			rs.close();
+			stmt.close();
+			this.connection.close();
+			return itens;
+
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+	}
+
 	public Item getItem(int idItem){
 		
 		this.connection = new ConnectionFactory().getConnection(); 
