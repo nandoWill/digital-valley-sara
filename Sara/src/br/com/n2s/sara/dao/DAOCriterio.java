@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package br.com.n2s.sara.dao;
 
 import java.sql.Connection;
@@ -108,7 +107,7 @@ public class DAOCriterio {
 	public void update(Criterio criterio){
 		
 		this.connection = new ConnectionFactory().getConnection();
-		String sql = "update sara.Criterio set descricao = ? peso = ?, idCriterioTrilha = ?"
+		String sql = "update sara.Criterio set descricao = ?, peso = ?, idCriterioTrilha = ?"
 				+ " where idCriterio = ?";
 				
 		try {

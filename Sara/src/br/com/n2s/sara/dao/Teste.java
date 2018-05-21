@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 import br.com.n2s.sara.controller.EventoController;
-import br.com.n2s.sara.controller.FileManipulation;
 import br.com.n2s.sara.controller.TrilhaController;
 import br.com.n2s.sara.controller.UsuarioController;
 import br.com.n2s.sara.model.CriterioTrilha;
@@ -58,7 +57,7 @@ public class Teste {
 //
 //			Usuario u5 = new Usuario();
 //			u5.setCpf("111");
-//			u5.setNome("João");
+//			u5.setNome("Joï¿½o");
 //			u5.setSobrenome("Maria");
 //			u5.setEmail("joao@gmail.com");
 //			u5.setTipo(NivelUsuario.COORDENADOR_TRILHA);
@@ -73,7 +72,7 @@ public class Teste {
 //			
 //			Evento e1 = new Evento();
 //			e1.setNome("Encontros Universitarios");
-//			e1.setDescricao("Evento para apresentação de trabalhos desenvolvidos pelos alunos");
+//			e1.setDescricao("Evento para apresentaï¿½ï¿½o de trabalhos desenvolvidos pelos alunos");
 //			e1.setSite("www.eu.ufc.br");
 //			e1.setLocalizacao("Campus da UFC em Russas");
 //			e1.setDataInicial(data);
@@ -83,18 +82,17 @@ public class Teste {
 			
 //			Trilha t1 = new Trilha();
 //			t1.setNome("Trabalhos de Pesquisa");
-//			t1.setDescricao("Trilha para submissão de trabalhos de pesquisa");
+//			t1.setDescricao("Trilha para submissï¿½o de trabalhos de pesquisa");
 //			t1.setEvento(eventoController.buscar(1));
 //			
 //			Trilha t2 = new Trilha();
-//			t2.setNome("Trabalhos de Extensão");
-//			t2.setDescricao("Trilha para submissão de trabalhos de extensão");
+//			t2.setNome("Trabalhos de Extensï¿½o");
+//			t2.setDescricao("Trilha para submissï¿½o de trabalhos de extensï¿½o");
 //			t2.setEvento(eventoController.buscar(1));
 //			
 //			trilhaController.criar(t1);
 //			trilhaController.criar(t2);
 			
-			Criterio 
 			
 			
 			System.out.println("Ok");

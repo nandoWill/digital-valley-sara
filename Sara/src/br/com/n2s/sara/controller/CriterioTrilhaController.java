@@ -1,8 +1,8 @@
 package br.com.n2s.sara.controller;
 
 import java.util.List;
-import br.ufc.russas.dao.DAOCriterioTrilha;
-import br.ufc.russas.model.CriterioTrilha;
+import br.com.n2s.sara.dao.DAOCriterioTrilha;
+import br.com.n2s.sara.model.CriterioTrilha;
 
 public class CriterioTrilhaController {
 	

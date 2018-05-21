@@ -1,7 +1,7 @@
 package br.com.n2s.sara.controller;
 
-import br.ufc.russas.dao.DAOUsuario;
-import br.ufc.russas.model.Usuario;
+import br.com.n2s.sara.dao.DAOUsuario;
+import br.com.n2s.sara.model.Usuario;
 import java.util.List;
 
 public class UsuarioController {

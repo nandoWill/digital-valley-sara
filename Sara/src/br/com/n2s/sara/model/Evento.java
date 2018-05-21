@@ -46,9 +46,6 @@ public class Evento {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
 	public String getSite() {
 		return site;
 	}

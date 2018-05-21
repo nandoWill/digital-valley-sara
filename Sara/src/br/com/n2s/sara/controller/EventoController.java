@@ -1,7 +1,7 @@
 package br.com.n2s.sara.controller;
 
-import br.ufc.russas.dao.DAOEvento;
-import br.ufc.russas.model.Evento;
+import br.com.n2s.sara.dao.DAOEvento;
+import br.com.n2s.sara.model.Evento;
 import java.util.List;
 
 public class EventoController {

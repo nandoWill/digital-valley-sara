@@ -32,4 +32,4 @@ public class CriterioController {
 		daoCriterio.delete(idCriterio);
 	}
 }
->>>>>>> jsp
+
