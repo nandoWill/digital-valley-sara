@@ -27,7 +27,7 @@
 			
 			//Criterio criterio = critCon.buscar(idCrit);	
 			System.out.println(criterio.getIdCriterio());
-			List<Item> itens = new ItemController().listar(criterio.getIdCriterio());
+			List<Item> itens = new ItemController().listarPorCrit(criterio.getIdCriterio());
 			
 			%>
 			
