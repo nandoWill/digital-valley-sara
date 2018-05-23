@@ -27,7 +27,7 @@
 	%>s
     
 
-<center> Bem Vindo!!  
+<center> Bem Vindo!  
     <% 
     	EventoController evCon = new EventoController();
         List<Evento> eventos = evCon.listar();
