@@ -4,6 +4,8 @@
     Author     : Hugo
 --%>
 
+<%@page import="br.com.n2s.sara.controller.PeriodoController"%>
+<%@page import="br.com.n2s.sara.model.Periodo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +14,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+    <%
+    String key = request.getParameter("periodo");
+	Periodo p = (Periodo) session.getAttribute(key);
+	PeriodoController perCon = new PeriodoController();
+	perCon.deletar(p.getIdPeriodo());
+	response.sendRedirect("gerenciaPeriodos.jsp");
+	%>
     </body>
 </html>

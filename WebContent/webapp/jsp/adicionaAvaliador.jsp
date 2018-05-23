@@ -4,6 +4,7 @@
     Author     : Hugo
 --%>
 
+<%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page import="br.com.n2s.sara.model.Usuario"%>
 <%@page import="br.com.n2s.sara.controller.UsuarioController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,15 +16,14 @@
     </head>
     <body>
     <center>
+    	<%
+    		Trilha trilha = (Trilha) session.getAttribute("trilha");
+    		session.setAttribute("trilha", trilha);
+    	%>
         <form action="buscaAvaliador.jsp" method="POST">
             <p>Busca por CPF:</p>
             <p>CPF: <input type="text" name="cpf" required></p>
             
-<!--             <p>Nome: <input type="text" name="nome"> </p> -->
-<!--             <p>Email: <input type="email" name="email"> </p> -->
-<!--             <p>Data: <input type="date" name="testeData"></p> -->
-<!--             <p>Número: <input type="tel" name="telefone"> </p> -->
-<!--             <p>Endereço: <input type="text" name="endereco"> </p> -->
             <input type="submit" value="Buscar">
         </form>
         <p/><input type="button" value="Voltar" onClick="history.go(-1)">

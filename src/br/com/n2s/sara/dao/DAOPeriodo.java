@@ -57,8 +57,8 @@ public class DAOPeriodo {
 
 				Periodo periodo = new Periodo();
 				periodo.setIdPeriodo(rs.getInt("idPeriodo"));
-				periodo.setDataFinal((rs.getDate("dataInicial").toLocalDate())); //toLocalDate()
-				periodo.setDataInicial((rs.getDate("dataFinal").toLocalDate()));
+				periodo.setDataInicial((rs.getDate("dataInicial").toLocalDate())); //toLocalDate()
+				periodo.setDataFinal((rs.getDate("dataFinal").toLocalDate()));
 				periodo.setDescricao(DescricaoPeriodo.valueOf(rs.getString("descricao")));
 				periodo.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
 				
@@ -111,16 +111,21 @@ public class DAOPeriodo {
 	public void update(Periodo periodo){
 		
 		this.connection = new ConnectionFactory().getConnection();
-		String sql = "update sara.Periodo dataInicial = ?, dataFinal = ?, descricao = ?, idTrilha = ?" 
+		String sql = "update sara.Periodo "
+				+ "set dataInicial = ?, dataFinal = ?, descricao = ?, idTrilha = ?" 
 				+ " where idPeriodo = ?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
 			stmt.setDate(1, Date.valueOf(periodo.getDataInicial()));
+			
 			stmt.setDate(2, Date.valueOf(periodo.getDataFinal()));
+			
 			stmt.setString(3, periodo.getDescricao().toString());
+			
 			stmt.setInt(4, periodo.getTrilha().getIdTrilha());
+			
 			stmt.setInt(5, periodo.getIdPeriodo());
 
 			stmt.execute();

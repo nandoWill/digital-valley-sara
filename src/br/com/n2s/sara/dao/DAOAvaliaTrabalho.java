@@ -24,8 +24,8 @@ public class DAOAvaliaTrabalho {
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, avalia.getIdAvaliador());
-			stmt.setInt(2, avalia.getIdTrabalho());
+			stmt.setString(1, avalia.getAvaliador().getCpf());
+			stmt.setInt(2, avalia.getAvaliador().getCpf();
 			
 			stmt.execute();
 			stmt.close();

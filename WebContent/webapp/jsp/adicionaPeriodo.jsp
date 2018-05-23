@@ -25,7 +25,7 @@
             <p>Tipo: <select name="descricao">
 					  <option value="SUBMISSAO_MANUSCRITO">Período de Submissão</option>
 					  <option value="AVALIACAO">Período de Avaliaçâo</option>
-					  <option value="SUBMISAO_FINAL">Período de Submissôes Finais</option>
+					  <option value="SUBMISSAO_FINAL">Período de Submissôes Finais</option>
 					  <option value="RESULTADO_FINAL">Divulgaçâo de Resultados</option>
 					</select>
             <p>Data de Inicio: <input type="date" name="dataInicial" required> </p>

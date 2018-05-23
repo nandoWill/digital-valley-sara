@@ -7,14 +7,14 @@ import java.util.List;
 public class Evento {
 	
 	private int idEvento;
-	private ArrayList<Usuario> coordenadores;
+	private List<Usuario> coordenadores;
 	private String nome;
 	private String descricao;
 	private String site;
 	private String localizacao;
 	private LocalDate dataInicial;
 	private LocalDate dataFinal;
-	private ArrayList<Trilha> trilhas;
+	private List<Trilha> trilhas;
 
 	public int getIdEvento() {
 		return idEvento;
@@ -22,10 +22,10 @@ public class Evento {
 	public void setIdEvento(int idEvento) {
 		this.idEvento = idEvento;
 	}
-	public ArrayList<Usuario> getCoordenadores() {
+	public List<Usuario> getCoordenadores() {
 		return coordenadores;
 	}
-	public void setCoordenadores(ArrayList<Usuario> coordenadores) {
+	public void setCoordenadores(List<Usuario> coordenadores) {
 		this.coordenadores = coordenadores;
 	}
 	public String getNome() {
@@ -34,10 +34,10 @@ public class Evento {
 	public String getDescricao() {
 		return descricao;
 	}
-	public ArrayList<Trilha> getTrilhas() {
+	public List<Trilha> getTrilhas() {
 		return trilhas;
 	}
-	public void setTrilhas(ArrayList<Trilha> trilhas) {
+	public void setTrilhas(List<Trilha> trilhas) {
 		this.trilhas = trilhas;
 	}
 	public void setDescricao(String descricao) {

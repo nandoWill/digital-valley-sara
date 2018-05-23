@@ -34,7 +34,7 @@
             	session.setAttribute("p"+Integer.toString(periodos.get(i).getIdPeriodo()), periodos.get(i));
            	%>
             <tr>
-                <td><%=periodos.get(i).getDescricao() %></td>
+                <td><%=periodos.get(i).getDescricao().toString() %></td>
                 <td><%=periodos.get(i).getDataInicial() %></td>
                 <td><%=periodos.get(i).getDataFinal() %></td>
                 <td>
@@ -45,7 +45,8 @@
                 </td>
                 
                 <td>
-                    <form action="removePeriodo.jsp" method="post">
+                    <form action="removerPeriodo.jsp" method="post">
+                    	<input type="hidden" value="p<%=Integer.toString(periodos.get(i).getIdPeriodo())%>" name="periodo">
                         <input type="submit" value="Remover">
                     </form>
                 </td>
