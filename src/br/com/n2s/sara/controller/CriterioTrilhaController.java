@@ -25,6 +25,10 @@ public class CriterioTrilhaController {
         return daoCriterioTrilha.getCriterioTrilha(idCriterioTrilha);
     }
 	
+	public int obterUltimoID() {
+		return daoCriterioTrilha.getLastId();
+	}
+	
 	public void atualizar(CriterioTrilha criterioTrilha){
         daoCriterioTrilha.update(criterioTrilha);
     }
