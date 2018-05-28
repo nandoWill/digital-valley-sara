@@ -43,7 +43,7 @@
                    <td><%= avaliadores.get(i).getEmail()%> </td>
                    <td><%= avaliadores.get(i).getCpf() %> </td>
                    
-                   <td><form action="removerAvaliador.jsp" method="post"> 
+                   <td><form action="removeAvaliador.jsp" method="post"> 
                            <input type="hidden" value="<%= avaliadores.get(i).getCpf() %>" name="avaliador"> 
                            <button type="submit">Remover</button>
                        </form> 

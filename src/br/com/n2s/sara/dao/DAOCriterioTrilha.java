@@ -41,7 +41,7 @@ public class DAOCriterioTrilha {
 	public List<CriterioTrilha> read(){
 		
 		this.connection = new ConnectionFactory().getConnection(); 
-		String sql = "select * from sara.CriterioTriha";
+		String sql = "select * from sara.CriterioTrilha";
 
 		try{
 			List<CriterioTrilha> criterioTrilhas = new ArrayList<CriterioTrilha>();
