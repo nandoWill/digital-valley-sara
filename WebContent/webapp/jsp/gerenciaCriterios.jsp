@@ -31,35 +31,35 @@
         	
       		if(trilha.getCriterioTrilha() == null){%>
         	
-        	<h1>Selecionar Critério Existente</h1>
-        	<table border="1">
-            <tr>
-                <th>Critérios Existentes</th>
-            </tr>
-	<% 
-			for(int i = 0; i < listCriterioTrilha.size(); i++){
-                
-               session.setAttribute("critTri"+listCriterioTrilha.get(i).getIdCriterioTrilha(), listCriterioTrilha.get(i));
-               %>
-               
-               <tr>
-                   <td><%=listCriterioTrilha.get(i).getNome()%></td>
-                   <td><form action="visualizarCriterio.jsp" method="post"> 
-                           <input type="hidden" value="critTri"+<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
-                           <button type="submit">Visualizar</button>
-                       </form> 
-                   </td>
-                   <td><form action="selecionarCriterioTrilha.jsp" method="post"> 
-                           <input type="hidden" value="critTri"+<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
-                           <button type="submit">Selecionar</button>
-                       </form> 
-                   </td>
-            <%}
+	        	<h1>Selecionar Critério Existente</h1>
+	        	<table border="1">
+	            <tr>
+	                <th>Critérios Existentes</th>
+	            </tr>
+		<% 
+				for(int i = 0; i < listCriterioTrilha.size(); i++){
+	                
+	               session.setAttribute("critTri"+listCriterioTrilha.get(i).getIdCriterioTrilha(), listCriterioTrilha.get(i));
+	               %>
+	               
+	               <tr>
+	                   <td><%=listCriterioTrilha.get(i).getNome()%></td>
+	                   <td><form action="visualizarCriterio.jsp" method="post"> 
+	                           <input type="hidden" value="critTri"+<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
+	                           <button type="submit">Visualizar</button>
+	                       </form> 
+	                   </td>
+	                   <td><form action="selecionarCriterioTrilha.jsp" method="post"> 
+	                           <input type="hidden" value="critTri"+<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
+	                           <button type="submit">Selecionar</button>
+	                       </form> 
+	                   </td>
+	            <%}
             }%>
        
 			</table>
 			
-       <% //	}else{
+       <% 	}else{
         %>
         
         <h1>Criar Novos Critérios</h1>
@@ -89,7 +89,8 @@
                    </td>
                    
             <%}%>
-       <% } %>
+       <% }
+        }%>
 	</table>
     	
     	<br />
