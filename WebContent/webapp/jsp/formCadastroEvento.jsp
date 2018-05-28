@@ -14,7 +14,8 @@
 		<p>Nome:</p>
 		<p><input type="text" name="nome" required/></p>
 		<p>Coordenador:</p>
-		<p><input type="text" name="cpfCoord" id="cpf" required pattern="^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$"/></p>
+		<p><input type="text" name="cpfCoordenador" id="cpf" /></p> 
+<!-- 		required pattern="^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$" -->
 		<p>Site:</p>
 		<p><input type="text" name="site" /></p>
 		<p>Localização:</p>
