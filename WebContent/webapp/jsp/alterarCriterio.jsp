@@ -26,8 +26,8 @@
 			itens.add("Item 1"); itens.add("Item 2"); itens.add("Item 3"); itens.add("Item 4"); itens.add("Item 5"); */
 			
 			//Criterio criterio = critCon.buscar(idCrit);	
-			System.out.println(criterio.getIdCriterio());
-			List<Item> itens = new ItemController().listarPorCrit(criterio.getIdCriterio());
+			//System.out.println(criterio.getIdCriterio());
+			List<Item> itens = new ItemController().listar(criterio.getIdCriterio());
 			
 			%>
 			
@@ -42,28 +42,45 @@
 	            
 	            <h2> Itens do Critério </h2>
 	            
-	            <div id="itens" align="center">
-	            	<%
-	            		for(int i = 0; i < itens.size()-1; i++){  %>
-							<p>Descrição: <textarea id="descricao<%=i%>" name="descricao<%=i%>" rows="1" cols="30"><%=itens.get(i).getDescricao()%></textarea>
-	            			<p>Peso: <input type="text" id="peso<%=i%>" name="peso<%=i%>" value="<%=itens.get(i).getPeso()%>"> </p>	
-	            			<input type="button" value="Remover Item" name="<%=i%>" onclick="removerItem(<%=i%>);"></p>
-	            			<br />			
-					<%	}  %>
-				</div>
-				
-				<div id="origem" align="center">
-							<p>Descrição: <textarea id="descricao<%=(itens.size()-1)%>" name="descricao<%=(itens.size()-1)%>" rows="1" cols="30"><%=itens.get(itens.size()-1).getDescricao()%></textarea>
-	            			<p>Peso: <input type="text" id="peso<%=(itens.size()-1)%>" name="peso<%=(itens.size()-1)%>" value="<%=itens.get(itens.size()-1).getPeso()%>"> </p>
-	            			<input type="button" value="Remover Item" name="<%=(itens.size()-1)%>" onclick="removerItem(<%=(itens.size()-1)%>);"></p>
-	            			<br />
-				</div>
-				
-				<div id="destino">
-				</div>
+	            <% if(itens.size() != 0){ %>
 	            
-	            <input type="button" value="+" onclick="maisCampos();">
-	            <input type="button" value="-" onclick="removerCampos(this);">
+		            <div id="itens" align="center">
+		            	<%
+		            		for(int i = 0; i < itens.size()-1; i++){  %>
+								<p>Descrição: <textarea id="descricao<%=i%>" name="descricao<%=i%>" rows="1" cols="30"><%=itens.get(i).getDescricao()%></textarea>
+		            			<p>Peso: <input type="number" id="peso<%=i%>" name="peso<%=i%>" value="<%=itens.get(i).getPeso()%>"> </p>	
+		            			<input type="button" value="Remover Item" name="<%=i%>" onclick="removerItem(<%=i%>);"></p>
+		            			<br />			
+						<%	}  %>
+					</div>
+					
+					<div id="origem" align="center">
+								<p>Descrição: <textarea id="descricao<%=(itens.size()-1)%>" name="descricao<%=(itens.size()-1)%>" rows="1" cols="30"><%=itens.get(itens.size()-1).getDescricao()%></textarea>
+		            			<p>Peso: <input type="number" id="peso<%=(itens.size()-1)%>" name="peso<%=(itens.size()-1)%>" value="<%=itens.get(itens.size()-1).getPeso()%>"> </p>
+		            			<input type="button" value="Remover Item" name="<%=(itens.size()-1)%>" onclick="removerItem(<%=(itens.size()-1)%>);"></p>
+		            			<br />
+					</div>
+					
+					<div id="destino">
+					</div>
+					
+					<input type="button" value="+" onclick="maisCampos();">
+		            <input type="button" value="-" onclick="removerCampos(this);">
+		            
+				<% }else{ %>
+					
+					<div id="origem" align="center">
+            			<p>Descrição: <textarea id="descricao0" name="descricao0" rows="1" cols="30"></textarea></p>
+            			<p>Peso: <input type="number" id="peso0" name="peso0" value="0"> </p>
+					</div>		
+					
+					<div id="destino">
+					</div>			
+					
+					<input type="button" value="+" onclick="maisCampos();">
+		            <input type="button" value="-" onclick="removerCampos(this);">
+					
+				<%}%>
 	            
 				<br /> <br />     
 	            <p><button type="submit">Alterar Critério</button></p>

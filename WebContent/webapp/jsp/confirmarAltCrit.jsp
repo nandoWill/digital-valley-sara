@@ -27,8 +27,14 @@
 			crit.setPeso(pesoCrit);
 			
 			Item item = new Item();
+			ItemController itemController = new ItemController();
+			
 			List<Item> itens = new ArrayList<Item>();
-			ItemController iCon = new ItemController();
+			itens = itemController.listar(crit.getIdCriterio());
+			
+			for(int i = 0; i < itens.size(); i++){
+				itemController.deletar(itens.get(i).getIdItem());
+			}
 			
 			for(int i = 0; i < 20; i++){
 				desc = request.getParameter("descricao" + i);
@@ -42,14 +48,14 @@
 					item.setPeso(Integer.parseInt(peso));
 					item.setCriterio(crit);
 					
+					itemController.criar(item);
 					
-					
-					itens.add(item);
+					//itens.add(item);
 				}  
 			} 
 			
-			ArrayList<Item> listItem = (ArrayList<Item>) itens; 
-			crit.setItens(listItem);
+			//ArrayList<Item> listItem = (ArrayList<Item>) itens; 
+			//crit.setItens(listItem);
 			
 			CriterioController critCon = new CriterioController();
 			critCon.atualizar(crit);
@@ -61,5 +67,7 @@
 				System.out.println(itensPeso.get(i));
 			}   */
 		%>
+		
+		<jsp:forward page="gerenciaCriterios.jsp"></jsp:forward>
 </body>
 </html>
