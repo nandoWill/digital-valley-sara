@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class DAOEvento {
 	public DAOEvento(){}
 
 	public void create(Evento evento){
-		
+
 		this.connection = new ConnectionFactory().getConnection();
 		String sql = "insert into sara.Evento"  
 				+ "(nome, descricao, site, localizacao, dataInicial, dataFinal)"
@@ -43,7 +44,7 @@ public class DAOEvento {
 	}
 
 	public List<Evento> read(){
-		
+
 		this.connection = new ConnectionFactory().getConnection();
 		String sql = "select * from sara.Evento";
 
@@ -51,7 +52,7 @@ public class DAOEvento {
 			List<Evento> eventos = new ArrayList<Evento>();
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			
+
 			while(rs.next()){
 
 				Evento evento = new Evento();
@@ -78,7 +79,7 @@ public class DAOEvento {
 	}
 
 	public Evento getEvento(int idEvento){
-		
+
 		this.connection = new ConnectionFactory().getConnection();
 		String sql = "select * from sara.Evento where idEvento = ?";
 
@@ -86,7 +87,7 @@ public class DAOEvento {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, idEvento);
 			ResultSet rs = stmt.executeQuery();
-			
+
 			if(rs.next()){
 				Evento evento = new Evento();
 				evento.setIdEvento(rs.getInt("idEvento"));
@@ -109,14 +110,35 @@ public class DAOEvento {
 		}
 	}
 
-	public void update(Evento evento){
+	public int getLastId(){
 		
+		this.connection = new ConnectionFactory().getConnection();
+		String sql = "Select max(idEvento) from sara.Evento";
+		
+		try{
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+			int lastId = rs.getInt(1);
+
+			stmt.close();
+			rs.close();
+			this.connection.close();
+			return lastId;
+
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public void update(Evento evento){
+
 		this.connection = new ConnectionFactory().getConnection();
 		String sql = "update sara.Evento set nome = ?, descricao = ?, " 
 				+ "site = ?, localizacao = ?, dataInicial = ?, dataFinal = ? where idEvento = ?";
 
 		try {
-			
+
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(2, evento.getNome());
 			stmt.setString(3, evento.getDescricao());
@@ -137,7 +159,7 @@ public class DAOEvento {
 
 
 	public void delete(int idEvento){
-		
+
 		this.connection = new ConnectionFactory().getConnection();
 		String sql = "delete from sara.Evento where idEvento = ?";
 

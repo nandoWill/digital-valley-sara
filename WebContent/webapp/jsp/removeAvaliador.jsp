@@ -25,6 +25,8 @@
         	Usuario user = userCon.buscar(cpf);
         	AvaliaTrilhaController avCon = new AvaliaTrilhaController();
         	AvaliaTrilha avalia = new AvaliaTrilha();
+        	avalia.setAvaliador(user);
+        	avalia.setTrilha(trilha);
         	avCon.deletar(avalia);
         	response.sendRedirect("gerenciaAvaliadores.jsp");
         %>

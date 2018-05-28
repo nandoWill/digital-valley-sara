@@ -32,4 +32,8 @@ public class EventoController {
         daoEvento.delete(idEvento);
     }
     
+    public int obterUltimoId() {
+    	return daoEvento.getLastId();
+    }
+    
 }

@@ -1,3 +1,6 @@
+<%@page import="br.com.n2s.sara.model.CriterioTrilha"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="br.com.n2s.sara.controller.CriterioTrilhaController"%>
 <%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page import="br.com.n2s.sara.controller.CriterioController"%>
 <%@page import="br.com.n2s.sara.model.Criterio"%>
@@ -21,17 +24,47 @@
         	session.setAttribute("trilha", trilha);
 			
 			CriterioController critCon = new CriterioController();
+			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
 			
         	List<Criterio> criterios = critCon.listar();
+      		List<CriterioTrilha> listCriterioTrilha = criterioTrilhaController.listar();
         	
-			/* ArrayList<String> criterios = new ArrayList<String>();
-			criterios.add("Criterio 1");
-			criterios.add("Criterio 2");
-			criterios.add("Criterio 3");
-			criterios.add("Criterio 4");
-			criterios.add("Criterio 5"); */
+      		if(trilha.getCriterioTrilha() == null){%>
+        	
+        	<h1>Selecionar Critério Existente</h1>
+        	<table border="1">
+            <tr>
+                <th>Critérios Existentes</th>
+            </tr>
+	<% 
+			for(int i = 0; i < listCriterioTrilha.size(); i++){
+                
+               session.setAttribute("critTri"+listCriterioTrilha.get(i).getIdCriterioTrilha(), listCriterioTrilha.get(i));
+               %>
+               
+               <tr>
+                   <td><%=listCriterioTrilha.get(i).getNome()%></td>
+                   <td><form action="visualizarCriterio.jsp" method="post"> 
+                           <input type="hidden" value="critTri"+<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
+                           <button type="submit">Visualizar</button>
+                       </form> 
+                   </td>
+                   <td><form action="selecionarCriterioTrilha.jsp" method="post"> 
+                           <input type="hidden" value="critTri"+<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
+                           <button type="submit">Selecionar</button>
+                       </form> 
+                   </td>
+            <%}
+            }%>
+       
+			</table>
+			
+       <% //	}else{
         %>
         
+        <h1>Criar Novos Critérios</h1>
+        
+        <%if(!criterios.isEmpty()){ %>
         <table border="1">
             <tr>
                 <th>Critérios</th>
@@ -49,18 +82,14 @@
                            <button type="submit">Alterar</button>
                        </form> 
                    </td>
-                   <td><form action="removerCriterio.jsp" method="post"> 
+                   <td><form action="removerCriterio.jsp" method="post" class = "formRemover"> 
                            <input type="hidden" value="crit<%= criterios.get(i).getIdCriterio()%>" name="criterio"> 
                            <button type="submit">Remover</button>
                        </form> 
                    </td>
-                   <td><form action="adicionarItensCriterio.jsp" method="post"> 
-                           <input type="hidden" value="crit<%= criterios.get(i).getIdCriterio()%>" name="criterio"> 
-                           <button type="submit">Adicionar Itens</button>
-                       </form> 
-                   </td>
-            <%}
-        %>
+                   
+            <%}%>
+       <% } %>
 	</table>
     	
     	<br />
@@ -73,8 +102,43 @@
         
         <br />
         
+       	<br /> <br /> <br />
+       	
 		<input type="button" onclick="location.href='indexAutor';" value="Voltar"/>        
     </center>
+	
+	<script>
+        $(".formRemover").each(function(){    	
+        this.addEventListener('submit', function(e) {   
+        var form = this;
+         e.preventDefault();
+          swal({
+                title: "Deseja Remover?",
+                text: "Este critério será excluído.",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#4cd964",
+                confirmButtonText: "Sim, quero remover.", 
+                cancelButtonText: "Não",       
+                closeOnConfirm: false
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: "Critério Removido!",			  
+				        timer: 1000,
+				        type: "success",
+				        showConfirmButton: false
+                    }, function() {
+                        form.submit();
+                    });
+                    
+                } 
+            });
+        });
+        });
+        
+        </script>
 	
 </body>
 </html>

@@ -19,7 +19,7 @@
     <%
     PeriodoController perCon = new PeriodoController();
     Trilha trilha = (Trilha) session.getAttribute("trilha");
-    List<Periodo> periodos = perCon.listar();
+    List<Periodo> periodos = perCon.listar(trilha.getIdTrilha());
     session.setAttribute("trilha", trilha);
     
     %>

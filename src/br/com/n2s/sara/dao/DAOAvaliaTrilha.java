@@ -123,40 +123,11 @@ public class DAOAvaliaTrilha {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	
-
-	public AvaliaTrilha getAvaliaTrabalho(String idavaliador){
-		
-		this.connection = new ConnectionFactory().getConnection();
-		String sql = "select * from sara.Avaliatrilha where idavaliador = ?";
-
-		try{
-			PreparedStatement stmt = this.connection.prepareStatement(sql);
-			stmt.setString(1, idavaliador);
-			ResultSet rs = stmt.executeQuery();
-
-			if(rs.next()){
-				AvaliaTrilha avalia = new AvaliaTrilha();
-				avalia.setAvaliador(new UsuarioController().buscar((rs.getString("idavaliador"))));
-				avalia.setTrilha(new TrilhaController().buscar((rs.getInt("idtrabalho"))));
-				
-				rs.close();
-				stmt.close();
-				this.connection.close();
-				return avalia;
-			}else{
-				return null;
-			}
-		}catch(SQLException e){
-			throw new RuntimeException(e);
-		}
-	}
 
 	public void update(AvaliaTrilha avalia){
 		
 		this.connection = new ConnectionFactory().getConnection();
-		String sql = "update sara.AvaliaTrilha set idavaliador = ?, idtrabalho = ?" 
+		String sql = "update sara.AvaliaTrilha set idavaliador = ?, idtrilha = ?" 
 				+ " where idavaliador = ?";
 
 		try {
@@ -177,7 +148,7 @@ public class DAOAvaliaTrilha {
 	public void delete(AvaliaTrilha avalia){
 		
 		this.connection = new ConnectionFactory().getConnection();
-		String sql = "delete from sara.AvaliaTrilha where idtrabalho = ? AND idTrilha = ?";
+		String sql = "delete from sara.AvaliaTrilha where idavaliador = ? AND idTrilha = ?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);

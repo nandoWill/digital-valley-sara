@@ -74,6 +74,40 @@ public class DAOPeriodo {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public List<Periodo> readById(int id){ //read()
+		
+		this.connection = new ConnectionFactory().getConnection();
+		String sql = "select * from sara.Periodo where idtrilha = ?";
+
+		try{
+			List<Periodo> periodos = new ArrayList<Periodo>();
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			TrilhaController trilhaController = new TrilhaController();
+
+			while(rs.next()){// anda o array
+
+				Periodo periodo = new Periodo();
+				periodo.setIdPeriodo(rs.getInt("idPeriodo"));
+				periodo.setDataInicial((rs.getDate("dataInicial").toLocalDate())); //toLocalDate()
+				periodo.setDataFinal((rs.getDate("dataFinal").toLocalDate()));
+				periodo.setDescricao(DescricaoPeriodo.valueOf(rs.getString("descricao")));
+				periodo.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
+				
+				periodos.add(periodo);
+			}
+
+			rs.close();
+			stmt.close();
+			this.connection.close();
+			return periodos;
+
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+	}
 
 	public Periodo getPeriodo(int idPeriodo){
 		
