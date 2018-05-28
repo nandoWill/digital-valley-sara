@@ -23,10 +23,6 @@ public class AvaliaTrilhaController {
 		return daoAvaliaTrilha.read();
 	}
 
-	public AvaliaTrilha buscar(String cpf){
-		return daoAvaliaTrilha.getAvaliaTrabalho(cpf);
-	}
-
 	public List<Usuario> listarAvaliadores(int idTrilha){
 		return daoAvaliaTrilha.getAvaliadores(idTrilha);
 	}
