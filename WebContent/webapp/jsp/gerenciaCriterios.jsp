@@ -82,7 +82,7 @@
                            <button type="submit">Alterar</button>
                        </form> 
                    </td>
-                   <td><form action="removerCriterio.jsp" method="post"> 
+                   <td><form action="removerCriterio.jsp" method="post" class = "formRemover"> 
                            <input type="hidden" value="crit<%= criterios.get(i).getIdCriterio()%>" name="criterio"> 
                            <button type="submit">Remover</button>
                        </form> 
@@ -106,6 +106,39 @@
        	
 		<input type="button" onclick="location.href='indexAutor';" value="Voltar"/>        
     </center>
+	
+	<script>
+        $(".formRemover").each(function(){    	
+        this.addEventListener('submit', function(e) {   
+        var form = this;
+         e.preventDefault();
+          swal({
+                title: "Deseja Remover?",
+                text: "Este critério será excluído.",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#4cd964",
+                confirmButtonText: "Sim, quero remover.", 
+                cancelButtonText: "Não",       
+                closeOnConfirm: false
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: "Critério Removido!",			  
+				        timer: 1000,
+				        type: "success",
+				        showConfirmButton: false
+                    }, function() {
+                        form.submit();
+                    });
+                    
+                } 
+            });
+        });
+        });
+        
+        </script>
 	
 </body>
 </html>
