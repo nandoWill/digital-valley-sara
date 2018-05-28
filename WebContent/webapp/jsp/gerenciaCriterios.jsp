@@ -26,70 +26,74 @@
 			CriterioController critCon = new CriterioController();
 			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
 			
-        	List<Criterio> criterios = critCon.listar();
+        	//List<Criterio> criterios = critCon.listar();
+        	
       		List<CriterioTrilha> listCriterioTrilha = criterioTrilhaController.listar();
         	
       		if(trilha.getCriterioTrilha() == null){%>
         	
-        	<h1>Selecionar Critério Existente</h1>
-        	<table border="1">
-            <tr>
-                <th>Critérios Existentes</th>
-            </tr>
-	<% 
-			for(int i = 0; i < listCriterioTrilha.size(); i++){
-                
-               session.setAttribute("critTri"+listCriterioTrilha.get(i).getIdCriterioTrilha(), listCriterioTrilha.get(i));
-               %>
-               
-               <tr>
-                   <td><%=listCriterioTrilha.get(i).getNome()%></td>
-                   <td><form action="visualizarCriterio.jsp" method="post"> 
-                           <input type="hidden" value="critTri"+<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
-                           <button type="submit">Visualizar</button>
-                       </form> 
-                   </td>
-                   <td><form action="selecionarCriterioTrilha.jsp" method="post"> 
-                           <input type="hidden" value="critTri"+<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
-                           <button type="submit">Selecionar</button>
-                       </form> 
-                   </td>
-            <%}
-            }%>
-       
-			</table>
+	        	<h1>Selecionar Critério Existente</h1>
+	        	<table border="1">
+	            <tr>
+	                <th>Critérios Existentes</th>
+	            </tr>
+		<% 
+				for(int i = 0; i < listCriterioTrilha.size(); i++){
+	                
+	               session.setAttribute("critTri"+listCriterioTrilha.get(i).getIdCriterioTrilha(), listCriterioTrilha.get(i));
+	               %>
+	               
+	               <tr>
+	                   <td><%=listCriterioTrilha.get(i).getNome()%></td>
+	                   <td><form action="visualizarCriterio.jsp" method="post"> 
+	                           <input type="hidden" value="critTri"+<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
+	                           <button type="submit">Visualizar</button>
+	                       </form> 
+	                   </td>
+	                   <td><form action="selecionarCriterioTrilha.jsp" method="post"> 
+	                           <input type="hidden" value="critTri"+<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
+	                           <button type="submit">Selecionar</button>
+	                       </form> 
+	                   </td>
+	            <%}%>
+	       
+				</table>
+				
+				<h1>Criar Novos Critérios</h1>
 			
-       <% //	}else{
+       <% 	}else{
+    	   		List<Criterio> criterios = critCon.obterCriteriosPorTrilha(trilha.getCriterioTrilha().getIdCriterioTrilha());
         %>
         
-        <h1>Criar Novos Critérios</h1>
-        
-        <%if(!criterios.isEmpty()){ %>
-        <table border="1">
-            <tr>
-                <th>Critérios</th>
-            </tr>
-	<% 
-            for(int i=0; i < criterios.size(); i++){
-                
-               session.setAttribute("crit"+criterios.get(i).getIdCriterio(), criterios.get(i));
-               %>
-               
-               <tr>
-                   <td><%=criterios.get(i).getDescricao()%></td>
-                   <td><form action="alterarCriterio.jsp" method="post"> 
-                           <input type="hidden" value="crit<%= criterios.get(i).getIdCriterio()%>" name="criterio"> 
-                           <button type="submit">Alterar</button>
-                       </form> 
-                   </td>
-                   <td><form action="removerCriterio.jsp" method="post" class = "formRemover"> 
-                           <input type="hidden" value="crit<%= criterios.get(i).getIdCriterio()%>" name="criterio"> 
-                           <button type="submit">Remover</button>
-                       </form> 
-                   </td>
-                   
-            <%}%>
-       <% } %>
+		        <h1>Criar Novos Critérios</h1>
+		        
+		        <%if(!criterios.isEmpty()){ %>
+		        <table border="1">
+		            <tr>
+		                <th>Critérios</th>
+		            </tr>
+			<% 
+		            for(int i=0; i < criterios.size(); i++){
+		                
+		               session.setAttribute("crit"+criterios.get(i).getIdCriterio(), criterios.get(i));
+		               %>
+		               
+		               <tr>
+		                   <td><%=criterios.get(i).getDescricao()%></td>
+		                   <td><form action="alterarCriterio.jsp" method="post"> 
+		                           <input type="hidden" value="crit<%= criterios.get(i).getIdCriterio()%>" name="criterio"> 
+		                           <button type="submit">Alterar</button>
+		                       </form> 
+		                   </td>
+		                   <td><form action="removerCriterio.jsp" method="post" class = "formRemover"> 
+		                           <input type="hidden" value="crit<%= criterios.get(i).getIdCriterio()%>" name="criterio"> 
+		                           <button type="submit">Remover</button>
+		                       </form> 
+		                   </td>
+		                   
+		            <%}%>
+		       <% }
+        }%>
 	</table>
     	
     	<br />

@@ -1,3 +1,6 @@
+<%@page import="br.com.n2s.sara.controller.TrilhaController"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="br.com.n2s.sara.model.CriterioTrilha"%>
 <%@page import="br.com.n2s.sara.controller.ItemController"%>
 <%@page import="br.com.n2s.sara.controller.CriterioTrilhaController"%>
 <%@page import="br.com.n2s.sara.model.Trilha"%>
@@ -30,7 +33,27 @@
 		Criterio crit = new Criterio();
 		crit.setDescricao(descricaoCrit);
 		crit.setPeso(pesoCrit);
-		crit.setCriterioTrilha(trilha.getCriterioTrilha());
+		
+		if(trilha.getCriterioTrilha() != null){
+			crit.setCriterioTrilha(trilha.getCriterioTrilha());
+		}else{
+			String nomeCriterioTrilha = request.getParameter("nomeCriterioTrilha");
+			
+			CriterioTrilha criterioTrilha = new CriterioTrilha();
+			criterioTrilha.setNome(nomeCriterioTrilha);
+			criterioTrilha.setDataCriacao(LocalDate.now());
+			
+			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
+			criterioTrilhaController.criar(criterioTrilha);
+			
+			criterioTrilha = criterioTrilhaController.buscar(criterioTrilhaController.obterUltimoID());
+			crit.setCriterioTrilha(criterioTrilha);
+			
+			trilha.setCriterioTrilha(criterioTrilha);
+			TrilhaController trilhaController = new TrilhaController();
+			trilhaController.atualizar(trilha);
+		}
+		
 		CriterioController critCon = new CriterioController();
 		critCon.criar(crit);
 		

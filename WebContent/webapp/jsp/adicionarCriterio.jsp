@@ -15,10 +15,19 @@
     		session.setAttribute("trilha", trilha);
 		%>
 		
-		<h1> Critério </h1>
-			
         <form action="confirmarCriterio.jsp" method="post">
-            <p>Descrição: <textarea name="descricaoCrit" rows="1" cols="30" required></textarea></p>
+        	<%
+        	if(trilha.getCriterioTrilha() == null){ %>
+    			
+    			<h1>Critério Trilha</h1>
+    				
+    			<p>Nome: <input type="text" name="nomeCriterioTrilha" required> </p>	
+    				
+    		<%} %>
+
+			<h1> Critério </h1>
+			    		
+       		<p>Descrição: <textarea name="descricaoCrit" rows="1" cols="30" required></textarea></p>
             <p>Peso: <input type="number" name="pesoCrit" value="0" required> </p>
             
             <!-- <h2> Itens do Critério </h2>
@@ -37,7 +46,6 @@
 			<br /> <br />     
             <p><button type="submit">Adicionar Critério</button></p>
         </form>
-
         
     </center>
     
