@@ -29,7 +29,7 @@
         	List<Criterio> criterios = critCon.listar();
       		List<CriterioTrilha> listCriterioTrilha = criterioTrilhaController.listar();
         	
-      		if(criterios.isEmpty()){%>
+      		if(trilha.getCriterioTrilha() == null){%>
         	
         	<h1>Selecionar Critério Existente</h1>
         	<table border="1">
