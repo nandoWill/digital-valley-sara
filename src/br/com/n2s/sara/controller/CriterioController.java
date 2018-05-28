@@ -20,6 +20,10 @@ public class CriterioController {
 		return daoCriterio.read();
 	}	
 	
+	public List<Criterio> obterCriteriosPorTrilha(int idCriterioTrilha){
+		return daoCriterio.obterCriteriosPorTrilha(idCriterioTrilha);
+	}
+	
 	public Criterio buscar(int idCriterio) {
 		return daoCriterio.getCriterio(idCriterio);
 	}
