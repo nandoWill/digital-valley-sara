@@ -46,12 +46,12 @@
 	               <tr>
 	                   <td><%=listCriterioTrilha.get(i).getNome()%></td>
 	                   <td><form action="visualizarCriterio.jsp" method="post"> 
-	                           <input type="hidden" value="critTri"+<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
+	                           <input type="hidden" value="critTri<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
 	                           <button type="submit">Visualizar</button>
 	                       </form> 
 	                   </td>
 	                   <td><form action="selecionarCriterioTrilha.jsp" method="post"> 
-	                           <input type="hidden" value="critTri"+<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
+	                           <input type="hidden" value="critTri<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
 	                           <button type="submit">Selecionar</button>
 	                       </form> 
 	                   </td>
