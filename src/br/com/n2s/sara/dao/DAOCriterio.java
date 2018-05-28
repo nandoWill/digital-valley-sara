@@ -103,6 +103,41 @@ public class DAOCriterio {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public List<Criterio> obterCriteriosPorTrilha(int idCriterioTrilha){
+		
+		this.connection = new ConnectionFactory().getConnection();
+		String sql = "select * from sara.Criterio where idcriteriotrilha = ?";
+
+		try{
+			List<Criterio> criterios = new ArrayList<Criterio>();
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+			stmt.setInt(1, idCriterioTrilha);
+			ResultSet rs = stmt.executeQuery();
+			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
+
+			while(rs.next()){
+
+				Criterio criterio = new Criterio();
+
+				criterio.setIdCriterio(rs.getInt("idCriterio"));
+				criterio.setDescricao(rs.getString("descricao"));
+				criterio.setPeso(rs.getInt("peso"));
+				criterio.setCriterioTrilha(criterioTrilhaController.buscar(rs.getInt("idCriterioTrilha")));
+				
+				criterios.add(criterio);
+
+			}
+
+			rs.close();
+			stmt.close();
+			this.connection.close();
+			return criterios;
+
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+	}
 
 	public void update(Criterio criterio){
 		
