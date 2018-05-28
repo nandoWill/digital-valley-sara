@@ -22,8 +22,7 @@ public class DAOAvaliaTrilha {
 	public void create(AvaliaTrilha avalia){
 		
 		this.connection = new ConnectionFactory().getConnection();
-		String sql = "insert into sara.avaliatrabalho"  
-				+ "(idavaliador, idtrilha)"
+		String sql = "insert into sara.avaliatrilha(idavaliador, idtrilha)"
 				+ "values (?,?)";
 
 		try {

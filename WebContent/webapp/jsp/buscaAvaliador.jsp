@@ -1,3 +1,5 @@
+<%@page import="br.com.n2s.sara.controller.AvaliaTrilhaController"%>
+<%@page import="br.com.n2s.sara.model.AvaliaTrilha"%>
 <%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page import="br.com.n2s.sara.model.NivelUsuario"%>
 <%@page import="br.com.n2s.sara.controller.UsuarioController"%>
@@ -15,20 +17,30 @@
 		<%
     	String cpf = request.getParameter("cpf");
 		Trilha trilha = (Trilha) session.getAttribute("trilha");
+		session.setAttribute("trilha", trilha);
     	UsuarioController usCon = new UsuarioController();
     	Usuario user = usCon.buscar(cpf);
+    	AvaliaTrilhaController avaCon = new AvaliaTrilhaController();
     	if(user != null){
-    		user.setTipo(NivelUsuario.AVALIADOR);
-    		usCon.atualizar(user);
-    		
+    		if(user.getTipo().equals(NivelUsuario.AUTOR)){
+    			user.setTipo(NivelUsuario.AVALIADOR);
+    			usCon.atualizar(user);
+    		}
+    		AvaliaTrilha avaliadorTrilha = new AvaliaTrilha();
+    		avaliadorTrilha.setAvaliador(user);
+    		avaliadorTrilha.setTrilha(trilha);
+    		avaCon.criar(avaliadorTrilha);
+    		response.sendRedirect("gerenciaAvaliadores.jsp");
     		
     	}else{
             %>
-            <p>Nome: <input type="text" name="nome"> </p>
-            <p>Email: <input type="email" name="email"> </p>
-            <p>Data: <input type="date" name="testeData"></p>
-            <p>Número: <input type="tel" name="telefone"> </p>
-            <p>Endereço: <input type="text" name="endereco"> </p>
+            <form action="cadastrarAvaliador.jsp" method="post">
+	            <p>Nome: <input type="text" name="nome"> </p>
+	            <p>Sobrenome: <input type="text" name="sobrenome"> </p>
+	            <p>CPF: <input type="text" name="cpf"></p>
+	            <p>Email: <input type="email" name="email"> </p>
+	            <input type="submit">
+	        </form>
             <%
     	}
     	%>

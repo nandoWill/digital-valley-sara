@@ -4,6 +4,11 @@
     Author     : Hugo
 --%>
 
+<%@page import="br.com.n2s.sara.model.AvaliaTrilha"%>
+<%@page import="br.com.n2s.sara.model.Trilha"%>
+<%@page import="br.com.n2s.sara.controller.AvaliaTrilhaController"%>
+<%@page import="br.com.n2s.sara.controller.UsuarioController"%>
+<%@page import="br.com.n2s.sara.model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,11 +18,17 @@
     </head>
     <body>
     <center>
-        <form action="confirmaRemocao" method="post">
-            Remover por CPF: <input type="text" name="cpf">
-            <input type="submit" value="Buscar">
-            <input type="button" value="Voltar" onClick="history.go(-1)">
-        </form>
+        <%
+        	Trilha trilha = (Trilha) session.getAttribute("trilha");
+        	String cpf = request.getParameter("avaliador");
+        	UsuarioController userCon = new UsuarioController();
+        	Usuario user = userCon.buscar(cpf);
+        	AvaliaTrilhaController avCon = new AvaliaTrilhaController();
+        	AvaliaTrilha avalia = new AvaliaTrilha();
+        	avCon.deletar(avalia);
+        	response.sendRedirect("gerenciaAvaliadores.jsp");
+        %>
+        
     </center>
     </body>
 </html>

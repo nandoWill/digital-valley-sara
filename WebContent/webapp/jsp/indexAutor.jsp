@@ -24,10 +24,10 @@
     <% 	UsuarioController userCon = new UsuarioController();
     	Usuario usuario = userCon.buscar("100");
     	session.setAttribute("usuario", usuario);
-	%>s
+	%>
     
 
-<center> Bem Vindo!  
+<center> Bem Vindo!
     <% 
     	EventoController evCon = new EventoController();
         List<Evento> eventos = evCon.listar();
@@ -91,17 +91,19 @@
     
     <p>
 <%      switch(usuario.getTipo()){
-
-            case ADMINISTRADOR: %>
+            case 
+            ADMINISTRADOR: %>
 				<input type="button" onclick="location.href='formCadastroEvento.jsp';" value="Criar Evento">
 <%             
             case COORDENADOR_EVENTO: %> 
 
-<%	    case COORDENADOR_TRILHA: %>
+<%	    	case COORDENADOR_TRILHA: %>
                 <input type="button" onclick="location.href='indexCoordTrilha.jsp';" value="Gerenciar"/>
 <%          case AVALIADOR: %>
                 <input type="button" onclick="location.href='indexAvaliador.jsp';" value="Avaliar Trabalhos"/>
-<%	} 
+<%			case AUTOR:
+	
+	} 
 		
 %> 
 </p></center> 
