@@ -85,7 +85,8 @@
 		                           <button type="submit">Alterar</button>
 		                       </form> 
 		                   </td>
-		                   <td><form action="removerCriterio.jsp" method="post" class = "formRemover"> 
+		                   
+		                   <td><form action="removerCriterio.jsp" method="post" id="formRemover" onsubmit="return confirm('Deseja remover este critério?');"> 
 		                           <input type="hidden" value="crit<%= criterios.get(i).getIdCriterio()%>" name="criterio"> 
 		                           <button type="submit">Remover</button>
 		                       </form> 
@@ -112,7 +113,8 @@
     </center>
 	
 	<script>
-        $(".formRemover").each(function(){    	
+        /* $(".formRemover").onClick(function(){
+        
         this.addEventListener('submit', function(e) {   
         var form = this;
          e.preventDefault();
@@ -140,7 +142,19 @@
                 } 
             });
         });
-        });
+        }); */
+        
+        //document.getElementById("formRemover").onsubmit = function() {confirmarRemocao()};
+
+        function confirmarRemocao(){
+        	decisao = confirm("Deseja remover?");
+        	
+        	if(decisao){
+        		return true;
+        	}else{
+        		return false;
+        	}
+        }
         
         </script>
 	
