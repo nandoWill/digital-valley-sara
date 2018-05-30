@@ -32,14 +32,12 @@
      <% 	
     
     
-    	UsuarioController userCon = new UsuarioController();
-    	Usuario usuario = (usuario) session.getAttribute("usuario");  //recebe o cpf
+    	UsuarioController userCon = new UsuarioController(); //cria um controler
+    	Usuario usuario = (Usuario) session.getAttribute("usuario");  //recebe o cpf, vai na sessao e procura o usuário
+
     	
     	
-    	
-    	//o CPF cria um usuario usuario. 
-    	//o usuario cria uma sessão
-    	//consegue a autenticação
+    	//cria um usuario a partir dos dados da sessao
     	
     	
 	%>
@@ -51,11 +49,11 @@
     	
     	EventoController evCon = new EventoController();
 		CoordenacaoTrilhaController coordtrCon = new CoordenacaoTrilhaController();
-		int idTrilha = (INTEGER)request.getAttribute("trilha");
+		int idTrilha = (Integer) request.getAttribute("estaTrilha");//pega na requisicao
 		DAOTrilha recebeTrilha = new DAOTrilha();
 		Trilha trilha = new Trilha();
 		trilha = recebeTrilha.getTrilha(idTrilha);
-        List<CoordenacaoTrilha> listCoordTrilha = trilha.getCoordenadores;
+        List<Usuario> listCoordTrilha = trilha.getCoordenadores();
         Evento ev = (Evento)session.getAttribute("evento");
         //cria um evCon que traz info do banco
         //cria lista de eventos que vem do banco pelo controller
@@ -83,109 +81,60 @@
                %>
                
                <tr>
-                   <td><%= listCoordTrilha.get(i).getCoordenador().getNome() %></td>
-                   <td><%= listCoordTrilha.get(i).getCoordenador().getSobrenome() %> </td>
-                   <td><%= listCoordTrilha.get(i).getCoordenador().getEmail() %> </td>
+                   <td><%= listCoordTrilha.get(i).getNome()  %></td>
+                   <td><%= listCoordTrilha.get(i).getSobrenome() %> </td>
+                   <td><%= listCoordTrilha.get(i).getEmail() %> </td>
                    
-                   <!-- carrega os atributos no evento criado -->
+                   <!-- DELETAR -->
                    <td><form action="delete" method="post"> 
                    
                    <% switch(usuario.getTipo()){
                    
-                   case ADMINITRADOR: %>
-                   
-                  <!--  criar um botao para adicionar -->
-                     
-                   <%case COORDENADOR_EVENTO: %>
-                    <td><form action="removerCoordenadorTrilha.jsp" method="post" class = "formRemover"> 
-                           <input type="hidden" value="crit<%= listCoodTrilha.get(i).getCoordenador().getTipo()%>" name="criterio"> 
+                   case ADMINISTRADOR: %>
+
+
+
+									<%
+										case COORDENADOR_EVENTO:
+									%>
+									<td><form action="removerCoordenadorTrilha.jsp"
+											method="post"
+											onsubmit="return confirm('Deseja remover este critério?');> 
+                           <input type="hidden" value="<%= listCoordTrilha.get(i).getCpf()%>" name="delCoord"> 
                            <button type="submit">Remover</button>
                        </form> 
                    </td>
                    <%case COORDENADOR_TRILHA: %>
-                   <input type="button" onclick=""; value="del">
-                   <td><form action="removerCoordenadorTrilha.jsp" method="post" class = "formRemover"> 
-                           <input type="hidden" value="crit<%= listCoodTrilha.get(i).getCoordenador().getTipo()%>" name="criterio"> 
+                   <input type="button" onclick="";
+											value="del">
+											<td><form action="removerCoordenadorTrilha.jsp"
+													method="post"
+													onsubmit="return confirm('Deseja remover este critério?');> 
+                           <input type="hidden" value="<%= listCoordTrilha.get(i).getCpf()%>" name="delCoord"> 
                            <button type="submit">Remover</button>
                        </form> 
                    </td>
                    <%case AVALIADOR: %>
-                   <td><form action="removerCoordenadorTrilha.jsp" method="post" > 
-                           <input type="hidden" value="crit<%= listCoodTrilha.get(i).getCoordenador().getTipo()%>" name="criterio"> 
-                           <button type="submit" class = "formRemover">Remover</button>
-                   		</form>
+                    <input type="button" onclick="";
+													value="del">
+													<td><form action="removerCoordenadorTrilha.jsp"
+															method="post"
+															onsubmit="return confirm('Deseja remover este critério?");> 
+                           <input type="hidden" value="<%=listCoordTrilha.get(i).getCpf()%>" name="delCoord"> 
+                           <button type="submit">Remover</button>
+                       </form> 
                    	</td>
                    	
                    
-                   }
-                   
-                	
-       	<tr> <p>
-        <!-- <form action="adicionarCoodenaforTrilha.jsp" method="post"> -->
-        
-        <a href="adicionarCoodenaforTrilha.jsp"> <button value="Adicionar Coordenador a Trilha"></button> </a> 
-        
-            
-        </p>
-            
-	       
-    </center>
-	
-	<script>
-        $("#formRemover").onClick(function(){    	
-        this.addEventListener('submit', function(e) {   
-        var form = this;
-         e.preventDefault();
-          swal({
-                title: "Deseja Remover?",
-                text: "Este critério será excluído.",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#4cd964",
-                confirmButtonText: "Sim, quero remover.", 
-                cancelButtonText: "Não",       
-                closeOnConfirm: false
-            },
-            function(isConfirm) {
-                if (isConfirm) {
-                    swal({
-                        title: "Critério Removido!",			  
-				        timer: 1000,
-				        type: "success",
-				        showConfirmButton: false
-                    }, function() {
-                        form.submit();
-                    });
-                    
-                } 
-                   
-                   <!-- cria um formulario oculto que recebe no oculto=hidden a cada ciclo uma string evento --> 
-                           <%--NAO PRECISA ENVIAR PARA OUTRA PAGINA
-                           
-                           <input type="hidden" value="<%= listCoordTrilha.get(i) %>" name="listCoodTrilha"> 
-                           <button type="submit">Visualizar</button> --%>
-                       </form> 
-                   </td>
-            <%}
-        %>
-	
+                  <%}
+
+			}%>
+        			<tr> 
+   				     		
+<a href="adicionaCoordenadorTrilha.jpg"> <button value="Deletado com sucesso."></a>       
     
-    
-    <p>
-<%       <form action="addCoordenadorTrilha.jsp" method="post"> 
-<input type="hidden" value="adicionar" name="criterio"> 
-<button type="submit">Remover</button>
-</form> 
-
-               
-<%	} 
-		
-%> 
-</p></center> 
-
-
-
-
-</table>
+	               </tr>
+    </center>          
+	</table>
 </body>
 </html>

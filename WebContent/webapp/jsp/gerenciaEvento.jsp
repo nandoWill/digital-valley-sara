@@ -46,7 +46,7 @@
         			%>
         			<td>
         				<form action="gerenciarCoordenadorTrilha.jsp" method="post">
-        					<input type="hidden" value="<%= evento.getTrilhas().get(i).getIdTrilha()%>" name="trilha">
+        					<input type="hidden" value="<%= evento.getTrilhas().get(i).getIdTrilha()%>" name="estaTrilha">
 				            <input type="submit" name="gerCordTri" value="Gerenciar Coordenadores dessa Trilha">
 				        </form>
 				    </td>
