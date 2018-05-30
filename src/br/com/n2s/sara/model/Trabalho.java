@@ -9,11 +9,16 @@ public class Trabalho {
 	private String palavrasChaves;
 	private String resumo;
 	private StatusTrabalho status;
-	private File manuscrito;
-	private File versaoFinal;
 	private Trilha trilha; // Trilha a qual o trabalho está associado
 	private Usuario autor;
+	private String endereco;//Substitui versao final
 
+	public String getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
 	public Usuario getAutor() {
 		return autor;
 	}
@@ -49,18 +54,6 @@ public class Trabalho {
 	}
 	public void setStatus(StatusTrabalho status) {
 		this.status = status;
-	}
-	public File getManuscrito() {
-		return manuscrito;
-	}
-	public void setManuscrito(File manuscrito) {
-		this.manuscrito = manuscrito;
-	}
-	public File getVersaoFinal() {
-		return versaoFinal;
-	}
-	public void setVersaoFinal(File versaoFinal) {
-		this.versaoFinal = versaoFinal;
 	}
 	public Trilha getTrilha() {
 		return trilha;
