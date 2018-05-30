@@ -40,7 +40,9 @@
 	            <p>CPF: <input type="text" name="cpf"></p>
 	            <p>Email: <input type="email" name="email"> </p>
 	            <input type="submit">
+	            <input type="button" value="Voltar" onClick="history.go(-1)">
 	        </form>
+	        
             <%
     	}
     	%>

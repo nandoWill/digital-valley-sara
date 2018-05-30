@@ -19,6 +19,10 @@ public class PeriodoController {
 	public List<Periodo> listar(){
 		return daoPeriodo.read();
 	}
+	
+	public List<Periodo> listar(int id){
+		return daoPeriodo.readById(id);
+	}
 
 	public Periodo buscar(int idPeriodo){
 		return daoPeriodo.getPeriodo(idPeriodo);
