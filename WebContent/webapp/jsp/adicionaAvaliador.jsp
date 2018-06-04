@@ -1,3 +1,9 @@
+x<%-- 
+    Document   : adicionaAvaliador
+    Created on : 18/04/2018, 09:18:49
+    Author     : Hugo
+--%>
+
 <%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page import="br.com.n2s.sara.model.Usuario"%>
 <%@page import="br.com.n2s.sara.controller.UsuarioController"%>
@@ -15,7 +21,7 @@
     		session.setAttribute("trilha", trilha);
     	%>
         <form action="buscaAvaliador.jsp" method="POST">
-            <p>Buscar por CPF:</p>
+            <p>Busca por CPF:</p>
             <p>CPF: <input type="text" name="cpf" required></p>
             
             <input type="submit" value="Buscar">
