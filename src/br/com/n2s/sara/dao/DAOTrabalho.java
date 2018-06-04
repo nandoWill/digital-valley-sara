@@ -24,8 +24,8 @@ public class DAOTrabalho {
 		this.connection = new ConnectionFactory().getConnection(); 	
 
 		String sql = "insert into sara.Usuario"  
-				+ "(titulo, palavrasChaves, resumo, status, manuscrito, versaoFinal, idTrilha)"
-				+ "values (?,?,?,?,?,?,?)";
+				+ "(titulo, palavrasChaves, resumo, status, endereco, idTrilha)"
+				+ "values (?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
@@ -34,9 +34,8 @@ public class DAOTrabalho {
 			stmt.setString(2, trabalho.getPalavrasChaves());
 			stmt.setString(3, trabalho.getResumo());
 			stmt.setString(4, trabalho.getStatus().toString());
-			stmt.setString(5, FileManipulation.transFileToString(trabalho.getManuscrito()));
-			stmt.setString(6, FileManipulation.transFileToString(trabalho.getVersaoFinal()));
-			stmt.setInt(7, trabalho.getTrilha().getIdTrilha());
+			stmt.setString(5, trabalho.getEndereco().toString());// substituiu versão final
+			stmt.setInt(6, trabalho.getTrilha().getIdTrilha());
 
 			stmt.execute();
 			stmt.close();
@@ -66,12 +65,15 @@ public class DAOTrabalho {
 				trabalho.setPalavrasChaves(rs.getString("palavrasChaves"));
 				trabalho.setResumo(rs.getString("resumo"));
 				trabalho.setStatus(StatusTrabalho.valueOf(rs.getString("status")));
-				try {
-					trabalho.setManuscrito(FileManipulation.transStringToFile(rs.getString("manuscrito")));
+				/*Não é para listar o conteúdo dos trabalhos
+				 * 
+				 * 
+				 * try {
+					trabalho.setManuscrito(rs.getString("manuscrito")));
 					trabalho.setVersaoFinal(FileManipulation.transStringToFile(rs.getString("versaofinal")));
 				} catch (IOException e) {
 					e.printStackTrace();
-				}
+				}*/
 				trabalho.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
 
 				trabalhos.add(trabalho);
@@ -98,7 +100,7 @@ public class DAOTrabalho {
 			ResultSet rs = stmt.executeQuery();
 			TrilhaController trilhaController = new TrilhaController(); 
 
-			if(rs.next()){
+			/*if(rs.next()){         Espera visualizar apenas de 1 trabalho*/
 
 				Trabalho trabalho = new Trabalho();
 				trabalho.setIdTrabalho(rs.getInt("idTrabalho"));
@@ -106,22 +108,18 @@ public class DAOTrabalho {
 				trabalho.setPalavrasChaves(rs.getString("palavrasChaves"));
 				trabalho.setResumo(rs.getString("resumo"));
 				trabalho.setStatus(StatusTrabalho.valueOf(rs.getString("status")));
-				try {
-					trabalho.setManuscrito(FileManipulation.transStringToFile(rs.getString("manuscrito")));
-					trabalho.setVersaoFinal(FileManipulation.transStringToFile(rs.getString("versaofinal")));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				trabalho.setEndereco(rs.getString("endereco"));
 				trabalho.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
 				rs.close();
 				stmt.close();
 				this.connection.close();
 				return trabalho;
-
-			}else{
-				return null;
-			}
-		}catch(SQLException e){
+				
+			
+				/* não tem resposta do if			}else{
+				return null;*/
+		}	
+		catch(SQLException e){
 			throw new RuntimeException(e);
 		}
 	}
@@ -129,7 +127,7 @@ public class DAOTrabalho {
 	public void update(Trabalho trabalho){
 		
 		this.connection = new ConnectionFactory().getConnection();
-		String sql = "update sara.Trabalho set titulo = ?, palavrasChaves = ? resumo = ?, status = ?, manuscrito = ?, versaoFinal = ?, idTrilha = ?"
+		String sql = "update sara.Trabalho set titulo = ?, palavrasChaves = ? resumo = ?, status = ?, endereco = ?, idTrilha = ?"
 				+ " where idTrabalho  = ?";
 
 		try {
@@ -139,10 +137,9 @@ public class DAOTrabalho {
 			stmt.setString(2, trabalho.getPalavrasChaves());
 			stmt.setString(3, trabalho.getResumo());
 			stmt.setString(4, trabalho.getStatus().toString());
-			stmt.setString(5, FileManipulation.transFileToString(trabalho.getManuscrito()));
-			stmt.setString(6, FileManipulation.transFileToString(trabalho.getVersaoFinal()));
-			stmt.setInt(7, trabalho.getTrilha().getIdTrilha());
-			stmt.setInt(8, trabalho.getIdTrabalho());
+			stmt.setString(5, trabalho.getEndereco());
+			stmt.setInt(6, trabalho.getTrilha().getIdTrilha());
+			
 
 			stmt.execute();
 			stmt.close();
