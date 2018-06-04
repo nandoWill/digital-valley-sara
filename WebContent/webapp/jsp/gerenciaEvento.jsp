@@ -60,10 +60,16 @@
             }
         %>    
     </table>
+    
     <form action="adicionaTrilha.jsp" method="post">
         <input type="submit" value="Adicionar um Trilha">
     </form>
-    <input type="button" value="Voltar" onClick="history.go(-1)">
-    </center>
+   	<br />
+   	<form action="gerenciarCoordenadoresEvento.jsp" method="post"> 
+        <input type="submit" value="Gerenciar Coordenadores"> 
+    </form>
+    <br />
+    <input type="button" value="Voltar" onClick="history.go(-1)"> 
+     </center>
     </body>
 </html>

@@ -187,7 +187,7 @@ public class DAOCoordenacaoEvento {
 	public void delete(String cpfCoordenador){
 
 		this.connection = new ConnectionFactory().getConnection(); 
-		String sql = "delete from sara.CoordenacaoEvento where cpf = ?";
+		String sql = "delete from sara.CoordenacaoEvento where cpfCoordenador = ?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);

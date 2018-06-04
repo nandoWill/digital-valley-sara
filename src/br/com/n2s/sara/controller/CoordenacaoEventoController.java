@@ -21,8 +21,12 @@ public class CoordenacaoEventoController {
 		return daoCoordenaEvento.read();
 	}
 	
-	public List<CoordenacaoEvento> listar(String id){
-		return daoCoordenaEvento.readById(id);
+	public List<CoordenacaoEvento> listar(int idEvento){
+		return daoCoordenaEvento.read(idEvento);
+	}
+	
+	public List<CoordenacaoEvento> listar(String cpf){
+		return daoCoordenaEvento.read(cpf);
 	}
 
 	public CoordenacaoEvento buscar(String cpf){
