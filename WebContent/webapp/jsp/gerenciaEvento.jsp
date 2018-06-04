@@ -60,10 +60,16 @@
             }
         %>    
     </table>
+    <p>
+    <%
+    	if(user.getTipo().equals(NivelUsuario.COORDENADOR_EVENTO)){
+    %>
     <form action="adicionaTrilha.jsp" method="post">
-        <input type="submit" value="Adicionar um Trilha">
+        <input type="submit" value="Adicionar uma Trilha">
+        <input type="button" value="Voltar" onClick="history.go(-1)">
     </form>
-    <input type="button" value="Voltar" onClick="history.go(-1)">
+    <%}else %>
+    	<input type="button" value="Voltar" onClick="history.go(-1)">
     </center>
     </body>
 </html>

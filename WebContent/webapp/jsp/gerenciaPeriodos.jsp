@@ -45,7 +45,7 @@
                 </td>
                 
                 <td>
-                    <form action="removerPeriodo.jsp" method="post">
+                    <form action="removerPeriodo.jsp" method="post" onsubmit="return confirm('Deseja remover este critério?');">
                     	<input type="hidden" value="p<%=Integer.toString(periodos.get(i).getIdPeriodo())%>" name="periodo">
                         <input type="submit" value="Remover">
                     </form>
