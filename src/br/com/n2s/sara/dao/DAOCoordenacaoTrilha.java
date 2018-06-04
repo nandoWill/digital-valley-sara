@@ -20,7 +20,7 @@ public class DAOCoordenacaoTrilha {
 
 		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "insert into sara.CoordenacaoTrilha"  
-				+ "(coordenador, idTrilha)"
+				+ "(cpfCoordenador, idTrilha)"
 				+ "values (?,?)";
 
 		try {
@@ -53,7 +53,7 @@ public class DAOCoordenacaoTrilha {
 			while(rs.next()){
 
 				CoordenacaoTrilha coordenacaoTrilha = new CoordenacaoTrilha();
-				coordenacaoTrilha.setCoordenador(usuarioController.buscar(rs.getString("coordenador")));
+				coordenacaoTrilha.setCoordenador(usuarioController.buscar(rs.getString("cpfCoordenador")));
 				coordenacaoTrilha.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
 				coordenacoes.add(coordenacaoTrilha);
 			}
@@ -71,7 +71,7 @@ public class DAOCoordenacaoTrilha {
 		public List<CoordenacaoTrilha> readById(String id){
 
 		this.connection = new ConnectionFactory().getConnection(); 
-		String sql = "select * from sara.CoordenacaoTrilha where coordenador=?";
+		String sql = "select * from sara.CoordenacaoTrilha where cpfCoordenador = ?";
 
 		try{
 
@@ -85,7 +85,7 @@ public class DAOCoordenacaoTrilha {
 			while(rs.next()){
 
 				CoordenacaoTrilha coordenacaoTrilha = new CoordenacaoTrilha();
-				coordenacaoTrilha.setCoordenador(usuarioController.buscar(rs.getString("coordenador")));
+				coordenacaoTrilha.setCoordenador(usuarioController.buscar(rs.getString("cpfCoordenador")));
 				coordenacaoTrilha.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
 				coordenacoes.add(coordenacaoTrilha);
 			}
@@ -104,7 +104,7 @@ public class DAOCoordenacaoTrilha {
 	public CoordenacaoTrilha getCoordenacaoTrilha(String cpfCoordenador){
 
 		this.connection = new ConnectionFactory().getConnection(); 
-		String sql = "select * from sara.CoordenacaoTrilha where coordenador = ?";
+		String sql = "select * from sara.CoordenacaoTrilha where cpfCoordenador = ?";
 		UsuarioController usuarioController = new UsuarioController();
 		TrilhaController trilhaController = new TrilhaController();
 
@@ -116,7 +116,7 @@ public class DAOCoordenacaoTrilha {
 			if(rs.next()){
 
 				CoordenacaoTrilha coordenacaoTrilha = new CoordenacaoTrilha();
-				coordenacaoTrilha.setCoordenador(usuarioController.buscar(rs.getString("coordenador")));
+				coordenacaoTrilha.setCoordenador(usuarioController.buscar(rs.getString("cpfCoordenador")));
 				coordenacaoTrilha.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
 
 				rs.close();
@@ -134,8 +134,8 @@ public class DAOCoordenacaoTrilha {
 	public void update(CoordenacaoTrilha coordenacaoTrilha){
 
 		this.connection = new ConnectionFactory().getConnection(); 
-		String sql = "update sara.CoordenacaoTrilha set coordenador = ?, idTrilha = ? " 
-				+ " where coordenador = ?";
+		String sql = "update sara.CoordenacaoTrilha set cpfCoordenador = ?, idTrilha = ? " 
+				+ " where cpfCoordenador = ?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
@@ -156,7 +156,7 @@ public class DAOCoordenacaoTrilha {
 	public void delete(String cpfCoordenador){
 
 		this.connection = new ConnectionFactory().getConnection(); 
-		String sql = "delete from sara.CoordenacaoTrilha where cpf = ?";
+		String sql = "delete from sara.CoordenacaoTrilha where cpfCoordenador = ?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
@@ -170,5 +170,4 @@ public class DAOCoordenacaoTrilha {
 		}
 
 	}
-
 }
