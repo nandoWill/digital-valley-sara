@@ -11,14 +11,12 @@
 <body>
 
 	<% 
-		
-			String chave = request.getParameter("coordenacaoEvento");
-			CoordenacaoEvento coordenacaoEvento = (CoordenacaoEvento) session.getAttribute(chave);
-			CoordenacaoEventoController coordEventoController = new CoordenacaoEventoController();
-			coordEventoController.deletar(coordenacaoEvento.getCoordenador().getCpf());
+		String chave = request.getParameter("coordenacaoEvento");
+		CoordenacaoEvento coordenacaoEvento = (CoordenacaoEvento) session.getAttribute(chave);
+		CoordenacaoEventoController coordEventoController = new CoordenacaoEventoController();
+		coordEventoController.deletar(coordenacaoEvento.getCoordenador().getCpf());
 			
-		
-		%>
+	%>
 		
 		<jsp:forward page="gerenciarCoordenadoresEvento.jsp"></jsp:forward>
 	

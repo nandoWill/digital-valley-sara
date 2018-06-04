@@ -45,7 +45,7 @@
 			            if(user.getTipo().equals(NivelUsuario.COORDENADOR_EVENTO)){
         			%>
         			<td>
-        				<form action="gerenciaCoordenador.jsp" method="post">
+        				<form action="gerenciarCoordenadoresTrilha.jsp" method="post">
         					<input type="hidden" value="gt<%= evento.getTrilhas().get(i).getIdTrilha()%>" name="trilha">
 				            <input type="submit" name="gerCord" value="Gerenciar Coordenadores dessa Trilha">
 				        </form>
