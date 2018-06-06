@@ -19,6 +19,7 @@
         List<CoordenacaoEvento> idEventos = new CoordenacaoEventoController().listar(user.getCpf());
         List<CoordenacaoTrilha> idTrilhas = new CoordenacaoTrilhaController().listar(user.getCpf());
         List<Evento> eventos = new ArrayList<Evento>();
+        List<Trilha> trilhas = new ArrayList<Trilha>();
         EventoController evCon = new EventoController();
         for(int i =0; i < idEventos.size(); i++){
         	Evento ev = idEventos.get(i).getEvento();
@@ -27,8 +28,19 @@
         }
         for(int i =0; i < idTrilhas.size(); i++){
         	Evento ev = idTrilhas.get(i).getTrilha().getEvento();
-        	ev.getTrilhas().add(idTrilhas.get(i).getTrilha());
-        	eventos.add(ev);
+        	Boolean achou = false;
+        	for(int j = 0; j < eventos.size(); i++){
+        		if(eventos.get(j).getIdEvento() == ev.getIdEvento()){
+        			eventos.get(j).getTrilhas().add(idTrilhas.get(i).getTrilha());
+        			achou = true;
+        			break;
+        		}
+        	}
+        	if(!achou){
+            	ev.setTrilhas(new ArrayList<Trilha>());
+            	ev.getTrilhas().add(idTrilhas.get(i).getTrilha());
+            	eventos.add(ev);	
+        	}
         }
         
        	

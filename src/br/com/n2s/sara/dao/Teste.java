@@ -93,7 +93,10 @@ public class Teste {
 //			trilhaController.criar(t1);
 //			trilhaController.criar(t2);
 			
-			
+//			DAOEvento de = new DAOEvento();
+//			int i = de.getIdEvento();
+//			System.out.println(i);
+//			
 			
 			System.out.println("Ok");
 			

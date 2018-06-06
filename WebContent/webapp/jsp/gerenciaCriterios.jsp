@@ -109,7 +109,7 @@
         
        	<br /> <br /> <br />
        	
-		<input type="button" onclick="location.href='indexAutor';" value="Voltar"/>        
+		<input type="button" value="Voltar" onClick="history.go(-1)">       
     </center>
 	
 	<script>

@@ -17,9 +17,10 @@
 		
 	%>
 	<form action="confirmaTrilha.jsp" method="post">
-		Nome: <input type="text" name="nome">
-		Descrição: <input type="text" name="descricao">
-		<input type="submit" value="Criar">
+		<p>Nome: <input type="text" name="nome"></p>
+		<p>Descrição: <input type="text" name="descricao"></p>
+		<p><input type="submit" value="Criar">
+		<input type="button" value="Voltar" onClick="history.go(-1)">
 	</form>
 </center>
 </body>

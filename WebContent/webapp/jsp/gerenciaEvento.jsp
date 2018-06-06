@@ -45,9 +45,9 @@
 			            if(user.getTipo().equals(NivelUsuario.COORDENADOR_EVENTO)){
         			%>
         			<td>
-        				<form action="gerenciaCoordenador.jsp" method="post">
-        					<input type="hidden" value="gt<%= evento.getTrilhas().get(i).getIdTrilha()%>" name="trilha">
-				            <input type="submit" name="gerCord" value="Gerenciar Coordenadores dessa Trilha">
+        				<form action="gerenciarCoordenadorTrilha.jsp" method="post">
+        					<input type="hidden" value="<%= evento.getTrilhas().get(i).getIdTrilha()%>" name="estaTrilha">
+				            <input type="submit" name="gerCordTri" value="Gerenciar Coordenadores dessa Trilha">
 				        </form>
 				    </td>
 				    <% 
@@ -60,10 +60,16 @@
             }
         %>    
     </table>
+   <p>
+    <%
+    	if(user.getTipo().equals(NivelUsuario.COORDENADOR_EVENTO)){
+    %>
     <form action="adicionaTrilha.jsp" method="post">
-        <input type="submit" value="Adicionar um Trilha">
+        <input type="submit" value="Adicionar uma Trilha">
+        <input type="button" value="Voltar" onClick="history.go(-1)">
     </form>
-    <input type="button" value="Voltar" onClick="history.go(-1)">
+    <%}else %>
+    	<input type="button" value="Voltar" onClick="history.go(-1)">
     </center>
     </body>
 </html>

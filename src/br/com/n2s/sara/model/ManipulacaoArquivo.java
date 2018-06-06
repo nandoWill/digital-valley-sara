@@ -69,14 +69,16 @@ public class ManipulacaoArquivo {
 		
 		 
 		//recebe o arquivo do upload da pagina
-		public void gravarArquivo(File usuarioArquivo, String evento, String trilha) {
+		public String gravarArquivo(File usuarioArquivo, String evento, String trilha) {
+			
+			String diretorioGravacao = new String();
 			
 			if (usuarioArquivo.length()>= 0) { // para o edital
 				
 				String stringParaGravar = fileToString(usuarioArquivo); 
 				String nomeArquivo = ManipulacaoArquivo.pegaNome(usuarioArquivo);
 				String extensao = ManipulacaoArquivo.pegaExtensao(usuarioArquivo);
-				String diretorioGravacao = "Constantes.getDocumentsDir()+File.separator+evento+File.separator+trilha";
+				diretorioGravacao = "Constantes.getDocumentsDir()+File.separator+evento+File.separator+trilha";
 				File diretorio = new File(diretorioGravacao);
 				
 				if(!diretorio.exists()) {
@@ -87,7 +89,9 @@ public class ManipulacaoArquivo {
 				arqGravacao.mkdir();
 				ManipulacaoArquivo arquivo = ManipulacaoArquivo();
 				arquivo.setEventoTrilhaNome(trilha);
+			
 			}		
+				return diretorioGravacao;
 			
 		}
 		

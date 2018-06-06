@@ -60,7 +60,66 @@
 <title>Sara</title>
 </head>
 <body>
+<<<<<<< HEAD
+||||||| merged common ancestors
+    <% 	UsuarioController userCon = new UsuarioController();
+    	Usuario usuario = userCon.buscar("100");
+    	session.setAttribute("usuario", usuario);
+	%>
+    
+
+<center> Bem Vindo!
+    <% 
+    	EventoController evCon = new EventoController();
+        List<Evento> eventos = evCon.listar();
+       
+    %>
+    
+        
+        <table>
+            <tr>
+                <th>Eventos</th>
+                <th>Trabalhos Submetidos</th>
+            </tr>
+<tr>
+	<td>
+	<table border="1">
+            <tr>
+                <th>Evento</th>
+                <th>Local</th>
+                <th>Data</th>
+            </tr>
+=======
+    <% 	UsuarioController userCon = new UsuarioController();
+    	Usuario usuario = userCon.buscar("111");
+    	session.setAttribute("usuario", usuario);
+	%>
+    
+
+<center> Bem Vindo!
+    <% 
+    	EventoController evCon = new EventoController();
+        List<Evento> eventos = evCon.listar();
+       
+    %>
+    
+        
+        <table>
+            <tr>
+                <th>Eventos</th>
+                <th>Trabalhos Submetidos</th>
+            </tr>
+<tr>
+	<td>
+	<table border="1">
+            <tr>
+                <th>Evento</th>
+                <th>Local</th>
+                <th>Data</th>
+            </tr>
+>>>>>>> 506273a5b63a855b5ca7ab635b94631916d871c2
 	<% 
+<<<<<<< HEAD
 		UsuarioController userCon = new UsuarioController();
 		Usuario usuario = userCon.buscar("123");
 		session.setAttribute("usuario", usuario); 
@@ -212,6 +271,88 @@
               </div>
               <!-- page end-->
 
+||||||| merged common ancestors
+            for(int i=0; i < eventos.size(); i++){
+                
+                session.setAttribute("e"+Integer.toString(eventos.get(i).getIdEvento()), eventos.get(i));
+               %>
+               
+               <tr>
+                   <td><%= eventos.get(i).getNome() %> </td>
+                   <td><%= eventos.get(i).getLocalizacao()%> </td>
+                   <td><%= eventos.get(i).getDataInicial() %> </td>
+                   
+                   <td><form action="paginaEvento.jsp" method="post"> 
+                           <input type="hidden" value="e<%= eventos.get(i).getIdEvento()%>" name="evento"> 
+                           <button type="submit">Visualizar</button>
+                       </form> 
+                   </td>
+            <%}
+        %>
+	</table>
+	</td>
+	<td>
+            <table border="1">
+            <tr>
+                <th>Evento</th>
+                <th>Status</th>
+            </tr>
+	<tr>
+		<td>Evento2</td>
+                <td>Aprovado</td>
+	</tr>
+	<tr>
+		<td>Evento4</td>
+		<td>Reprovado</td>
+	</tr>
+	</table>
+	</td>
+	
+</tr>
+</table>
+    
+=======
+            for(int i=0; i < eventos.size(); i++){
+                
+                session.setAttribute("e"+Integer.toString(eventos.get(i).getIdEvento()), eventos.get(i));
+               %>
+               
+               <tr>
+                   <td><%= eventos.get(i).getNome() %> </td>
+                   <td><%= eventos.get(i).getLocalizacao()%> </td>
+                   <td><%= eventos.get(i).getDataInicial() %> </td>
+                   
+                   <td>
+                   	   <form action="paginaEvento.jsp" method="post"> 
+                           <input type="hidden" value="e<%= eventos.get(i).getIdEvento()%>" name="evento"> 
+                           <button type="submit">Visualizar</button>
+                       </form> 
+                   </td>
+            <%}
+        %>
+	</table>
+	</td>
+	<td>
+            <table border="1">
+            <tr>
+                <th>Evento</th>
+                <th>Status</th>
+            </tr>
+	<tr>
+		<td>Evento2</td>
+                <td>Aprovado</td>
+	</tr>
+	<tr>
+		<td>Evento4</td>
+		<td>Reprovado</td>
+	</tr>
+	</table>
+	</td>
+	
+</tr>
+</table>
+    
+>>>>>>> 506273a5b63a855b5ca7ab635b94631916d871c2
     
   </section>
   <!-- container section start -->
