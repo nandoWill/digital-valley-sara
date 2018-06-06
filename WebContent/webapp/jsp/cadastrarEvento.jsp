@@ -15,8 +15,14 @@
 <body>
 	
 <%
+	UsuarioController usuarioController = new UsuarioController();
 	String nome = request.getParameter("nome");
 	String cpfCoordenador = request.getParameter("cpfCoordenador");
+	Usuario usuario = usuarioController.buscar(cpfCoordenador);
+	if (usuario == null){ %>
+		<jsp:forward page="formCadastroEvento.jsp" />
+	<%}
+	
 	String site = request.getParameter("site");
 	String descricao = request.getParameter("descricao");
 	String localizacao = request.getParameter("localizacao");
@@ -34,8 +40,8 @@
 	EventoController eventoController = new EventoController();
 	eventoController.criar(evento);
 	
-	UsuarioController usuarioController = new UsuarioController();
-	Usuario usuario = usuarioController.buscar(cpfCoordenador);
+	
+	
 	
 	if(!usuario.getTipo().equals("COORDENADOR_EVENTO")){
 		
