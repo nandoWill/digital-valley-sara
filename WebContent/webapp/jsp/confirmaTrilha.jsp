@@ -18,6 +18,7 @@
 		trilha.setDescricao(request.getParameter("descricao"));
 		trilha.setEvento(evento);
 		trilhaCon.criar(trilha);
+		response.sendRedirect("indexCoordTrilha.jsp");
 	%>
 	
 </body>

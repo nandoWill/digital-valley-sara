@@ -22,7 +22,7 @@
 </head>
 <body>
     <% 	UsuarioController userCon = new UsuarioController();
-    	Usuario usuario = userCon.buscar("100");
+    	Usuario usuario = userCon.buscar("111");
     	session.setAttribute("usuario", usuario);
 	%>
     
@@ -59,7 +59,8 @@
                    <td><%= eventos.get(i).getLocalizacao()%> </td>
                    <td><%= eventos.get(i).getDataInicial() %> </td>
                    
-                   <td><form action="paginaEvento.jsp" method="post"> 
+                   <td>
+                   	   <form action="paginaEvento.jsp" method="post"> 
                            <input type="hidden" value="e<%= eventos.get(i).getIdEvento()%>" name="evento"> 
                            <button type="submit">Visualizar</button>
                        </form> 
