@@ -51,11 +51,6 @@
         Author URL: https://bootstrapmade.com
     ======================================================= -->
 
-    <style>
-    table{    
-        border-spacing: 10px; 
-    }
-    </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Sara</title>
 </head>
