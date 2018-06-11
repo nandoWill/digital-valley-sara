@@ -3,6 +3,7 @@ package br.com.n2s.sara.model;
 import java.io.*;
 
 import br.com.n2s.sara.model.Constantes;
+import org.apache.commons.io.FilenameUtils;
 
 public class ManipulacaoArquivo {
 
