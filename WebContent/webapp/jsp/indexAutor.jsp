@@ -57,7 +57,7 @@
 <body>
 
     <% 	UsuarioController userCon = new UsuarioController();
-    	Usuario usuario = userCon.buscar("111");
+    	Usuario usuario = userCon.buscar("100");
     	session.setAttribute("usuario", usuario);
 	%>
     

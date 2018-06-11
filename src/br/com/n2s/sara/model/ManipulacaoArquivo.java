@@ -2,7 +2,7 @@ package br.com.n2s.sara.model;
 
 import java.io.*;
 
-import model.Constantes;
+import br.com.n2s.sara.model.Constantes;
 
 public class ManipulacaoArquivo {
 
@@ -25,32 +25,26 @@ public class ManipulacaoArquivo {
 		
 		public static String pegaExtensao (File usuarioArquivo) {
 			String fileName = usuarioArquivo.getName();
-			String extensao= "";
-			String ext[]=fileName.split(".");
-			int i = ext.length;
-			
-			extensao = "."+ ext[i-1];
+			String extensao= "."+FilenameUtils.getExtension(fileName);                     
 			extensao = extensao.toLowerCase();
 			return extensao;
 		}
 		
 		public static String pegaNome (File usuarioArquivo) {
-			String fileName = usuarioArquivo.getName();
-			String soNome = "";
-			String soNomeArquivo[]= fileName.split(".");
-			soNome= soNomeArquivo[0];
+			String fileName = usuarioArquivo.getName();                    
+			String soNome = FilenameUtils.getBaseName(fileName);			
 			return soNome;
 		}
 		
 		 
 		 public static String fileToString(File file) {
 		        String result = null;
-		        //limpa para não ter lixo de memória
+		        //limpa para nï¿½o ter lixo de memï¿½ria
 		        DataInputStream in = null;
 		        //salva em partes do stream
 		        try {
 		            File f = file;
-		            //cria um ponteiro para não manipular direto
+		            //cria um ponteiro para nï¿½o manipular direto
 		            byte[] buffer = new byte[(int) f.length()];
 		            
 		            in = new DataInputStream(new FileInputStream(f));
@@ -69,7 +63,7 @@ public class ManipulacaoArquivo {
 		
 		 
 		//recebe o arquivo do upload da pagina
-		public String gravarArquivo(File usuarioArquivo, String evento, String trilha) {
+		public String gravarArquivo(File usuarioArquivo, String evento, String trilha) throws IOException {
 			
 			String diretorioGravacao = new String();
 			
@@ -78,15 +72,13 @@ public class ManipulacaoArquivo {
 				String stringParaGravar = fileToString(usuarioArquivo); 
 				String nomeArquivo = ManipulacaoArquivo.pegaNome(usuarioArquivo);
 				String extensao = ManipulacaoArquivo.pegaExtensao(usuarioArquivo);
-				diretorioGravacao = "Constantes.getDocumentsDir()+File.separator+evento+File.separator+trilha";
+				diretorioGravacao = Constantes.getDocumentsDir()+File.separator+evento+File.separator+trilha;
 				File diretorio = new File(diretorioGravacao);
-				
+								
 				if(!diretorio.exists()) {
 					diretorio.mkdirs();			
 				}
-				diretorioGravacao = diretorioGravacao+nomeArquivo+extensao;
-				File arqGravacao = new File (stringParaGravar, diretorioGravacao);//primeiro toda a string e grava no diretório
-				arqGravacao.mkdir();
+				File arqGravacao = File.createTempFile(nomeArquivo, extensao, diretorio);
 				ManipulacaoArquivo arquivo = ManipulacaoArquivo();
 				arquivo.setEventoTrilhaNome(trilha);
 			

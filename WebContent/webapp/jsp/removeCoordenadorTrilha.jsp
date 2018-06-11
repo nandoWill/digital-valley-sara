@@ -1,3 +1,5 @@
+<%@page import="br.com.n2s.sara.controller.CoordenacaoTrilhaController"%>
+<%@page import="br.com.n2s.sara.dao.DAOCoordenacaoEvento"%>
 <%@page import="br.com.n2s.sara.dao.DAOUsuario"%>
 <%@page import="br.com.n2s.sara.model.Usuario"%>
 <%@page import="br.com.n2s.sara.dao.DAOCoordenacaoTrilha"%>
@@ -13,12 +15,15 @@
 
 <% 
 String cpf = (String) request.getAttribute("delCood");  //recebe o cpf, vai na sessao e procura o usuário
-DAOCoordenacaoTrilha daoCoordenacaoTrilha = new DAOCoordenacaoTrilha();
-daoCoordenacaoTrilha.delete(cpf);
-%>
 
-<h1>Coordenador de Trilha deletado com Sucesso. </h1>
-<a href="gerenciarCoordenadorTrilha.jpg"> <button value="Deletado com sucesso."></a>
+CoordenacaoTrilhaController coordTrilhaController = new CoordenacaoTrilhaController();
+coordTrilhaController.deletar(cpf);
+
+
+
+%>
+<jsp:forward page=" gerenciarCoordenadorTrilha"></jsp:forward>
+
 
 
 </body>
