@@ -218,7 +218,6 @@
 											<div class="form-group">
 												<div class="col-lg-offset-2 col-lg-10">
 													<button id = "sucesso" class="btn btn-primary" type="submit"onclick = "validation();">Salvar</button>
-													<button class="btn btn-default" type="button">Cancelar</button>
 												</div>
 											</div>
 										</div>
