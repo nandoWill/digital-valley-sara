@@ -47,7 +47,11 @@
             <input type="button" value="Voltar" onClick="history.go(-1)">
             
         </form>
-        
+        <br/>
+        <form action="SalvarArquivo" method="post" enctype="multipart/form-data">
+        	<input type="file" name="trabalho">
+        	<input type="submit" value="enviar">
+        </form>
     </center>
     </body>
 </html>

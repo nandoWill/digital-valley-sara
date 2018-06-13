@@ -88,9 +88,34 @@ public class ManipulacaoArquivo {
 			
 		}
 		
-	
-		
+		public File StringToFile(String trabalho) {
+			
+			
+			File file = new File("");//file recebe uma string que diz onde está o arquivo
+			try {
+				file = File.createTempFile("index", trabalho);//cria um temporário 
+				 try {
+		            	String paraTransformar = trabalho;//para não alterar diretamente o trabalho
+		            	PrintWriter out = new PrintWriter(file);//objeto que localiza onde escreve
+		            	out.print(paraTransformar);//impressão da string para dentro do arquivo temporário
+		            	out.close();//fecha o arquivo
+		            	
+		            	return file;
+		            }
+		            catch (IOException e) {
+		              
+		            } 
 				
+				
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			return file;
+	                     
+	     
+		 
+		}		
 }
         	
     
