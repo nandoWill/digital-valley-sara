@@ -1,9 +1,3 @@
-<%-- 
-    Document   : gerenciaAvaliadores
-    Created on : 18/04/2018, 08:57:12
-    Author     : Hugo
---%>
-
 <%@page import="br.com.n2s.sara.model.Usuario"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.n2s.sara.controller.AvaliaTrilhaController"%>

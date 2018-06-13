@@ -166,23 +166,19 @@
                           <header class="panel-heading">
                               Manter Trilha
                           </header>
-  							
-				        <form action="gerenciaAvaliadores.jsp" method="post">
-				            <button class="btn btn-primary" type = "submit" name="gerAv"><i class="icon_zoom-in"></i>Gerenciar Avaliadores</button>
-				        </form>
-				        
-				        <p/>
-				        <form action="gerenciaPeriodos.jsp" method="post">
-				            <button class="btn btn-primary" type = "submit" name="gerPer"><i class="icon_zoom-in"></i>Gerenciar Períodos</button>
-				        </form>
-				        <p/>
-				        
-				        <p/>
-				        <form action="gerenciaCriterios.jsp" method="post">
-				            <button class="btn btn-primary" type = "submit" name="gerCri"><i class="icon_zoom-in"></i>Gerenciar Critérios de Avaliação</button>
-				        </form>
-				        <p/>  						                          
-  
+  						<p>	
+					        <form action="gerenciaAvaliadores.jsp" method="post">
+					            <button class="btn btn-primary" type = "submit" name="gerAv">Gerenciar Avaliadores</button>
+					        </form>
+					        
+					        <form action="gerenciaPeriodos.jsp" method="post">
+					            <button class="btn btn-primary" type = "submit" name="gerPer">Gerenciar Períodos</button>
+					        </form>
+					       
+					        <form action="gerenciaCriterios.jsp" method="post">
+					            <button class="btn btn-primary" type = "submit" name="gerCri">Gerenciar Critérios de Avaliação</button>
+					        </form>
+  						</p>
                       </section>
                   </div>
               </div>
