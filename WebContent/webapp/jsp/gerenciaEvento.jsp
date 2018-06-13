@@ -226,6 +226,12 @@
 				    <form action="adicionaTrilha.jsp" method="post">
 				        <button class="btn btn-primary" type = "submit">Adicionar Trilha</button>
 				    </form>
+				    
+				    <br />
+				    
+				    <form action="gerenciarCoordenadoresEvento.jsp" method="post">
+				        <button class="btn btn-primary" type = "submit">Gerenciar Coordenadores do Evento</button>
+				    </form>
 		    <%  } %>
 		    </center>
 		
