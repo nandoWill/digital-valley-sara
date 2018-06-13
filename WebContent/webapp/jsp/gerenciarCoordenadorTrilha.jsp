@@ -49,7 +49,7 @@
     	
     	EventoController evCon = new EventoController();
 		CoordenacaoTrilhaController coordtrCon = new CoordenacaoTrilhaController();
-		int idTrilha = (Integer) request.getAttribute("estaTrilha");//pega na requisicao
+		int idTrilha = Integer.parseInt(request.getParameter("estaTrilha"));//pega na requisicao
 		DAOTrilha recebeTrilha = new DAOTrilha();
 		Trilha trilha = new Trilha();
 		trilha = recebeTrilha.getTrilha(idTrilha);
