@@ -159,29 +159,43 @@
 			</div>
       
       <!-- page start-->
-              
+
               <div class="row">
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
                               Manter Trilha
                           </header>
-  						<p>	
-					        <form action="gerenciaAvaliadores.jsp" method="post">
-					            <button class="btn btn-primary" type = "submit" name="gerAv">Gerenciar Avaliadores</button>
-					        </form>
-					        
-					        <form action="gerenciaPeriodos.jsp" method="post">
-					            <button class="btn btn-primary" type = "submit" name="gerPer">Gerenciar Períodos</button>
-					        </form>
-					       
-					        <form action="gerenciaCriterios.jsp" method="post">
-					            <button class="btn btn-primary" type = "submit" name="gerCri">Gerenciar Critérios de Avaliação</button>
-					        </form>
-  						</p>
+                          
+                          <table class="table table-striped table-advance table-hover">
+                           <tbody>
+                           
+                              <tr>
+                              	<td>
+                              		<form action="gerenciaAvaliadores.jsp" method="post">
+					            		<button class="btn btn-primary" type = "submit" name="gerAv">Gerenciar Avaliadores</button>
+					        		</form>
+                              	</td>  
+                              	
+                              	<td>
+                              		<form action="gerenciaPeriodos.jsp" method="post">
+					            		<button class="btn btn-primary" type = "submit" name="gerPer">Gerenciar Períodos</button>
+					        		</form>
+                              	</td> 
+                              	
+                              	<td>
+                              		<form action="gerenciaCriterios.jsp" method="post">
+					            		<button class="btn btn-primary" type = "submit" name="gerCri">Gerenciar Critérios de Avaliação</button>
+					        		</form>
+                              	</td>                            
+                              </tr>
+                              
+                           </tbody>
+                        </table>
                       </section>
                   </div>
               </div>
+
               <!-- page end-->
 
 

@@ -1,5 +1,4 @@
 <%@page import="br.com.n2s.sara.model.CriterioTrilha"%>
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="br.com.n2s.sara.controller.CriterioTrilhaController"%>
 <%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page import="br.com.n2s.sara.controller.CriterioController"%>
