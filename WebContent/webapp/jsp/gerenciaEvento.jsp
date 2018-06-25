@@ -181,6 +181,7 @@
                                  <th><i class="icon_document_alt"></i> Descrição </th>
                                  <th></th>
                                  <th></th>
+                                 <th></th>
                               </tr>
                               
 			       		  <%     
