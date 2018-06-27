@@ -10,9 +10,8 @@
     <body>
     <center>
         <% 
-            HttpSession secao = session;
             String nome = request.getParameter("trilha");
-            Trilha trilha = (Trilha) secao.getAttribute(nome);
+            Trilha trilha = (Trilha) session.getAttribute(nome);
             ArrayList<Usuario> autores = (ArrayList<Usuario>) session.getAttribute("autores");
             session.setAttribute("autores", autores);
         %>

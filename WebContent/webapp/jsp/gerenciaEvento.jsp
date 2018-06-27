@@ -196,7 +196,7 @@
 			                   <td><%= evento.getTrilhas().get(i).getDescricao() %></td>
 			                   <td> <form action="manterTrilha.jsp" method="post"> 
 			                           <input type="hidden" value="gt<%= evento.getTrilhas().get(i).getIdTrilha()%>" name="trilha"> 
-			                           <button class="btn btn-primary" type = "submit"><i class="icon_cogs"></i> Alterar Dados</button>
+			                           <button class="btn btn-primary" type = "submit"> Alterar Dados</button>
 			                       </form> 
 			                   </td>
 			                   <% 
@@ -205,14 +205,14 @@
 			        			<td>
 			        				<form action="gerenciarCoordenadorTrilha.jsp" method="post">
 			        					<input type="hidden" value="<%= evento.getTrilhas().get(i).getIdTrilha()%>" name="estaTrilha">
-							            <button class="btn btn-primary" type = "submit"><i class="icon_cogs"></i> Gerenciar Coordenadores</button>
+							            <button class="btn btn-primary" type = "submit"> Gerenciar Coordenadores</button>
 							        </form>
 							    </td>
 							    
 							    <td>
 			        				<form action="removerTrilha.jsp" method="post" onsubmit="return confirm('Deseja remover esta trilha?');">
 			        					<input type="hidden" value="gt<%= evento.getTrilhas().get(i).getIdTrilha()%>" name="trilha">
-							            <button class="btn btn-danger" type = "submit"><b>X</b></button>
+							            <button class="btn btn-primary" type = "submit">Remover Trilha</button>
 							        </form>
 							    </td>
 							    <% 

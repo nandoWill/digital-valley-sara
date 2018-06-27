@@ -175,7 +175,7 @@
                                  <th><i class="icon_documents_alt"></i> Evento</th>
                                  <th><i class="icon_pin"></i> Local</th>
                                  <th><i class="icon_calendar"></i> Data</th>
-                                 <th><i class="icon_cogs"></i> Ação</th>
+                                 <th></th>
                               </tr>
                               
                               <%

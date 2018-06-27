@@ -181,9 +181,9 @@
                            <tbody>
                               <tr>                               
                                  <th><i class="icon_documents_alt"></i> Trilha</th>
-                                 <th><i class="icon_pin"></i> Descrição</th>
+                                 <th><i class="icon_document_alt"></i> Descrição</th>
                                  <th><i class="icon_calendar"></i> Período de Submissão</th>
-                                 <th><i class="icon_cogs"></i> Ação</th>
+                                 <th></th>
                               </tr>
                               
                               <%
@@ -272,7 +272,7 @@
     <script src="../assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
     <script src="../js/owl.carousel.js" ></script>
     <!-- jQuery full calendar -->
-    <<script src="../js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
+    <script src="../js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
 	<script src="../assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
     <!--script for this page only-->
     <script src="../js/calendar-custom.js"></script>
