@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -157,6 +158,27 @@ public class DAOCriterio {
 			this.connection.close();
 
 		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public int getLastId(){
+		
+		this.connection = new ConnectionFactory().getConnection();
+		String sql = "Select max(idCriterio) from sara.Criterio";
+		
+		try{
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+			int lastId = rs.getInt(1);
+
+			stmt.close();
+			rs.close();
+			this.connection.close();
+			return lastId;
+
+		}catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}

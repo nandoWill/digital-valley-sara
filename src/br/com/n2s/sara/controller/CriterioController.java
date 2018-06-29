@@ -28,6 +28,10 @@ public class CriterioController {
 		return daoCriterio.getCriterio(idCriterio);
 	}
 	
+	public int getLastID() {
+		return daoCriterio.getLastId();
+	}
+	
 	public void atualizar(Criterio criterio) {
 		daoCriterio.update(criterio);
 	}
