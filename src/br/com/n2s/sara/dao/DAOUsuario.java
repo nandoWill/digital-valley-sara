@@ -100,6 +100,8 @@ public class DAOUsuario {
 			throw new RuntimeException(e);
 		}
 	}
+	
+
 
 	public void update(Usuario usuario){
 		

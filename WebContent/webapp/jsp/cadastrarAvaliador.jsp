@@ -13,23 +13,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 
-	Trilha trilha = (Trilha) session.getAttribute("trilha");
-	Usuario user = new Usuario();
-	user.setNome(request.getParameter("nome"));
-	user.setSobrenome(request.getParameter("sobrenome"));
-	user.setCpf(request.getParameter("cpf"));
-	user.setEmail(request.getParameter("email"));
-	user.setTipo(NivelUsuario.AVALIADOR);
-	UsuarioController userCon = new UsuarioController();
-	userCon.criar(user);
-	AvaliaTrilhaController avTrCon = new AvaliaTrilhaController();
-	AvaliaTrilha avaliadorTrilha = new AvaliaTrilha();
-	avaliadorTrilha.setAvaliador(user);
-	avaliadorTrilha.setTrilha(trilha);
-	avTrCon.criar(avaliadorTrilha);
-	response.sendRedirect("gerenciaAvaliadores.jsp");
-%>
+
+            <form action="CadastrarAvaliador" method="post">
+	            <p>Nome: <input type="text" name="nome"> </p>
+	            <p>Sobrenome: <input type="text" name="sobrenome"> </p>
+	            <p>CPF: <input type="text" name="cpf"></p>
+	            <p>Email: <input type="email" name="email"> </p>
+	            <input type="submit">
+	            <input type="button" value="Voltar" onClick="history.go(-1)">
+	        </form>
 
 </body>
 </html>
