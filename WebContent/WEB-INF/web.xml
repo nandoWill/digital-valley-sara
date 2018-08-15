@@ -27,13 +27,13 @@
   	<url-pattern>/autentica</url-pattern>
   </servlet-mapping>
   <!-- Filtro -->
-	<filter>
+<!-- 	<filter>
 		<filter-name>FiltroAutenticado</filter-name>
 		<filter-class>br.n2s.com.sara.filter.AutenticadoFiltro</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>FiltroAutenticado</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	</filter-mapping> -->
 </web-app>
 

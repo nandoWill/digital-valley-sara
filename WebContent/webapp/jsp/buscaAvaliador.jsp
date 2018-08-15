@@ -34,7 +34,7 @@
     		
     	}else{
             %>
-            <form action="cadastrarAvaliador.jsp" method="post">
+            <form action="CadastrarAvaliador.jsp" method="post">
 	            <p>Nome: <input type="text" name="nome"> </p>
 	            <p>Sobrenome: <input type="text" name="sobrenome"> </p>
 	            <p>CPF: <input type="text" name="cpf"></p>
