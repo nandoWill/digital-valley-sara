@@ -1,9 +1,3 @@
-x<%-- 
-    Document   : adicionaAvaliador
-    Created on : 18/04/2018, 09:18:49
-    Author     : Hugo
---%>
-
 <%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page import="br.com.n2s.sara.model.Usuario"%>
 <%@page import="br.com.n2s.sara.controller.UsuarioController"%>
