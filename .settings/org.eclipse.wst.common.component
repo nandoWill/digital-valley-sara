@@ -3,6 +3,6 @@
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <property name="context-root" value="Sara"/>
-        <property name="java-output-path" value="/Sara/build/classes"/>
+        <property name="java-output-path" value="/digital-valley-sara/target/classes"/>
     </wb-module>
 </project-modules>
