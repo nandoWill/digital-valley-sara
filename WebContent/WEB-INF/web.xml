@@ -4,36 +4,20 @@
   <welcome-file-list>
     <welcome-file>webapp/jsp/indexAutor.jsp</welcome-file>
   </welcome-file-list>
-  <!-- SERVLETS -->
-  <!-- 1 -->
   <servlet>
-  	<servlet-name>CadastrarAvaliador</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.CadastrarAvaliador</servlet-class>
+    <servlet-name>CadastrarAvaliador</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.CadastrarAvaliador</servlet-class>
   </servlet>
-  <!-- 2 -->
   <servlet>
-  	<servlet-name>Autenticar</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.Autenticacao</servlet-class>
+    <servlet-name>Autenticar</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.Autenticacao</servlet-class>
   </servlet>
-  <!-- Mapeamento -->
-  <!-- 1 -->
   <servlet-mapping>
-  	<servlet-name>CadastrarAvaliador</servlet-name>
-  	<url-pattern>/cadastrarAvaliador</url-pattern>
+    <servlet-name>CadastrarAvaliador</servlet-name>
+    <url-pattern>/cadastrarAvaliador</url-pattern>
   </servlet-mapping>
-  <!-- 2 -->
   <servlet-mapping>
-  	<servlet-name>Autenticar</servlet-name>
-  	<url-pattern>/autentica</url-pattern>
+    <servlet-name>Autenticar</servlet-name>
+    <url-pattern>/autentica</url-pattern>
   </servlet-mapping>
-  <!-- Filtro -->
-<!-- 	<filter>
-		<filter-name>FiltroAutenticado</filter-name>
-		<filter-class>br.n2s.com.sara.filter.AutenticadoFiltro</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>FiltroAutenticado</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping> -->
 </web-app>
-
