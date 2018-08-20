@@ -6,8 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import br.com.n2s.sara.controller.EventoController;
-import br.com.n2s.sara.controller.UsuarioController;
+
 import br.com.n2s.sara.model.CoordenacaoEvento;
 
 public class DAOCoordenacaoEvento {
@@ -47,14 +46,14 @@ public class DAOCoordenacaoEvento {
 			List<CoordenacaoEvento> coordenacoes = new ArrayList<CoordenacaoEvento>();
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			UsuarioController usuarioController = new UsuarioController();
-			EventoController eventoController = new EventoController();
+			DAOUsuario usuarioController = new DAOUsuario();
+			DAOEvento eventoController = new DAOEvento();
 
 			while(rs.next()){
 
 				CoordenacaoEvento coordenacaoEvento = new CoordenacaoEvento();
-				coordenacaoEvento.setCoordenador(usuarioController.buscar(rs.getString("cpfCoordenador")));
-				coordenacaoEvento.setEvento(eventoController.buscar(rs.getInt("idEvento")));
+				coordenacaoEvento.setCoordenador(usuarioController.getUsuario(rs.getString("cpfCoordenador")));
+				coordenacaoEvento.setEvento(eventoController.getEvento(rs.getInt("idEvento")));
 				coordenacoes.add(coordenacaoEvento);
 			}
 
@@ -79,14 +78,14 @@ public class DAOCoordenacaoEvento {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setString(1, cpfCoordenador);
 			ResultSet rs = stmt.executeQuery();
-			UsuarioController usuarioController = new UsuarioController();
-			EventoController eventoController = new EventoController();
+			DAOUsuario usuarioController = new DAOUsuario();
+			DAOEvento eventoController = new DAOEvento();
 
 			while(rs.next()){
 
 				CoordenacaoEvento coordenacaoEvento = new CoordenacaoEvento();
-				coordenacaoEvento.setCoordenador(usuarioController.buscar(rs.getString("cpfCoordenador")));
-				coordenacaoEvento.setEvento(eventoController.buscar(rs.getInt("idEvento")));
+				coordenacaoEvento.setCoordenador(usuarioController.getUsuario(rs.getString("cpfCoordenador")));
+				coordenacaoEvento.setEvento(eventoController.getEvento(rs.getInt("idEvento")));
 				coordenacoes.add(coordenacaoEvento);
 			}
 
@@ -111,14 +110,14 @@ public class DAOCoordenacaoEvento {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, idEvento);
 			ResultSet rs = stmt.executeQuery();
-			UsuarioController usuarioController = new UsuarioController();
-			EventoController eventoController = new EventoController();
+			DAOUsuario usuarioController = new DAOUsuario();
+			DAOEvento eventoController = new DAOEvento();
 
 			while(rs.next()){
 
 				CoordenacaoEvento coordenacaoEvento = new CoordenacaoEvento();
-				coordenacaoEvento.setCoordenador(usuarioController.buscar(rs.getString("cpfCoordenador")));
-				coordenacaoEvento.setEvento(eventoController.buscar(rs.getInt("idEvento")));
+				coordenacaoEvento.setCoordenador(usuarioController.getUsuario(rs.getString("cpfCoordenador")));
+				coordenacaoEvento.setEvento(eventoController.getEvento(rs.getInt("idEvento")));
 				coordenacoes.add(coordenacaoEvento);
 			}
 
@@ -136,8 +135,8 @@ public class DAOCoordenacaoEvento {
 
 		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "select * from sara.CoordenacaoEvento where cpfCoordenador = ?";
-		UsuarioController usuarioController = new UsuarioController();
-		EventoController eventoController = new EventoController();
+		DAOUsuario usuarioController = new DAOUsuario();
+		DAOEvento eventoController = new DAOEvento();
 
 		try{
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
@@ -147,8 +146,8 @@ public class DAOCoordenacaoEvento {
 			if(rs.next()){
 
 				CoordenacaoEvento coordenacaoEvento = new CoordenacaoEvento();
-				coordenacaoEvento.setCoordenador(usuarioController.buscar(rs.getString("cpfCoordenador")));
-				coordenacaoEvento.setEvento(eventoController.buscar(rs.getInt("idEvento")));
+				coordenacaoEvento.setCoordenador(usuarioController.getUsuario(rs.getString("cpfCoordenador")));
+				coordenacaoEvento.setEvento(eventoController.getEvento(rs.getInt("idEvento")));
 
 				rs.close();
 				stmt.close();

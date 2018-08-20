@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.n2s.sara.controller.UsuarioController;
 import br.com.n2s.sara.model.NivelUsuario;
 import br.com.n2s.sara.model.Periodo;
 import br.com.n2s.sara.model.Submissao;
@@ -51,13 +50,13 @@ public class DAOSubmissao {
 			List<Submissao> submissoes = new ArrayList<Submissao>();
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			UsuarioController usuarioController = new UsuarioController();
+			DAOUsuario usuarioController = new DAOUsuario();
 
 			while(rs.next()){
 
 				Submissao submissao= new Submissao();
-				submissao.setAutor(usuarioController.buscar(rs.getString("cpfautor")));
-				submissao.setTrabalho(rs.getInt("idtrabalho"));
+				submissao.setAutor(usuarioController.getUsuario(rs.getString("cpfautor")));
+				submissao.setTrabalho(new DAOTrabalho().getTrabalho(rs.getInt("idtrabalho")));
 				submissoes.add(submissao);
 			}
 
@@ -83,8 +82,8 @@ public class DAOSubmissao {
 
 			if(rs.next()){
 				Submissao submissao = new Submissao();
-				submissao.setIdAutor(rs.getString("cpfautor"));
-				submissao.setIdTrabalho(rs.getInt("idtrabalho"));
+				submissao.setAutor(new DAOUsuario().getUsuario(rs.getString("cpfautor")));
+				submissao.setTrabalho(new DAOTrabalho().getTrabalho(rs.getInt("idtrabalho")));
 
 				rs.close();
 				stmt.close();
@@ -106,8 +105,8 @@ public class DAOSubmissao {
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, submissao.getIdAutor());
-			stmt.setInt(2, submissao.getIdTrabalho());
+			stmt.setString(1, submissao.getAutor().getCpf());
+			stmt.setInt(2, submissao.getTrabalho().getIdTrabalho());
 
 			stmt.execute();
 			stmt.close();
@@ -126,7 +125,7 @@ public class DAOSubmissao {
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, submissao.getIdTrabalho());
+			stmt.setInt(1, submissao.getTrabalho().getIdTrabalho());
 			stmt.execute();
 			stmt.close();
 			this.connection.close();

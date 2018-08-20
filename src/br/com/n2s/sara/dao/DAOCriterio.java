@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.n2s.sara.controller.CriterioTrilhaController;
 import br.com.n2s.sara.model.Criterio;
 
 public class DAOCriterio {
@@ -48,7 +47,7 @@ public class DAOCriterio {
 			List<Criterio> criterios = new ArrayList<Criterio>();
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
+			DAOCriterioTrilha criterioTrilhaController = new DAOCriterioTrilha();
 
 			while(rs.next()){
 
@@ -57,7 +56,7 @@ public class DAOCriterio {
 				criterio.setIdCriterio(rs.getInt("idCriterio"));
 				criterio.setDescricao(rs.getString("descricao"));
 				criterio.setPeso(rs.getInt("peso"));
-				criterio.setCriterioTrilha(criterioTrilhaController.buscar(rs.getInt("idCriterioTrilha")));
+				criterio.setCriterioTrilha(criterioTrilhaController.getCriterioTrilha(rs.getInt("idCriterioTrilha")));
 				
 				criterios.add(criterio);
 
@@ -82,7 +81,7 @@ public class DAOCriterio {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, idCriterio);
 			ResultSet rs = stmt.executeQuery();
-			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
+			DAOCriterioTrilha criterioTrilhaController = new DAOCriterioTrilha();
 
 			if(rs.next()){
 				
@@ -91,7 +90,7 @@ public class DAOCriterio {
 				criterio.setIdCriterio(rs.getInt("idCriterio"));
 				criterio.setDescricao(rs.getString("descricao"));
 				criterio.setPeso(rs.getInt("peso"));
-				criterio.setCriterioTrilha(criterioTrilhaController.buscar(rs.getInt("idCriterioTrilha")));
+				criterio.setCriterioTrilha(criterioTrilhaController.getCriterioTrilha(rs.getInt("idCriterioTrilha")));
 			
 				rs.close();
 				stmt.close();
@@ -115,7 +114,7 @@ public class DAOCriterio {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, idCriterioTrilha);
 			ResultSet rs = stmt.executeQuery();
-			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
+			DAOCriterioTrilha criterioTrilhaController = new DAOCriterioTrilha();
 
 			while(rs.next()){
 
@@ -124,7 +123,7 @@ public class DAOCriterio {
 				criterio.setIdCriterio(rs.getInt("idCriterio"));
 				criterio.setDescricao(rs.getString("descricao"));
 				criterio.setPeso(rs.getInt("peso"));
-				criterio.setCriterioTrilha(criterioTrilhaController.buscar(rs.getInt("idCriterioTrilha")));
+				criterio.setCriterioTrilha(criterioTrilhaController.getCriterioTrilha(rs.getInt("idCriterioTrilha")));
 				
 				criterios.add(criterio);
 

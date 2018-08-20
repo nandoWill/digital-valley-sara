@@ -7,8 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.n2s.sara.controller.TrilhaController;
-import br.com.n2s.sara.controller.UsuarioController;
+
 import br.com.n2s.sara.model.AvaliaTrilha;
 import br.com.n2s.sara.model.Trilha;
 import br.com.n2s.sara.model.Usuario;
@@ -52,8 +51,8 @@ public class DAOAvaliaTrilha {
 			while(rs.next()){
 
 				AvaliaTrilha avalia = new AvaliaTrilha();
-				avalia.setAvaliador(new UsuarioController().buscar((rs.getString("idavaliador"))));
-				avalia.setTrilha(new TrilhaController().buscar((rs.getInt("idtrabalho"))));
+				avalia.setAvaliador(new DAOUsuario().getUsuario((rs.getString("idavaliador"))));
+				avalia.setTrilha(new DAOTrilha().getTrilha((rs.getInt("idtrabalho"))));
 				
 				avaliacoes.add(avalia);
 			}
@@ -81,7 +80,8 @@ public class DAOAvaliaTrilha {
 
 			while(rs.next()){
 
-				Usuario avaliador = new UsuarioController().buscar((rs.getString("idavaliador")));
+				Usuario avaliador = new DAOUsuario().getUsuario((rs.getString("idavaliador")));
+				
 				
 				avaliadores.add(avaliador);
 			}
@@ -109,7 +109,7 @@ public class DAOAvaliaTrilha {
 
 			while(rs.next()){
 
-				Trilha trilha = new TrilhaController().buscar((rs.getInt("idTrilha")));
+				Trilha trilha = new DAOTrilha().getTrilha((rs.getInt("idtrabalho")));
 				
 				trilhas.add(trilha);
 			}

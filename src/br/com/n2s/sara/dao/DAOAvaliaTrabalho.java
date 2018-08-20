@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.n2s.sara.model.AvaliaTrabalho;
+import br.com.n2s.sara.util.Facade;
 
 public class DAOAvaliaTrabalho {
 	
@@ -25,7 +26,7 @@ public class DAOAvaliaTrabalho {
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, avalia.getAvaliador().getCpf());
-			stmt.setInt(2, avalia.getAvaliador().getCpf();
+			stmt.setString(2, avalia.getAvaliador().getCpf());
 			
 			stmt.execute();
 			stmt.close();
@@ -46,11 +47,13 @@ public class DAOAvaliaTrabalho {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 
-			while(rs.next()){
-
+			while(rs.next()){				
+				DAOUsuario daoUser = new DAOUsuario();
+				DAOTrabalho daoTrab = new DAOTrabalho();
+				
 				AvaliaTrabalho avalia = new AvaliaTrabalho();
-				avalia.setIdAvaliador(rs.getString("idavaliador"));
-				avalia.setIdTrabalho(rs.getInt("idtrabalho"));
+				avalia.setAvaliador(daoUser.getUsuario((rs.getString("idavaliador"))));
+				avalia.setTrabalho(daoTrab.getTrabalho(rs.getInt("idtrabalho")));
 				
 				avaliacoes.add(avalia);
 			}
@@ -77,8 +80,13 @@ public class DAOAvaliaTrabalho {
 
 			if(rs.next()){
 				AvaliaTrabalho avalia = new AvaliaTrabalho();
-				avalia.setIdAvaliador(rs.getString("idavaliador"));
-				avalia.setIdTrabalho(rs.getInt("idtrabalho"));
+
+				DAOUsuario daoUser = new DAOUsuario();
+				DAOTrabalho daoTrab = new DAOTrabalho();
+				
+				avalia.setAvaliador(daoUser.getUsuario((rs.getString("idavaliador"))));
+				avalia.setTrabalho(daoTrab.getTrabalho(rs.getInt("idtrabalho")));
+				
 				
 				rs.close();
 				stmt.close();
@@ -100,8 +108,8 @@ public class DAOAvaliaTrabalho {
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, avalia.getIdAvaliador());
-			stmt.setInt(2, avalia.getIdTrabalho());
+			stmt.setString(1, avalia.getAvaliador().getCpf());
+			stmt.setInt(2, avalia.getTrabalho().getIdTrabalho());
 						
 			stmt.execute();
 			stmt.close();
@@ -120,7 +128,7 @@ public class DAOAvaliaTrabalho {
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, avalia.getIdTrabalho());
+			stmt.setInt(1, avalia.getTrabalho().getIdTrabalho());
 			stmt.execute();
 			stmt.close();
 			this.connection.close();

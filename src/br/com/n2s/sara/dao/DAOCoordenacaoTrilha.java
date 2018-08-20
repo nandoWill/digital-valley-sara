@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import br.com.n2s.sara.controller.TrilhaController;
-import br.com.n2s.sara.controller.UsuarioController;
 import br.com.n2s.sara.model.CoordenacaoTrilha;
 
 public class DAOCoordenacaoTrilha {
@@ -47,14 +45,14 @@ public class DAOCoordenacaoTrilha {
 			List<CoordenacaoTrilha> coordenacoes = new ArrayList<CoordenacaoTrilha>();
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			UsuarioController usuarioController = new UsuarioController();
-			TrilhaController trilhaController = new TrilhaController();
+			DAOUsuario usuarioController = new DAOUsuario();
+			DAOTrilha trilhaController = new DAOTrilha();
 
 			while(rs.next()){
 
 				CoordenacaoTrilha coordenacaoTrilha = new CoordenacaoTrilha();
-				coordenacaoTrilha.setCoordenador(usuarioController.buscar(rs.getString("cpfCoordenador")));
-				coordenacaoTrilha.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
+				coordenacaoTrilha.setCoordenador(usuarioController.getUsuario(rs.getString("cpfCoordenador")));
+				coordenacaoTrilha.setTrilha(trilhaController.getTrilha(rs.getInt("idTrilha")));
 				coordenacoes.add(coordenacaoTrilha);
 			}
 
@@ -79,14 +77,14 @@ public class DAOCoordenacaoTrilha {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setString(1, id);
 			ResultSet rs = stmt.executeQuery();
-			UsuarioController usuarioController = new UsuarioController();
-			TrilhaController trilhaController = new TrilhaController();
+			DAOUsuario usuarioController = new DAOUsuario();
+			DAOTrilha trilhaController = new DAOTrilha();
 
 			while(rs.next()){
 
 				CoordenacaoTrilha coordenacaoTrilha = new CoordenacaoTrilha();
-				coordenacaoTrilha.setCoordenador(usuarioController.buscar(rs.getString("cpfCoordenador")));
-				coordenacaoTrilha.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
+				coordenacaoTrilha.setCoordenador(usuarioController.getUsuario(rs.getString("cpfCoordenador")));
+				coordenacaoTrilha.setTrilha(trilhaController.getTrilha(rs.getInt("idTrilha")));
 				coordenacoes.add(coordenacaoTrilha);
 			}
 
@@ -105,8 +103,8 @@ public class DAOCoordenacaoTrilha {
 
 		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "select * from sara.CoordenacaoTrilha where cpfCoordenador = ?";
-		UsuarioController usuarioController = new UsuarioController();
-		TrilhaController trilhaController = new TrilhaController();
+		DAOUsuario usuarioController = new DAOUsuario();
+		DAOTrilha trilhaController = new DAOTrilha();
 
 		try{
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
@@ -116,8 +114,8 @@ public class DAOCoordenacaoTrilha {
 			if(rs.next()){
 
 				CoordenacaoTrilha coordenacaoTrilha = new CoordenacaoTrilha();
-				coordenacaoTrilha.setCoordenador(usuarioController.buscar(rs.getString("cpfCoordenador")));
-				coordenacaoTrilha.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
+				coordenacaoTrilha.setCoordenador(usuarioController.getUsuario(rs.getString("cpfCoordenador")));
+				coordenacaoTrilha.setTrilha(trilhaController.getTrilha(rs.getInt("idTrilha")));
 
 				rs.close();
 				stmt.close();
