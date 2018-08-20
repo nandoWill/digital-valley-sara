@@ -176,7 +176,7 @@
 												</label>
 												<div class="col-lg-10">
 													<textarea class="form-control " id="ccomment"
-														name="descricaoCrit" required></textarea>
+														name="descricaoCriterio" required></textarea>
 												</div>
 											</div>
 
@@ -186,7 +186,7 @@
 												</label>
 												<div class="col-lg-6">
 													<input class="form-control " id="subject" type="number" value="0"
-														name="pesoCrit" required />
+														name="pesoCriterio" required />
 												</div>
 											</div>
 

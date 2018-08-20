@@ -1,10 +1,9 @@
-<%@page import="br.com.n2s.sara.controller.TrilhaController"%>
+<%@page import="br.com.n2s.sara.dao.DAOTrilha"%>
+<%@page import="br.com.n2s.sara.dao.DAOCriterioTrilha"%>
+<%@page import="br.com.n2s.sara.dao.DAOCriterio"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="br.com.n2s.sara.model.CriterioTrilha"%>
-<%@page import="br.com.n2s.sara.controller.ItemController"%>
-<%@page import="br.com.n2s.sara.controller.CriterioTrilhaController"%>
 <%@page import="br.com.n2s.sara.model.Trilha"%>
-<%@page import="br.com.n2s.sara.controller.CriterioController"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="br.com.n2s.sara.model.Item"%>
@@ -22,40 +21,44 @@
 	<%
 		Trilha trilha = (Trilha) session.getAttribute("trilha");
 	
-		String descricaoCrit = request.getParameter("descricaoCrit");
-		int pesoCrit = Integer.parseInt(request.getParameter("pesoCrit"));
-		ArrayList<String> itensDescricao = new ArrayList<String>();
-		ArrayList<Integer> itensPeso = new ArrayList<Integer>();
+		String descricaoCrit = request.getParameter("descricaoCriterio");
+		int pesoCrit = Integer.parseInt(request.getParameter("pesoCriterio"));
 		
-		String desc = "";
-		String peso = "";
+		//ArrayList<String> itensDescricao = new ArrayList<String>();
+		//ArrayList<Integer> itensPeso = new ArrayList<Integer>();
 		
-		Criterio crit = new Criterio();
-		crit.setDescricao(descricaoCrit);
-		crit.setPeso(pesoCrit);
+		//String desc = "";
+		//String peso = "";
 		
-		if(trilha.getCriterioTrilha() != null){
-			crit.setCriterioTrilha(trilha.getCriterioTrilha());
-		}else{
+		Criterio criterio = new Criterio();
+		criterio.setDescricao(descricaoCrit);
+		criterio.setPeso(pesoCrit);
+		
+		if(trilha.getCriterioTrilha() != null){ //Caso a trilha já possua um CriterioTrilha, apenas associa o novo critério com este CriterioTrilha
+			criterio.setCriterioTrilha(trilha.getCriterioTrilha());
+		
+		}else {
+			
 			String nomeCriterioTrilha = request.getParameter("nomeCriterioTrilha");
 			
 			CriterioTrilha criterioTrilha = new CriterioTrilha();
 			criterioTrilha.setNome(nomeCriterioTrilha);
 			criterioTrilha.setDataCriacao(LocalDate.now());
 			
-			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
-			criterioTrilhaController.criar(criterioTrilha);
+			DAOCriterioTrilha daoCriterioTrilha = new DAOCriterioTrilha();
+			daoCriterioTrilha.create(criterioTrilha);
 			
-			criterioTrilha = criterioTrilhaController.buscar(criterioTrilhaController.obterUltimoID());
-			crit.setCriterioTrilha(criterioTrilha);
+			
+			criterioTrilha = daoCriterioTrilha.getCriterioTrilha(daoCriterioTrilha.getLastId());
+			criterio.setCriterioTrilha(criterioTrilha);
 			
 			trilha.setCriterioTrilha(criterioTrilha);
-			TrilhaController trilhaController = new TrilhaController();
-			trilhaController.atualizar(trilha);
+			DAOTrilha daoTrilha = new DAOTrilha();
+			daoTrilha.update(trilha);
 		}
 		
-		CriterioController critCon = new CriterioController();
-		critCon.criar(crit);
+		DAOCriterio daoCriterio = new DAOCriterio();
+		daoCriterio.create(criterio);		
 		
 		/* Item item = new Item();
 		ItemController itemCont = new ItemController();
