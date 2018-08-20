@@ -1,7 +1,5 @@
 <%@page import="br.com.n2s.sara.model.Trilha"%>
-<%@page import="br.com.n2s.sara.controller.AvaliaTrilhaController"%>
 <%@page import="br.com.n2s.sara.model.AvaliaTrilha"%>
-<%@page import="br.com.n2s.sara.controller.UsuarioController"%>
 <%@page import="br.com.n2s.sara.model.NivelUsuario"%>
 <%@page import="br.com.n2s.sara.model.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

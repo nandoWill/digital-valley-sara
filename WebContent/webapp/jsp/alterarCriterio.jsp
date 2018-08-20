@@ -1,8 +1,8 @@
+<%@page import="br.com.n2s.sara.dao.DAOItem"%>
 <%@page import="java.util.List"%>
-<%@page import="br.com.n2s.sara.controller.ItemController"%>
+
 <%@page import="br.com.n2s.sara.model.Item"%>
 <%@page import="br.com.n2s.sara.model.Criterio"%>
-<%@page import="br.com.n2s.sara.controller.CriterioController"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -19,15 +19,13 @@
 			session.setAttribute("criterio", criterio);
 			//int idCrit = Integer.parseInt(crit.split("crit")[1]);
 			
-			CriterioController critCon = new CriterioController();
-			
 			
 			/* ArrayList<String> itens = new ArrayList<String>();
 			itens.add("Item 1"); itens.add("Item 2"); itens.add("Item 3"); itens.add("Item 4"); itens.add("Item 5"); */
 			
 			//Criterio criterio = critCon.buscar(idCrit);	
 			//System.out.println(criterio.getIdCriterio());
-			List<Item> itens = new ItemController().listar(criterio.getIdCriterio());
+			List<Item> itens = new DAOItem().readById(criterio.getIdCriterio());
 			
 			%>
 			
@@ -35,7 +33,7 @@
 			
 			<h1> Critério </h1>
 				
-	        <form action="confirmarAltCrit.jsp" method="post">
+	        <form action="EditarCriterio" method="post">
 	        
 	            <p>Descrição: <textarea name="descricaoCrit" rows="1" cols="30" required><%=criterio.getDescricao()%></textarea></p>
 	            <p>Peso: <input type="text" name="pesoCrit" value="<%=criterio.getPeso()%>" > </p>

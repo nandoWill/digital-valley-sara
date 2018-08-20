@@ -1,6 +1,5 @@
 <%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page import="br.com.n2s.sara.model.Usuario"%>
-<%@page import="br.com.n2s.sara.controller.UsuarioController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

@@ -5,7 +5,6 @@
 --%>
 
 <%@page import="br.com.n2s.sara.model.Trilha"%>
-<%@page import="br.com.n2s.sara.controller.PeriodoController"%>
 <%@page import="br.com.n2s.sara.dao.DAOPeriodo"%>
 <%@page import="br.com.n2s.sara.model.Periodo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
