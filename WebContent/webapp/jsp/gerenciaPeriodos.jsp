@@ -191,7 +191,7 @@
 					                    </form>
 						                </td>
 						                <td>
-						                    <form action="removerPeriodo.jsp" method="post" onsubmit="return confirm('Deseja remover este período?');">
+						                    <form action="RemoverPeriodo" method="post" onsubmit="return confirm('Deseja remover este período?');">
 						                    	<input type="hidden" value="p<%=Integer.toString(periodos.get(i).getIdPeriodo())%>" name="periodo">
 						                    	<button class="btn btn-primary" type = "submit">Remover</button>
 						                    </form>
