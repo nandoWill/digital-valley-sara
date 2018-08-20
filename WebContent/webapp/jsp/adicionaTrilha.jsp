@@ -148,7 +148,7 @@
 							<header class="panel-heading"> Formulário de Adição de Trilhas </header>
 							<div class="panel-body">
 								<div class="form">
-									<form action="confirmaTrilha.jsp" method="post" id = "formEnviar">
+									<form action="AdicionarTrilha" method="post" id = "formEnviar">
 										<div class="form-validate form-horizontal" id="feedback_form">
 											<div class="form-group ">
 												<label for="cemail" class="control-label col-lg-2">Nome 
