@@ -18,7 +18,7 @@ public class DAOCriterioTrilha {
 
 	public DAOCriterioTrilha(){}
 
-	public void create(CriterioTrilha criterioTrilha){
+	public CriterioTrilha create(CriterioTrilha criterioTrilha){
 		
 		this.connection = new ConnectionFactory().getConnection(); 
 		String sql = "insert into sara.CriterioTrilha"  
@@ -31,12 +31,16 @@ public class DAOCriterioTrilha {
 			stmt.setString(2, criterioTrilha.getNome());
 			
 			stmt.execute();
+			ResultSet rs = stmt.getGeneratedKeys();
+			criterioTrilha.setIdCriterioTrilha(rs.getInt(1));
+			rs.close();
 			stmt.close();
 			this.connection.close();
-
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+		return criterioTrilha;
 	}
 
 	public List<CriterioTrilha> read(){
