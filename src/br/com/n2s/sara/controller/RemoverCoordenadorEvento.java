@@ -9,19 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.n2s.sara.dao.DAOCoordenacaoEvento;
+import br.com.n2s.sara.model.CoordenacaoEvento;
 
 /**
  * Servlet implementation class RemoverCoordenador
  */
 @WebServlet("/RemoverCoordenador")
-public class RemoverCoordenador extends HttpServlet {
+public class RemoverCoordenadorEvento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String cpf = request.getParameter("cpfCoordenador");
+		String chave = request.getParameter("coordenacaoEvento");
+		CoordenacaoEvento coordenacaoEvento = (CoordenacaoEvento) session.getAttribute(chave);
 		DAOCoordenacaoEvento daoCoor = new DAOCoordenacaoEvento();
-		daoCoor.delete(cpf);
+		daoCoor.delete(coordenacaoEvento.getCoordenador().getCpf());
 		response.sendRedirect("gerenciaEvento.jsp");
 	}
 
