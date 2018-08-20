@@ -3,41 +3,47 @@
   <display-name>digital-valley-sara</display-name>
   <welcome-file-list>
     <welcome-file>webapp/jsp/indexAutor.jsp</welcome-file>
-  </welcome-file-list>
-  
-  <!-- Declaração
-          dos
-          Servlets -->
-          
-          
+  </welcome-file-list> 
+  <!-- Adicionando os Servlets -->
+  <!-- 1 -->
   <servlet>
     <servlet-name>CadastrarAvaliador</servlet-name>
     <servlet-class>br.com.n2s.sara.controller.CadastrarAvaliador</servlet-class>
   </servlet>
+  <!-- 2 -->
   <servlet>
     <servlet-name>Autenticar</servlet-name>
     <servlet-class>br.com.n2s.sara.controller.Autenticacao</servlet-class>
   </servlet>
+  <!-- 3 -->
   <servlet>
-  	<servlet-name>EditarCriterio</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.EditarCriterio</servlet-class>
+    <servlet-name>EditarCriterio</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.EditarCriterio</servlet-class>
   </servlet>
-  
-  <!-- Mapeamento
-   dos
-    servlets -->
-    
-    
+  <!-- 4 -->
+  <servlet>
+  	<servlet-name>AdicionarCoordenador</servlet-name>
+  	<servlet-class>br.com.n2s.sara.controller.AdicionarCoordenador</servlet-class>
+  </servlet>
+  <!-- Mapeando os Servlets -->
+  <!-- 1 --> 
   <servlet-mapping>
     <servlet-name>CadastrarAvaliador</servlet-name>
     <url-pattern>/cadastrarAvaliador</url-pattern>
   </servlet-mapping>
+  <!-- 2 -->
   <servlet-mapping>
     <servlet-name>Autenticar</servlet-name>
     <url-pattern>/autentica</url-pattern>
   </servlet-mapping>
+  <!-- 3 -->
   <servlet-mapping>
-  	<servlet-name>EditarCriterio</servlet-name>
-  	<url-pattern>/editarCriterio</url-pattern>
-  </servlet-mapping>  
+    <servlet-name>EditarCriterio</servlet-name>
+    <url-pattern>/editarCriterio</url-pattern>
+  </servlet-mapping>
+  <!-- 4 -->
+  <servlet-mapping>
+  	<servlet-name>AdicionarCoordenador</servlet-name>
+  	<url-pattern>/adcionarCoordenador</url-pattern>
+  </servlet-mapping>
 </web-app>
