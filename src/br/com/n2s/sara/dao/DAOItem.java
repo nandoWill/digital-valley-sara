@@ -1,13 +1,13 @@
 package br.com.n2s.sara.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.n2s.sara.controller.CriterioController;
 import br.com.n2s.sara.model.Item;
 
 public class DAOItem {
@@ -47,7 +47,7 @@ public class DAOItem {
 			List<Item> itens = new ArrayList<Item>();
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			CriterioController criterioController = new CriterioController();
+			DAOCriterio daoCriterio = new DAOCriterio();
 			
 			while(rs.next()){
 
@@ -56,10 +56,9 @@ public class DAOItem {
 				item.setIdItem(rs.getInt("idItem"));
 				item.setDescricao(rs.getString("descricao"));
 				item.setPeso(rs.getInt("peso"));
-				item.setCriterio(criterioController.buscar(rs.getInt("idCriterio")));
+				item.setCriterio(daoCriterio.getCriterio(rs.getInt("idCriterio")));
 				
 				itens.add(item);
-
 			}
 
 			rs.close();
@@ -82,7 +81,7 @@ public class DAOItem {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
-			CriterioController criterioController = new CriterioController();
+			DAOCriterio daoCriterio = new DAOCriterio();
 			
 			while(rs.next()){
 
@@ -91,7 +90,7 @@ public class DAOItem {
 				item.setIdItem(rs.getInt("idItem"));
 				item.setDescricao(rs.getString("descricao"));
 				item.setPeso(rs.getInt("peso"));
-				item.setCriterio(criterioController.buscar(rs.getInt("idCriterio")));
+				item.setCriterio(daoCriterio.getCriterio(rs.getInt("idCriterio")));
 				
 				itens.add(item);
 
@@ -116,7 +115,7 @@ public class DAOItem {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, idItem);
 			ResultSet rs = stmt.executeQuery();
-			CriterioController criterioController = new CriterioController();
+			DAOCriterio daoCriterio = new DAOCriterio();
 
 			if(rs.next()){
 				
@@ -125,7 +124,7 @@ public class DAOItem {
 				item.setIdItem(rs.getInt("idItem"));
 				item.setDescricao(rs.getString("descricao"));
 				item.setPeso(rs.getInt("peso"));
-				item.setCriterio(criterioController.buscar(rs.getInt("idCriterio")));
+				item.setCriterio(daoCriterio.getCriterio(rs.getInt("idCriterio")));
 			
 				rs.close();
 				stmt.close();

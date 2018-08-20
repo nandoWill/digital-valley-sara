@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.n2s.sara.controller.UsuarioController;
 import br.com.n2s.sara.model.Evento;
 
 public class DAOEvento {

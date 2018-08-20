@@ -1,15 +1,13 @@
 package br.com.n2s.sara.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.n2s.sara.controller.CriterioTrilhaController;
-import br.com.n2s.sara.controller.EventoController;
-import br.com.n2s.sara.controller.UsuarioController;
 import br.com.n2s.sara.model.Trilha;
 
 public class DAOTrilha {
@@ -49,8 +47,8 @@ public class DAOTrilha {
 			List<Trilha> trilhas = new ArrayList<Trilha>();
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			EventoController eventoController = new EventoController();
-			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
+			DAOEvento daoEvento = new DAOEvento();
+			DAOCriterioTrilha daoCriterioTrilha = new DAOCriterioTrilha();
 
 			while(rs.next()){
 
@@ -59,9 +57,9 @@ public class DAOTrilha {
 				trilha.setIdTrilha(rs.getInt("idTrilha"));
 				trilha.setNome(rs.getString("nome"));
 				trilha.setDescricao(rs.getString("descricao"));
-				trilha.setEvento(eventoController.buscar(rs.getInt("idEvento")));
-				trilha.setCriterioTrilha(criterioTrilhaController.buscar(rs.getInt("idCriterioTrilha")));
-
+				trilha.setEvento(daoEvento.getEvento(rs.getInt("idEvento")));
+				trilha.setCriterioTrilha(daoCriterioTrilha.getCriterioTrilha(rs.getInt("idCriterioTrilha")));
+				
 				trilhas.add(trilha);
 
 			}
@@ -86,9 +84,9 @@ public List<Trilha> readById(int id){
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
-			EventoController eventoController = new EventoController();
-			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
-
+			DAOEvento daoEvento = new DAOEvento();
+			DAOCriterioTrilha daoCriterioTrilha = new DAOCriterioTrilha();
+			
 			while(rs.next()){
 
 				Trilha trilha = new Trilha();
@@ -96,9 +94,9 @@ public List<Trilha> readById(int id){
 				trilha.setIdTrilha(rs.getInt("idTrilha"));
 				trilha.setNome(rs.getString("nome"));
 				trilha.setDescricao(rs.getString("descricao"));
-				trilha.setEvento(eventoController.buscar(rs.getInt("idEvento")));
-				trilha.setCriterioTrilha(criterioTrilhaController.buscar(rs.getInt("idCriterioTrilha")));
-
+				trilha.setEvento(daoEvento.getEvento(rs.getInt("idEvento")));
+				trilha.setCriterioTrilha(daoCriterioTrilha.getCriterioTrilha(rs.getInt("idCriterioTrilha")));
+				
 				trilhas.add(trilha);
 
 			}
@@ -122,9 +120,9 @@ public List<Trilha> readById(int id){
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, idTrilha);
 			ResultSet rs = stmt.executeQuery();
-			EventoController eventoController = new EventoController();
-			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
-
+			DAOEvento daoEvento = new DAOEvento();
+			DAOCriterioTrilha daoCriterioTrilha = new DAOCriterioTrilha();
+			
 			if(rs.next()){
 
 				Trilha trilha = new Trilha();
@@ -132,9 +130,9 @@ public List<Trilha> readById(int id){
 				trilha.setIdTrilha(rs.getInt("idTrilha"));
 				trilha.setNome(rs.getString("nome"));
 				trilha.setDescricao(rs.getString("descricao"));
-				trilha.setEvento(eventoController.buscar(rs.getInt("idEvento")));
-				trilha.setCriterioTrilha(criterioTrilhaController.buscar(rs.getInt("idCriterioTrilha")));
-
+				trilha.setEvento(daoEvento.getEvento(rs.getInt("idEvento")));
+				trilha.setCriterioTrilha(daoCriterioTrilha.getCriterioTrilha(rs.getInt("idCriterioTrilha")));
+				
 				rs.close();
 				stmt.close();
 				this.connection.close();

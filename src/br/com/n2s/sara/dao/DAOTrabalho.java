@@ -1,15 +1,13 @@
 package br.com.n2s.sara.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.IOException;
 
-import br.com.n2s.sara.controller.FileManipulation;
-import br.com.n2s.sara.controller.TrilhaController;
 import br.com.n2s.sara.model.StatusTrabalho;
 import br.com.n2s.sara.model.Trabalho;
 
@@ -34,7 +32,7 @@ public class DAOTrabalho {
 			stmt.setString(2, trabalho.getPalavrasChaves());
 			stmt.setString(3, trabalho.getResumo());
 			stmt.setString(4, trabalho.getStatus().toString());
-			stmt.setString(5, trabalho.getEndereco().toString());// substituiu versão final
+			stmt.setString(5, trabalho.getEndereco().toString());
 			stmt.setInt(6, trabalho.getTrilha().getIdTrilha());
 
 			stmt.execute();
@@ -55,7 +53,7 @@ public class DAOTrabalho {
 			List<Trabalho> trabalhos = new ArrayList<Trabalho>();
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			TrilhaController trilhaController = new TrilhaController(); 
+			DAOTrilha daoTrilha = new DAOTrilha(); 
 
 			while(rs.next()){
 
@@ -65,7 +63,7 @@ public class DAOTrabalho {
 				trabalho.setPalavrasChaves(rs.getString("palavrasChaves"));
 				trabalho.setResumo(rs.getString("resumo"));
 				trabalho.setStatus(StatusTrabalho.valueOf(rs.getString("status")));
-				/*Não é para listar o conteúdo dos trabalhos
+				/*Nï¿½o ï¿½ para listar o conteï¿½do dos trabalhos
 				 * 
 				 * 
 				 * try {
@@ -74,7 +72,7 @@ public class DAOTrabalho {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}*/
-				trabalho.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
+				trabalho.setTrilha(daoTrilha.getTrilha(rs.getInt("idTrilha")));
 
 				trabalhos.add(trabalho);
 			}
@@ -98,8 +96,8 @@ public class DAOTrabalho {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, idTrabalho);
 			ResultSet rs = stmt.executeQuery();
-			TrilhaController trilhaController = new TrilhaController(); 
-
+			DAOTrilha daoTrilha = new DAOTrilha();
+			
 			/*if(rs.next()){         Espera visualizar apenas de 1 trabalho*/
 
 				Trabalho trabalho = new Trabalho();
@@ -109,14 +107,15 @@ public class DAOTrabalho {
 				trabalho.setResumo(rs.getString("resumo"));
 				trabalho.setStatus(StatusTrabalho.valueOf(rs.getString("status")));
 				trabalho.setEndereco(rs.getString("endereco"));
-				trabalho.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
+				trabalho.setTrilha(daoTrilha.getTrilha(rs.getInt("idTrilha")));				
+				
 				rs.close();
 				stmt.close();
 				this.connection.close();
 				return trabalho;
 				
 			
-				/* não tem resposta do if			}else{
+				/* nï¿½o tem resposta do if			}else{
 				return null;*/
 		}	
 		catch(SQLException e){

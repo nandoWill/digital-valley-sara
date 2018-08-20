@@ -1,6 +1,7 @@
 package br.com.n2s.sara.dao;
 
 import java.sql.Connection;
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.n2s.sara.controller.TrilhaController;
 import br.com.n2s.sara.model.DescricaoPeriodo;
 import br.com.n2s.sara.model.Periodo;
 
@@ -51,7 +51,7 @@ public class DAOPeriodo {
 			List<Periodo> periodos = new ArrayList<Periodo>();
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			TrilhaController trilhaController = new TrilhaController();
+			DAOTrilha daoTrilha = new DAOTrilha();
 
 			while(rs.next()){// anda o array
 
@@ -60,7 +60,7 @@ public class DAOPeriodo {
 				periodo.setDataInicial((rs.getDate("dataInicial").toLocalDate())); //toLocalDate()
 				periodo.setDataFinal((rs.getDate("dataFinal").toLocalDate()));
 				periodo.setDescricao(DescricaoPeriodo.valueOf(rs.getString("descricao")));
-				periodo.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
+				periodo.setTrilha(daoTrilha.getTrilha(rs.getInt("idTrilha")));
 				
 				periodos.add(periodo);
 			}
@@ -85,16 +85,16 @@ public class DAOPeriodo {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
-			TrilhaController trilhaController = new TrilhaController();
+			DAOTrilha daoTrilha = new DAOTrilha();
 
-			while(rs.next()){// anda o array
+			while(rs.next()){
 
 				Periodo periodo = new Periodo();
 				periodo.setIdPeriodo(rs.getInt("idPeriodo"));
-				periodo.setDataInicial((rs.getDate("dataInicial").toLocalDate())); //toLocalDate()
+				periodo.setDataInicial((rs.getDate("dataInicial").toLocalDate()));
 				periodo.setDataFinal((rs.getDate("dataFinal").toLocalDate()));
 				periodo.setDescricao(DescricaoPeriodo.valueOf(rs.getString("descricao")));
-				periodo.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
+				periodo.setTrilha(daoTrilha.getTrilha(rs.getInt("idTrilha")));
 				
 				periodos.add(periodo);
 			}
@@ -118,8 +118,8 @@ public class DAOPeriodo {
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, idPeriodo);
 			ResultSet rs = stmt.executeQuery();
-			TrilhaController trilhaController = new TrilhaController();
-
+			DAOTrilha daoTrilha = new DAOTrilha();
+			
 			if(rs.next()){
 
 				Periodo periodo = new Periodo();
@@ -127,7 +127,7 @@ public class DAOPeriodo {
 				periodo.setDataFinal((rs.getDate("dataInicial").toLocalDate())); //toLocalDate()
 				periodo.setDataInicial((rs.getDate("dataFinal").toLocalDate()));
 				periodo.setDescricao(DescricaoPeriodo.valueOf(rs.getString("descricao")));
-				periodo.setTrilha(trilhaController.buscar(rs.getInt("idTrilha")));
+				periodo.setTrilha(daoTrilha.getTrilha(rs.getInt("idTrilha")));
 				
 				rs.close();
 				stmt.close();
@@ -150,16 +150,12 @@ public class DAOPeriodo {
 				+ " where idPeriodo = ?";
 
 		try {
+			
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			
 			stmt.setDate(1, Date.valueOf(periodo.getDataInicial()));
-			
 			stmt.setDate(2, Date.valueOf(periodo.getDataFinal()));
-			
 			stmt.setString(3, periodo.getDescricao().toString());
-			
 			stmt.setInt(4, periodo.getTrilha().getIdTrilha());
-			
 			stmt.setInt(5, periodo.getIdPeriodo());
 
 			stmt.execute();
