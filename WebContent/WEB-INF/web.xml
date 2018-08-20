@@ -56,7 +56,7 @@
   	<servlet-name>AdicionarCoordenador</servlet-name>
   	<url-pattern>/adicionarCoordenador</url-pattern>
   </servlet-mapping>
-   <!-- 5 -->
+  
   <servlet-mapping>
   	<servlet-name>AdicionarCriterio</servlet-name>
   	<url-pattern>/adicionarCriterio</url-pattern>
