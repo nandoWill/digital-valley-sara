@@ -35,6 +35,36 @@
   	<servlet-name>AdicionarTrilha</servlet-name>
   	<servlet-class>br.com.n2s.sara.controller.AdicionarTrilha</servlet-class>
   </servlet>
+  <!-- 7 -->
+  <servlet>
+  	<servlet-name>RemoverCoordenador</servlet-name>
+  	<servlet-class>br.com.n2s.sara.controller.RemoverCoordenador</servlet-class>
+  </servlet>
+  <!-- 8 -->
+  <servlet>
+  	<servlet-name>AlterarPeriodo</servlet-name>
+  	<servlet-class>br.com.n2s.sara.controller.AlterarPeriodo</servlet-class>
+  </servlet>
+  <!-- 9 -->
+  <servlet>
+  	<servlet-name>AdicionarPeriodo</servlet-name>
+  	<servlet-class>br.com.n2s.sara.controller.AdicionarPeriodo</servlet-class>
+  </servlet>
+  <!-- 10 -->
+  <servlet>
+  	<servlet-name>RemoverPeriodo</servlet-name>
+  	<servlet-class>br.com.n2s.sara.controller.RemoverPeriodo</servlet-class>
+  </servlet>
+  <!-- 11 -->
+  <servlet>
+  	<servlet-name>RemoverTrilha</servlet-name>
+  	<servlet-class>br.com.n2s.sara.controller.RemoverTrilha</servlet-class>
+  </servlet>
+  <!-- 12 -->
+  <servlet>
+  	<servlet-name>RemoverAvaliador</servlet-name>
+  	<servlet-class>br.com.n2s.sara.controller.RemoverAvaliador</servlet-class>
+  </servlet>
   <!-- Mapeando os Servlets -->
   <!-- 1 --> 
   <servlet-mapping>
@@ -66,4 +96,34 @@
   	<servlet-name>AdicionarTrilha</servlet-name>
   	<url-pattern>/adicionarTrilha</url-pattern>
   </servlet-mapping>
+  <!-- 7 -->
+  <servlet-mapping>
+  	<servlet-name>RemoverCoordenador</servlet-name>
+  	<url-pattern>/removerCoordenador</url-pattern>
+  </servlet-mapping>
+  <!-- 8 -->
+  <servlet-mapping>
+  	 	<servlet-name>AlterarPeriodo</servlet-name>
+  	 	<url-pattern>/alterarPeriodo</url-pattern>
+  </servlet-mapping>
+  <!-- 9 -->
+    <servlet-mapping>
+  	 	<servlet-name>AdicionarPeriodo</servlet-name>
+  	 	<url-pattern>/adicionarPeriodo</url-pattern>
+  </servlet-mapping>
+  <!-- 10 -->
+  <servlet-mapping>
+  	<servlet-name>RemoverPeriodo</servlet-name>
+  	<url-pattern>/removerPeriodo</url-pattern>
+  </servlet-mapping>
+ <!--  11 -->
+ <servlet-mapping>
+ 	  	<servlet-name>RemoverTrilha</servlet-name>
+ 		<url-pattern>/removerTRilha</url-pattern>
+ </servlet-mapping>
+ <!-- 12 -->
+ <servlet-mapping>
+ 		<servlet-name>RemoverAvaliador</servlet-name>
+ 		<url-pattern>/removerAvaliador</url-pattern>
+ </servlet-mapping>
 </web-app>
