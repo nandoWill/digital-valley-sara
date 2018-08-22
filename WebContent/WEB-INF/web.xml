@@ -4,8 +4,6 @@
   <welcome-file-list>
     <welcome-file>webapp/jsp/indexAutor.jsp</welcome-file>
   </welcome-file-list>
-  <!-- Nomenando os servlets -->
-  <!-- 1 -->
   <servlet>
     <servlet-name>CadastrarAvaliador</servlet-name>
     <servlet-class>br.com.n2s.sara.controller.CadastrarAvaliador</servlet-class>
@@ -55,15 +53,18 @@
     <servlet-class>br.com.n2s.sara.controller.RemoverAvaliador</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>RemoverCriterio</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.RemoverCriterio</servlet-class>
+    <servlet-name>RemoverCriterio</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.RemoverCriterio</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>CadastrarEvento</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.CadastrarEvento</servlet-class>
+    <servlet-name>CadastrarEvento</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.CadastrarEvento</servlet-class>
   </servlet>
-    
-  <!-- Mapeando os servlets -->
+  <servlet>
+  	<servlet-name>RemoverCoordenadorTrilha</servlet-name>
+  	<servlet-class>br.com.n2s.sara.controller.RemoverCoordenadorTrilha</servlet-class>
+  </servlet>
+  
   
   <servlet-mapping>
     <servlet-name>CadastrarAvaliador</servlet-name>
@@ -114,7 +115,11 @@
     <url-pattern>/removerAvaliador</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>RemoverCriterio</servlet-name>
-  	<url-pattern>/removerCriterio</url-pattern>
+    <servlet-name>RemoverCriterio</servlet-name>
+    <url-pattern>/removerCriterio</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RemoverCoordenandorTrilha</servlet-name>
+  	<url-pattern>/removerCoordenadorT</url-pattern>
   </servlet-mapping>
 </web-app>
