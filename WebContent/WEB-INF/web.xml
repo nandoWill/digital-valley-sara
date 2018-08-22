@@ -3,127 +3,118 @@
   <display-name>digital-valley-sara</display-name>
   <welcome-file-list>
     <welcome-file>webapp/jsp/indexAutor.jsp</welcome-file>
-  </welcome-file-list> 
-  <!-- Adicionando os Servlets -->
+  </welcome-file-list>
+  <!-- Nomenando os servlets -->
   <!-- 1 -->
   <servlet>
     <servlet-name>CadastrarAvaliador</servlet-name>
     <servlet-class>br.com.n2s.sara.controller.CadastrarAvaliador</servlet-class>
   </servlet>
-  <!-- 2 -->
   <servlet>
     <servlet-name>Autenticar</servlet-name>
     <servlet-class>br.com.n2s.sara.controller.Autenticacao</servlet-class>
   </servlet>
-  <!-- 3 -->
   <servlet>
     <servlet-name>EditarCriterio</servlet-name>
     <servlet-class>br.com.n2s.sara.controller.EditarCriterio</servlet-class>
   </servlet>
-  <!-- 4 -->
   <servlet>
-  	<servlet-name>AdicionarCoordenador</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.AdicionarCoordenador</servlet-class>
+    <servlet-name>AdicionarCoordenador</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.AdicionarCoordenador</servlet-class>
   </servlet>
-  <!-- 5 -->
   <servlet>
-  	<servlet-name>AdicionarCriterio</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.AdicionarCriterio</servlet-class>
+    <servlet-name>AdicionarCriterio</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.AdicionarCriterio</servlet-class>
   </servlet>
-   <!-- 6 -->
   <servlet>
-  	<servlet-name>AdicionarTrilha</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.AdicionarTrilha</servlet-class>
+    <servlet-name>AdicionarTrilha</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.AdicionarTrilha</servlet-class>
   </servlet>
-  <!-- 7 -->
   <servlet>
-  	<servlet-name>RemoverCoordenador</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.RemoverCoordenador</servlet-class>
+    <servlet-name>RemoverCoordenador</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.RemoverCoordenador</servlet-class>
   </servlet>
-  <!-- 8 -->
   <servlet>
-  	<servlet-name>AlterarPeriodo</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.AlterarPeriodo</servlet-class>
+    <servlet-name>AlterarPeriodo</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.AlterarPeriodo</servlet-class>
   </servlet>
-  <!-- 9 -->
   <servlet>
-  	<servlet-name>AdicionarPeriodo</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.AdicionarPeriodo</servlet-class>
+    <servlet-name>AdicionarPeriodo</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.AdicionarPeriodo</servlet-class>
   </servlet>
-  <!-- 10 -->
   <servlet>
-  	<servlet-name>RemoverPeriodo</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.RemoverPeriodo</servlet-class>
+    <servlet-name>RemoverPeriodo</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.RemoverPeriodo</servlet-class>
   </servlet>
-  <!-- 11 -->
   <servlet>
-  	<servlet-name>RemoverTrilha</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.RemoverTrilha</servlet-class>
+    <servlet-name>RemoverTrilha</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.RemoverTrilha</servlet-class>
   </servlet>
-  <!-- 12 -->
   <servlet>
-  	<servlet-name>RemoverAvaliador</servlet-name>
-  	<servlet-class>br.com.n2s.sara.controller.RemoverAvaliador</servlet-class>
+    <servlet-name>RemoverAvaliador</servlet-name>
+    <servlet-class>br.com.n2s.sara.controller.RemoverAvaliador</servlet-class>
   </servlet>
-  <!-- Mapeando os Servlets -->
-  <!-- 1 --> 
+  <servlet>
+  	<servlet-name>RemoverCriterio</servlet-name>
+  	<servlet-class>br.com.n2s.sara.controller.RemoverCriterio</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>CadastrarEvento</servlet-name>
+  	<servlet-class>br.com.n2s.sara.controller.CadastrarEvento</servlet-class>
+  </servlet>
+    
+  <!-- Mapeando os servlets -->
+  
   <servlet-mapping>
     <servlet-name>CadastrarAvaliador</servlet-name>
     <url-pattern>/cadastrarAvaliador</url-pattern>
   </servlet-mapping>
-  <!-- 2 -->
   <servlet-mapping>
     <servlet-name>Autenticar</servlet-name>
     <url-pattern>/autentica</url-pattern>
   </servlet-mapping>
-  <!-- 3 -->
   <servlet-mapping>
     <servlet-name>EditarCriterio</servlet-name>
     <url-pattern>/editarCriterio</url-pattern>
   </servlet-mapping>
-  <!-- 4 -->
   <servlet-mapping>
-  	<servlet-name>AdicionarCoordenador</servlet-name>
-  	<url-pattern>/adicionarCoordenador</url-pattern>
+    <servlet-name>AdicionarCoordenador</servlet-name>
+    <url-pattern>/adicionarCoordenador</url-pattern>
   </servlet-mapping>
-  
   <servlet-mapping>
-  	<servlet-name>AdicionarCriterio</servlet-name>
-  	<url-pattern>/adicionarCriterio</url-pattern>
+    <servlet-name>AdicionarCriterio</servlet-name>
+    <url-pattern>/adicionarCriterio</url-pattern>
   </servlet-mapping>
-  <!-- 6 -->
   <servlet-mapping>
-  	<servlet-name>AdicionarTrilha</servlet-name>
-  	<url-pattern>/adicionarTrilha</url-pattern>
+    <servlet-name>AdicionarTrilha</servlet-name>
+    <url-pattern>/adicionarTrilha</url-pattern>
   </servlet-mapping>
-  <!-- 7 -->
   <servlet-mapping>
-  	<servlet-name>RemoverCoordenador</servlet-name>
-  	<url-pattern>/removerCoordenador</url-pattern>
+    <servlet-name>RemoverCoordenador</servlet-name>
+    <url-pattern>/removerCoordenador</url-pattern>
   </servlet-mapping>
-  <!-- 8 -->
   <servlet-mapping>
-  	 	<servlet-name>AlterarPeriodo</servlet-name>
-  	 	<url-pattern>/alterarPeriodo</url-pattern>
+    <servlet-name>AlterarPeriodo</servlet-name>
+    <url-pattern>/alterarPeriodo</url-pattern>
   </servlet-mapping>
-  <!-- 9 -->
-    <servlet-mapping>
-  	 	<servlet-name>AdicionarPeriodo</servlet-name>
-  	 	<url-pattern>/adicionarPeriodo</url-pattern>
-  </servlet-mapping>
-  <!-- 10 -->
   <servlet-mapping>
-  	<servlet-name>RemoverPeriodo</servlet-name>
-  	<url-pattern>/removerPeriodo</url-pattern>
+    <servlet-name>AdicionarPeriodo</servlet-name>
+    <url-pattern>/adicionarPeriodo</url-pattern>
   </servlet-mapping>
- <!--  11 -->
- <servlet-mapping>
- 	  	<servlet-name>RemoverTrilha</servlet-name>
- 		<url-pattern>/removerTRilha</url-pattern>
- </servlet-mapping>
- <!-- 12 -->
- <servlet-mapping>
- 		<servlet-name>RemoverAvaliador</servlet-name>
- 		<url-pattern>/removerAvaliador</url-pattern>
- </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RemoverPeriodo</servlet-name>
+    <url-pattern>/removerPeriodo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RemoverTrilha</servlet-name>
+    <url-pattern>/removerTRilha</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RemoverAvaliador</servlet-name>
+    <url-pattern>/removerAvaliador</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RemoverCriterio</servlet-name>
+  	<url-pattern>/removerCriterio</url-pattern>
+  </servlet-mapping>
 </web-app>

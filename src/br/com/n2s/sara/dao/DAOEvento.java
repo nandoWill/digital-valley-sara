@@ -17,7 +17,7 @@ public class DAOEvento {
 
 	public DAOEvento(){}
 
-	public void create(Evento evento){
+	public Evento create(Evento evento){
 
 		this.connection = new ConnectionFactory().getConnection();
 		String sql = "insert into sara.Evento"  
@@ -34,8 +34,12 @@ public class DAOEvento {
 			stmt.setDate(6, Date.valueOf(evento.getDataFinal()));
 
 			stmt.execute();
+			ResultSet rs = stmt.getGeneratedKeys();
+			evento.setIdEvento(rs.getInt(1));
+			rs.close();
 			stmt.close();
 			this.connection.close();
+			return evento;
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
