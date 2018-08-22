@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>digital-valley-sara</display-name>
+  <!-- 
   <welcome-file-list>
     <welcome-file>webapp/jsp/indexAutor.jsp</welcome-file>
   </welcome-file-list>
+   -->
+  
   <servlet>
     <servlet-name>CadastrarAvaliador</servlet-name>
     <servlet-class>br.com.n2s.sara.controller.CadastrarAvaliador</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>Autenticar</servlet-name>
+    <servlet-name>Autenticacao</servlet-name>
     <servlet-class>br.com.n2s.sara.controller.Autenticacao</servlet-class>
   </servlet>
   <servlet>
@@ -27,10 +30,6 @@
   <servlet>
     <servlet-name>AdicionarTrilha</servlet-name>
     <servlet-class>br.com.n2s.sara.controller.AdicionarTrilha</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>RemoverCoordenador</servlet-name>
-    <servlet-class>br.com.n2s.sara.controller.RemoverCoordenador</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>AlterarPeriodo</servlet-name>
@@ -71,7 +70,7 @@
     <url-pattern>/cadastrarAvaliador</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>Autenticar</servlet-name>
+    <servlet-name>Autenticacao</servlet-name>
     <url-pattern>/autentica</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
@@ -91,10 +90,6 @@
     <url-pattern>/adicionarTrilha</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>RemoverCoordenador</servlet-name>
-    <url-pattern>/removerCoordenador</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
     <servlet-name>AlterarPeriodo</servlet-name>
     <url-pattern>/alterarPeriodo</url-pattern>
   </servlet-mapping>
@@ -108,7 +103,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>RemoverTrilha</servlet-name>
-    <url-pattern>/removerTRilha</url-pattern>
+    <url-pattern>/removerTrilha</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>RemoverAvaliador</servlet-name>
@@ -119,7 +114,7 @@
     <url-pattern>/removerCriterio</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>RemoverCoordenandorTrilha</servlet-name>
-  	<url-pattern>/removerCoordenadorT</url-pattern>
+  	<servlet-name>RemoverCoordenadorTrilha</servlet-name>
+  	<url-pattern>/removerCoordenadorTrilha</url-pattern>
   </servlet-mapping>
 </web-app>
