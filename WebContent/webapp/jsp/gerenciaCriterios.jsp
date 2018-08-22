@@ -1,8 +1,8 @@
+<%@page import="br.com.n2s.sara.dao.DAOCriterioTrilha"%>
+<%@page import="br.com.n2s.sara.dao.DAOCriterio"%>
 <%@page import="br.com.n2s.sara.model.Usuario"%>
 <%@page import="br.com.n2s.sara.model.CriterioTrilha"%>
-<%@page import="br.com.n2s.sara.controller.CriterioTrilhaController"%>
 <%@page import="br.com.n2s.sara.model.Trilha"%>
-<%@page import="br.com.n2s.sara.controller.CriterioController"%>
 <%@page import="br.com.n2s.sara.model.Criterio"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -259,12 +259,12 @@
       			Trilha trilha = (Trilha) session.getAttribute("trilha");
               	session.setAttribute("trilha", trilha);
       			
-      			CriterioController critCon = new CriterioController();
-      			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
+              	DAOCriterio daoCriterio = new DAOCriterio();
+              	DAOCriterioTrilha daoCriterioTrilha = new DAOCriterioTrilha();
       			
-              	//List<Criterio> criterios = critCon.listar();
+      			
           	
-        		List<CriterioTrilha> listCriterioTrilha = criterioTrilhaController.listar();
+        		List<CriterioTrilha> listaCriterioTrilha = daoCriterioTrilha.read();
               	if(trilha.getCriterioTrilha() == null){%>
               <div class="row">
                   <div class="col-lg-12">
@@ -282,20 +282,20 @@
                               </tr>
                               
 							 <%	                              	 
-                              	 for(int i = 0; i < listCriterioTrilha.size(); i++){
+                              	 for(int i = 0; i < listaCriterioTrilha.size(); i++){
 	                
-	              	 				session.setAttribute("critTri"+listCriterioTrilha.get(i).getIdCriterioTrilha(), listCriterioTrilha.get(i));
+	              	 				session.setAttribute("critTri"+listaCriterioTrilha.get(i).getIdCriterioTrilha(), listaCriterioTrilha.get(i));
 	               					%>
                                       <tr>
-                                         <td><%=listCriterioTrilha.get(i).getNome()%></td>
+                                         <td><%=listaCriterioTrilha.get(i).getNome()%></td>
                                          <td><form action="visualizarCriterio.jsp" method="post"> 
-	                           					<input type="hidden" value="critTri<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
+	                           					<input type="hidden" value="critTri<%= listaCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
 	                           					<button class="btn btn-primary" type="submit">Visualizar</button>
 	                       					</form> 
                    						</td>
                    						<td>
                    							<form action="selecionarCriterioTrilha.jsp" method="post"> 
-	                           					<input type="hidden" value="critTri<%= listCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
+	                           					<input type="hidden" value="critTri<%= listaCriterioTrilha.get(i).getIdCriterioTrilha()%>" name="criterioTrilha"> 
 	                           					<button class="btn btn-primary" type="submit">Selecionar</button>
 	                       					</form>
                    						</td>
@@ -308,7 +308,8 @@
                            </div>
                        </div>
                        <% 		}else{
-                        			List<Criterio> criterios = critCon.obterCriteriosPorTrilha(trilha.getCriterioTrilha().getIdCriterioTrilha());
+                    	   			
+                        			List<Criterio> criterios = daoCriterio.obterCriteriosPorTrilha(trilha.getCriterioTrilha().getIdCriterioTrilha());
                         			if(!criterios.isEmpty()){ %>
               <div class="row">
                   <div class="col-lg-12">
@@ -536,6 +537,6 @@
             var myLineChart = new Chart(ctx).Line(data, option); //'Line' defines type of the chart.
         });
 
-      </script>
+      </script>    
 </body>
 </html>

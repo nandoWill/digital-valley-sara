@@ -1,6 +1,6 @@
+<%@page import="br.com.n2s.sara.dao.DAOAvaliaTrilha"%>
 <%@page import="br.com.n2s.sara.model.Usuario"%>
 <%@page import="java.util.List"%>
-<%@page import="br.com.n2s.sara.controller.AvaliaTrilhaController"%>
 <%@page import="br.com.n2s.sara.model.AvaliaTrilha"%>
 <%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -57,7 +57,7 @@
 	     	Usuario usuario = (Usuario) session.getAttribute("usuario");
      		Trilha trilha = (Trilha) session.getAttribute("trilha");
     		session.setAttribute("trilha", trilha);
-	    	List<Usuario> avaliadores = new AvaliaTrilhaController().listarAvaliadores(trilha.getIdTrilha());
+    		List<Usuario> avaliadores = new DAOAvaliaTrilha().getAvaliadores(trilha.getIdTrilha());
    		%>
       
         <header class="header dark-bg">

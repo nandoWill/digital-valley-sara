@@ -1,7 +1,7 @@
+<%@page import="br.com.n2s.sara.dao.DAOPeriodo"%>
 <%@page import="br.com.n2s.sara.model.Usuario"%>
 <%@page import="br.com.n2s.sara.model.Periodo"%>
 <%@page import="java.util.List"%>
-<%@page import="br.com.n2s.sara.controller.PeriodoController"%>
 <%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -55,9 +55,9 @@
      
      	<%
 	     	Usuario usuario = (Usuario) session.getAttribute("usuario");
-     		PeriodoController perCon = new PeriodoController();
-         	Trilha trilha = (Trilha) session.getAttribute("trilha");
-         	List<Periodo> periodos = perCon.listar(trilha.getIdTrilha());
+     		DAOPeriodo daoPeriodo = new DAOPeriodo();
+     		Trilha trilha = (Trilha) session.getAttribute("trilha");
+         	List<Periodo> periodos = daoPeriodo.readById(trilha.getIdTrilha()); 
          	session.setAttribute("trilha", trilha);
    		%>
       

@@ -1,6 +1,4 @@
-<%-- <%@page import="br.com.n2s.sara.controller.EventoController"%> --%>
 <%@page import="java.util.List"%>
-<%-- <%@page import="br.com.n2s.sara.controller.TrilhaController"%> --%>
 <%@page import="br.com.n2s.sara.dao.*"%>
 <%@page import="br.com.n2s.sara.controller.*"%>
 <%@page import="br.com.n2s.sara.model.*" %>
@@ -55,8 +53,9 @@
 </head>
 <body>
 
-    <% 	UsuarioController userCon = new UsuarioController();
-    	Usuario usuario = userCon.buscar("100");
+    <% 	
+    	DAOUsuario daoUsuario = new DAOUsuario();
+    	Usuario usuario = daoUsuario.getUsuario("100");
     	session.setAttribute("usuario", usuario);
 	%>
     
@@ -180,8 +179,8 @@
                               
                               <%
                               	 
-                              	EventoController evCon = new EventoController();
-                              	List<Evento> eventos = evCon.listar();
+                              	DAOEvento daoEvento = new DAOEvento();
+                              	List<Evento> eventos = daoEvento.read();
                                 
                               	 
                               	 for(Evento evento : eventos){ 

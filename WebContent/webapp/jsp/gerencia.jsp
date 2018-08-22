@@ -1,9 +1,3 @@
-<%-- 
-    Document   : gerencia
-    Created on : 16/04/2018, 11:21:47
-    Author     : Hugo
---%>
-
 <%@ page import="br.com.n2s.sara.model.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,7 +21,7 @@
         </tr>
         <% 
             for(int i=0; i < evento.getTrilhas().size(); i++){ 
-                if(evento.getTrilhas().get(i).getCoordenadorTrilha().equals(user.getCpf()) ){
+                if(evento.getTrilhas().get(i).getCoordenadores().get(i).equals(user.getCpf()) ){
                 
                 session.setAttribute("gt"+Integer.toString(evento.getTrilhas().get(i).getIdTrilha()), evento.getTrilhas().get(i));
                %>

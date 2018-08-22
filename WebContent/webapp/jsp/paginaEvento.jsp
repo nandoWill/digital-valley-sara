@@ -1,10 +1,4 @@
-<%-- 
-    Document   : paginaEvento
-    Created on : 09/04/2018, 11:22:03
-    Author     : Hugo
---%>
-
-<%@page import="br.com.n2s.sara.controller.TrilhaController"%>
+<%@page import="br.com.n2s.sara.dao.DAOTrilha"%>
 <%@ page import="br.com.n2s.sara.model.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -64,7 +58,7 @@
 		
 	    String nome = request.getParameter("evento");
     	Evento evento = (Evento) session.getAttribute(nome);
-    	evento.setTrilhas(new TrilhaController().listar(evento.getIdEvento()));
+    	evento.setTrilhas(new DAOTrilha().readById(evento.getIdEvento()));
 
     %>
   		

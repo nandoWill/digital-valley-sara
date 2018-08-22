@@ -1,8 +1,8 @@
-<%@page import="br.com.n2s.sara.controller.CoordenacaoTrilhaController"%>
-<%@page import="br.com.n2s.sara.controller.CoordenacaoEventoController"%>
-<%@page import="br.com.n2s.sara.controller.TrilhaController"%>
+<%@page import="br.com.n2s.sara.dao.DAOTrilha"%>
+<%@page import="br.com.n2s.sara.dao.DAOCoordenacaoTrilha"%>
+<%@page import="br.com.n2s.sara.dao.DAOCoordenacaoEvento"%>
+<%@page import="br.com.n2s.sara.dao.DAOEvento"%>
 <%@page import="java.util.List"%>
-<%@page import="br.com.n2s.sara.controller.EventoController"%>
 <%@ page import="br.com.n2s.sara.model.*" %>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -55,16 +55,20 @@
 <body>
     <% 
         Usuario usuario = (Usuario) session.getAttribute("usuario");
-        List<CoordenacaoEvento> idEventos = new CoordenacaoEventoController().listar(usuario.getCpf());
-        List<CoordenacaoTrilha> idTrilhas = new CoordenacaoTrilhaController().listar(usuario.getCpf());
+    	DAOCoordenacaoEvento daoCoordenacaoEvento = new DAOCoordenacaoEvento();
+    	DAOCoordenacaoTrilha daoCoordenacaoTrilha = new DAOCoordenacaoTrilha();
+    
+        List<CoordenacaoEvento> idEventos = daoCoordenacaoEvento.read(usuario.getCpf());
+        		
+        List<CoordenacaoTrilha> idTrilhas = daoCoordenacaoTrilha.readById(usuario.getCpf());
         List<Evento> eventos = new ArrayList<Evento>();
         List<Trilha> trilhas = new ArrayList<Trilha>();
-        EventoController evCon = new EventoController();
+        DAOEvento daoEvento = new DAOEvento();
+        
         
         for(int i = 0; i < idEventos.size(); i++){
-        	Evento ev = idEventos.get(i).getEvento();
-        	ev.setTrilhas(new TrilhaController().listar(ev.getIdEvento()));
-        	eventos.add(ev);
+        	Evento evento = idEventos.get(i).getEvento();
+        	evento.setTrilhas(new DAOTrilha().readById(evento.getIdEvento()));
         }
         
         for(int i = 0; i < idTrilhas.size(); i++){

@@ -1,8 +1,8 @@
+<%@page import="br.com.n2s.sara.dao.DAOUsuario"%>
+<%@page import="br.com.n2s.sara.dao.DAOCoordenacaoEvento"%>
 <%@page import="br.com.n2s.sara.model.Usuario"%>
-<%@page import="br.com.n2s.sara.controller.UsuarioController"%>
 <%@page import="br.com.n2s.sara.model.Evento"%>
 <%@page import="java.util.List"%>
-<%@page import="br.com.n2s.sara.controller.CoordenacaoEventoController"%>
 <%@page import="br.com.n2s.sara.model.CoordenacaoEvento"%>
 <%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -58,9 +58,9 @@
      	<%
 	     	Usuario usuario = (Usuario) session.getAttribute("usuario");
      		Evento evento = (Evento) session.getAttribute("evento");
-    		CoordenacaoEventoController coordenacaoEventoController = new CoordenacaoEventoController();
-    		UsuarioController usuarioController = new UsuarioController();
-    		List<CoordenacaoEvento> lista = coordenacaoEventoController.listar(evento.getIdEvento());
+     		DAOCoordenacaoEvento daoCoordenacaoEvento = new DAOCoordenacaoEvento();
+    		DAOUsuario daoUsuario = new DAOUsuario();
+    		List<CoordenacaoEvento> lista = daoCoordenacaoEvento.read(evento.getIdEvento()); 
      	%>
       
         <header class="header dark-bg">
@@ -183,8 +183,8 @@
 							%>
 							  
 									<tr>
-										<td><%= usuarioController.buscar(lista.get(i).getCoordenador().getCpf()).getNome() %></td>
-										<td><%= usuarioController.buscar(lista.get(i).getCoordenador().getCpf()).getCpf() %></td>
+										<td><%= daoUsuario.getUsuario(lista.get(i).getCoordenador().getCpf()).getNome() %></td>
+										<td><%= daoUsuario.getUsuario(lista.get(i).getCoordenador().getCpf()).getCpf() %></td>
 									 	<td><form action="removerCoordenador.jsp" method="post" onsubmit="return confirm('Deseja remover este Coordenador?');"> 
 							                	<input type="hidden" value="c<%=lista.get(i).getCoordenador().getCpf()%>e<%= Integer.toString(lista.get(i).getEvento().getIdEvento())%>" name="coordenacaoEvento"> 
 							                	<button class="btn btn-primary" type = "submit">Remover Coordenador</button>

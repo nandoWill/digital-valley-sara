@@ -1,9 +1,8 @@
+<%@page import="br.com.n2s.sara.dao.DAOItem"%>
 <%@page import="br.com.n2s.sara.model.Usuario"%>
 <%@page import="br.com.n2s.sara.model.Item"%>
-<%@page import="br.com.n2s.sara.controller.ItemController"%>
 <%@page import="br.com.n2s.sara.model.Criterio"%>
 <%@page import="java.util.List"%>
-<%@page import="br.com.n2s.sara.controller.CriterioController"%>
 <%@page import="br.com.n2s.sara.model.CriterioTrilha"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -61,8 +60,8 @@
 			String keyCriterio = request.getParameter("criterio");
 			Criterio criterio = (Criterio) session.getAttribute(keyCriterio);
 			
-			ItemController itemController = new ItemController();
-			List<Item> itens = itemController.listar(criterio.getIdCriterio());
+			DAOItem daoItem = new DAOItem();
+			List<Item> itens = daoItem.readById(criterio.getIdCriterio());
 		%>
 
   <!-- container section start -->

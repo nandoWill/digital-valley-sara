@@ -1,11 +1,11 @@
-<%@page import="br.com.n2s.sara.controller.ItemController"%>
+<%@page import="br.com.n2s.sara.dao.DAOTrilha"%>
+<%@page import="br.com.n2s.sara.dao.DAOItem"%>
+<%@page import="br.com.n2s.sara.dao.DAOCriterio"%>
+<%@page import="br.com.n2s.sara.dao.DAOCriterioTrilha"%>
 <%@page import="br.com.n2s.sara.model.Item"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.n2s.sara.model.Criterio"%>
-<%@page import="br.com.n2s.sara.controller.CriterioController"%>
-<%@page import="br.com.n2s.sara.controller.CriterioTrilhaController"%>
 <%@page import="java.time.LocalDate"%>
-<%@page import="br.com.n2s.sara.controller.TrilhaController"%>
 <%@page import="br.com.n2s.sara.model.Trilha"%>
 <%@page import="br.com.n2s.sara.model.CriterioTrilha"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -27,30 +27,31 @@
 			criterioTrilhaCopia.setNome(criterioTrilha.getNome());
 			criterioTrilhaCopia.setDataCriacao(LocalDate.now());
 			
-			CriterioTrilhaController criterioTrilhaController = new CriterioTrilhaController();
-			criterioTrilhaController.criar(criterioTrilhaCopia);
-			criterioTrilhaCopia.setIdCriterioTrilha(criterioTrilhaController.obterUltimoID());
+			DAOCriterioTrilha daoCriterioTrilha = new DAOCriterioTrilha();
+			daoCriterioTrilha.create(criterioTrilhaCopia);
+			criterioTrilhaCopia.setIdCriterioTrilha(daoCriterioTrilha.getLastId()); // Fazer essa busca de último id inserido de outra forma
 			
 			/*Copiando os critérios e os itens*/
 			
-			CriterioController criterioController = new CriterioController();
-			List<Criterio> criterios = criterioController.obterCriteriosPorTrilha(criterioTrilha.getIdCriterioTrilha());
-			ItemController itemController = new ItemController();
+			DAOCriterio daoCriterio = new DAOCriterio();
+			List<Criterio> criterios = daoCriterio.obterCriteriosPorTrilha(criterioTrilha.getIdCriterioTrilha());
+			
+			DAOItem daoItem = new DAOItem();
 			
 			for(Criterio c : criterios){
 				Criterio criterio = new Criterio();
 				criterio.setCriterioTrilha(criterioTrilhaCopia);
 				criterio.setDescricao(c.getDescricao());
 				criterio.setPeso(c.getPeso());
-				criterioController.criar(criterio);
+				daoCriterio.create(criterio);
 				
-				criterio.setIdCriterio(criterioController.getLastID());
+				criterio.setIdCriterio(daoCriterio.getLastId());
 				
-				List<Item> itens = itemController.listar(c.getIdCriterio());
+				List<Item> itens = daoItem.readById(c.getIdCriterio());
 				
 				for(Item i : itens){
 					i.setCriterio(criterio);
-					itemController.criar(i);
+					daoItem.create(i);
 				}
 			}
 			
@@ -58,8 +59,8 @@
         	session.setAttribute("trilha", trilha);
 			
         	trilha.setCriterioTrilha(criterioTrilhaCopia);
-			TrilhaController trilhaController = new TrilhaController();
-			trilhaController.atualizar(trilha);
+        	DAOTrilha daoTrilha = new DAOTrilha();
+			daoTrilha.update(trilha);
 		%>
 		
 		<jsp:forward page="gerenciaCriterios.jsp"></jsp:forward>
